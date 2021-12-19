@@ -9,3 +9,11 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 nnoremap <leader>) :NvimTreeToggle<CR>
+
+vnoremap < <gv
+vnoremap < <gv
+
+nmap <silent> <C-h> <C-w>h
+nmap <silent> <C-j> <C-w>j
+nmap <silent> <C-k> <C-w>k
+nmap <silent> <C-l> <C-w>l
