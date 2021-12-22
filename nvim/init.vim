@@ -13,5 +13,6 @@ call plug#begin()
   Plug 'sainnhe/gruvbox-material'
   Plug 'numToStr/Comment.nvim'
   Plug 'TimUntersberger/neogit'
+  Plug 'sindrets/diffview.nvim'
 call plug#end()
 

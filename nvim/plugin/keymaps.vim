@@ -9,6 +9,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 nnoremap <leader>) :NvimTreeToggle<CR>
+nnoremap <leader>n :Neogit<CR>
 
 vnoremap < <gv
 vnoremap < <gv
