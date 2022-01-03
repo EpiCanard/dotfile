@@ -14,5 +14,10 @@ call plug#begin()
   Plug 'numToStr/Comment.nvim'
   Plug 'TimUntersberger/neogit'
   Plug 'sindrets/diffview.nvim'
+  Plug 'tpope/vim-dadbod'
+  Plug 'kristijanhusak/vim-dadbod-ui'
+  Plug 'kristijanhusak/vim-dadbod-completion'
+  Plug 'psliwka/vim-smoothie'
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
