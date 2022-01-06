@@ -18,3 +18,6 @@ nmap <silent> <C-h> <C-w>h
 nmap <silent> <C-j> <C-w>j
 nmap <silent> <C-k> <C-w>k
 nmap <silent> <C-l> <C-w>l
+
+" clean highlight after a search with /
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
