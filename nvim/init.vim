@@ -20,5 +20,6 @@ call plug#begin()
   Plug 'psliwka/vim-smoothie'
   Plug 'jiangmiao/auto-pairs'
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'wbthomason/lsp-status.nvim'
 call plug#end()
 
