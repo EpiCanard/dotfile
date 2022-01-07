@@ -22,5 +22,6 @@ call plug#begin()
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'wbthomason/lsp-status.nvim'
   Plug 'folke/trouble.nvim'
+  Plug 'unblevable/quick-scope'
 call plug#end()
 
