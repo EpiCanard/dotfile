@@ -9,7 +9,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap gr <cmd>TroubleToggle lsp_references<cr>
+nnoremap q <cmd>TroubleClose<cr>
+nnoremap gr <cmd>Trouble lsp_references<cr>
+
+nnoremap <leader>ll :MetalsToggleLogs<CR>
 
 nnoremap <leader>) :NvimTreeFindFileToggle<CR>
 nnoremap <leader>n :Neogit<CR>
