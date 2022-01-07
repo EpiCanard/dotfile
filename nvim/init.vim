@@ -23,5 +23,7 @@ call plug#begin()
   Plug 'wbthomason/lsp-status.nvim'
   Plug 'folke/trouble.nvim'
   Plug 'unblevable/quick-scope'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'arkav/lualine-lsp-progress'
 call plug#end()
 
