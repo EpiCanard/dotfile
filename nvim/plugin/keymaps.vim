@@ -17,6 +17,7 @@ nnoremap <leader>n :Neogit<CR>
 vnoremap < <gv
 vnoremap < <gv
 
+" easy switch between windows
 nmap <silent> <C-h> <C-w>h
 nmap <silent> <C-j> <C-w>j
 nmap <silent> <C-k> <C-w>k
@@ -24,3 +25,7 @@ nmap <silent> <C-l> <C-w>l
 
 " clean highlight after a search with /
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+
+" copy to system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
