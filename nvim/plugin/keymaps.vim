@@ -3,8 +3,8 @@ set shortmess-=F
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope grep_string<cr>
-vnoremap <leader>fg y<ESC>:Telescope live_grep default_text=<C-r>0<cr>
+nnoremap <leader>fg "zyiw<ESC>:Telescope live_grep default_text=<C-r>z<cr>
+vnoremap <leader>fg "zy<ESC>:Telescope live_grep default_text=<C-r>z<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
