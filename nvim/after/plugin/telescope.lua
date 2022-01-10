@@ -1,4 +1,6 @@
-require('telescope').setup{
+local telescope = require('telescope')
+
+telescope.setup {
   defaults = {
     path_display = {
       shorten = { len = 1, exclude = {1, -2, -1} }
@@ -10,3 +12,6 @@ require('telescope').setup{
     }
   }
 }
+
+telescope.load_extension('fzf')
+
