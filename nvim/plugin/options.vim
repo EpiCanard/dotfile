@@ -29,3 +29,4 @@ set scrolloff=8
 set sidescrolloff=8
 
 set colorcolumn=120
+set mouse=a
