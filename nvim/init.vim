@@ -41,6 +41,7 @@ call plug#begin()
   Plug 'psliwka/vim-smoothie'
   Plug 'jiangmiao/auto-pairs'
   Plug 'unblevable/quick-scope'
+  Plug 'terryma/vim-expand-region'
 
   " Status line
   Plug 'nvim-lualine/lualine.nvim'
