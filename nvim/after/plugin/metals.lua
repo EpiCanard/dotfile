@@ -36,7 +36,7 @@ vim.opt_global.shortmess:remove("F"):append("c")
 
 -- LSP
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+map("", "K", ":lua vim.lsp.buf.hover()<CR>", {silent = true})
 -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 map("n", "gds", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
@@ -66,7 +66,20 @@ map("n", "<leader>dl", [[<cmd>lua require"dap".run_last()<CR>]])
 -- completion related settings
 -- This is similiar to what I use
 local cmp = require("cmp")
+local lspkind = require('lspkind')
+
 cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+    autocomplete = true
+  },
+  formatting = {
+    fields = { 'abbr', 'kind', 'menu' },
+    format = lspkind.cmp_format({
+      with_text = true, -- do not show text alongside icons
+      maxwidth = 50 -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+    })
+  },
   sources = {
     { name = "nvim_lsp" },
     { name = "vsnip" },
