@@ -29,6 +29,8 @@ nmap <silent> <C-l> <C-w>l
 
 " clean highlight after a search with /
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+" when in terminal, remap tu use Esc
+tnoremap <Esc> <C-\><C-n>
 
 " copy to system clipboard
 noremap <Leader>y "*y
