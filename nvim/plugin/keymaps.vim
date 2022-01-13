@@ -12,6 +12,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap q <cmd>TroubleClose<cr>
 nnoremap gr <cmd>Trouble lsp_references<cr>
+nnoremap gi <cmd>Trouble lsp_implementations<cr>
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
