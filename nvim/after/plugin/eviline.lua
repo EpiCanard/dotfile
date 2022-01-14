@@ -145,7 +145,13 @@ ins_left({
     color_info = { fg = colors.cyan },
   },
 })
+local lsp_status = require('lsp-status')
 
+ins_left({
+  function()
+    return lsp_status.status()
+  end,
+})
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
 ins_left({
