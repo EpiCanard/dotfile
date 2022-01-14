@@ -68,6 +68,22 @@ map("n", "<leader>dl", [[<cmd>lua require"dap".run_last()<CR>]])
 local cmp = require("cmp")
 local lspkind = require('lspkind')
 
+local function next_item(fallback)
+  if cmp.visible() then
+    cmp.select_next_item()
+  else
+    fallback()
+  end
+end
+
+local function prev_item(fallback)
+  if cmp.visible() then
+    cmp.select_prev_item()
+  else
+    fallback()
+  end
+end
+
 cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noinsert',
@@ -97,21 +113,12 @@ cmp.setup({
     -- also using the snippet stuff. So keep in mind that if you remove
     -- snippets you need to remove this select
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<ESC>"] = cmp.mapping.abort(),
     -- I use tabs... some say you should stick to ins-completion
-    ["<Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ["<S-Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
+    ["<Tab>"] = next_item,
+    ["j"] = next_item,
+    ["<S-Tab>"] = prev_item,
+    ["k"] = prev_item
   },
 })
 
@@ -153,8 +160,11 @@ metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp
 -- docs about this
 metals_config.init_options.statusBarProvider = "on"
 
+local lsp_status = require('lsp-status')
+local capabilities = lsp_status.capabilities
+
 -- Example if you are including snippets
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 metals_config.capabilities = capabilities
@@ -193,6 +203,7 @@ dap.configurations.scala = {
 
 metals_config.on_attach = function(client, bufnr)
   require("metals").setup_dap()
+  lsp_status.on_attach(client, bufnr)
 end
 
 -- Should link to something to see your code lenses
