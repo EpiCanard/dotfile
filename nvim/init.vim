@@ -19,6 +19,7 @@ call plug#begin()
   " Style
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'sainnhe/gruvbox-material'
+  Plug 'chrisbra/Colorizer'
 
   " File tree
   Plug 'kyazdani42/nvim-tree.lua'
@@ -46,6 +47,6 @@ call plug#begin()
   " Status line
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'wbthomason/lsp-status.nvim'
-  Plug 'arkav/lualine-lsp-progress'
+"   Plug 'arkav/lualine-lsp-progress'
 call plug#end()
 

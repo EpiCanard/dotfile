@@ -5,18 +5,31 @@ local lualine = require('lualine')
 
 -- Color table for highlights
 -- stylua: ignore
+-- local colors = {
+--   bg       = '#202328',
+--   fg       = '#bbc2cf',
+--   yellow   = '#ECBE7B',
+--   cyan     = '#008080',
+--   darkblue = '#081633',
+--   green    = '#98be65',
+--   orange   = '#FF8800',
+--   violet   = '#a9a1e1',
+--   magenta  = '#c678dd',
+--   blue     = '#51afef',
+--   red      = '#ec5f67',
+-- }
 local colors = {
   bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
+  fg       = '#e2cca9',
+  yellow   = '#e9b143',
   cyan     = '#008080',
   darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
+  green    = '#b0b846',
+  orange   = '#f28534',
+  violet   = '#d3869b',
   magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+  blue     = '#80aa9e',
+  red      = '#f2594b',
 }
 
 local conditions = {
@@ -145,12 +158,15 @@ ins_left({
     color_info = { fg = colors.cyan },
   },
 })
-local lsp_status = require('lsp-status')
 
 ins_left({
   function()
-    return lsp_status.status()
-  end,
+    local status = vim.g['metals_status']
+    if status ~= nil then
+      return status
+    end
+    return ''
+  end
 })
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -160,35 +176,17 @@ ins_left({
   end,
 })
 
-ins_left {
-  'lsp_progress',
-  display_components = { 'lsp_client_name', { 'title', 'percentage', 'message' }},
-  -- With spinner
-  -- display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' }},
-  colors = {
-    percentage  = colors.cyan,
-    title  = colors.cyan,
-    message  = colors.cyan,
-    spinner = colors.cyan,
-    lsp_client_name = colors.magenta,
-    use = true,
-  },
-  separators = {
-    component = ' ',
-    progress = ' | ',
-    message = { pre = '(', post = ')'},
-    percentage = { pre = '', post = '%% ' },
-    title = { pre = '', post = ': ' },
-    lsp_client_name = { pre = '[', post = ']' },
-    spinner = { pre = '', post = '' },
-    message = { commenced = 'In Progress', completed = 'Completed' },
-  },
-  display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
-  timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-  spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-}
-
 -- Add components to right sections
+ins_right({
+  function()
+    local current_function = vim.b.lsp_current_function
+    if current_function and current_function ~= '' then
+      return ' ' .. current_function
+    end
+    return ''
+  end
+})
+
 ins_right({
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
@@ -224,14 +222,6 @@ ins_right({
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
-})
-
-ins_right({
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue },
-  padding = { left = 1 },
 })
 
 -- Now don't forget to initialize lualine
