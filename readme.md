@@ -13,3 +13,10 @@
 This is what we ship with out of the factory. :) The image says it all:
 
 ![Default](https://i.imgur.com/Be53jH7.png)
+
+RGBLIGHT_ENABLE = no
+RGB_MATRIX_ENABLE = yes
+
+OPT_DEFS += -DPIMORONI_TRACKBALL_ENABLE
+SRC += pimoroni_trackball.c
+QUANTUM_LIB_SRC += i2c_master.c
