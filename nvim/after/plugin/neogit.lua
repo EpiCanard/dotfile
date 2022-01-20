@@ -1,5 +1,6 @@
 require('neogit').setup  {
- integrations = {
-   diffview = true
- }
+  disable_insert_on_commit = false,
+  integrations = {
+    diffview = true
+  }
 }
