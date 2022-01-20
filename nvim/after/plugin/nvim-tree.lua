@@ -3,6 +3,7 @@ vim.g.nvim_tree_group_empty = 1
 
 require('nvim-tree').setup {
   auto_close = true,
+  update_cwd = true,
   diagnostics = {
     enable = true
   },

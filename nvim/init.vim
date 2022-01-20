@@ -6,6 +6,7 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-telescope/telescope-symbols.nvim'
+  Plug 'nvim-telescope/telescope-project.nvim'
 
   " Lsp
   Plug 'scalameta/nvim-metals'
