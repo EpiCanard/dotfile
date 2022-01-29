@@ -97,8 +97,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 [0] = LAYOUT_ergodox_pretty(
-KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, C(G(KC_NO)),       KC_CIRC  , KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
-KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , _______  ,       KC_LCTL  , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
+KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, PM_PRECISION,       KC_CIRC  , KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
+KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_SCROLL  ,       KC_LCTL  , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
 TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
 KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3)     ,       OSL(3)   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
 LT(1,KC_GRV), KC_QUOT     , KC_LALT, KC_LEFT, KC_RGHT,                                                 KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
@@ -124,7 +124,7 @@ _______, _______, _______, _______, _______,                                    
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, KC_MS_U, _______, _______, _______, _______,      _______, _______, KC_WH_U, _______, _______, KC_BRIU, _______,
 _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_R, _______, KC_BRID, KC_MPLY,
-_______, PM_SCROLL, PM_PRECISION, PM_PRECISION_2, PM_PRECISION_3, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+_______, PM_SCROLL, PM_PRECISION, _______, _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
 RESET  , _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
 
                                              _______, KC_BTN1,      _______, _______,
@@ -199,9 +199,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   bool result = false;
   switch (keycode) {
     case PM_SCROLL:
-      if (record->event.pressed) {
-          set_scrolling = !set_scrolling;
-      }
+      set_scrolling = record->event.pressed;
       break;
     case PM_PRECISION:
       set_precision(record, 10);
