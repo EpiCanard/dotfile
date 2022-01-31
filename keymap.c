@@ -124,7 +124,7 @@ _______, _______, _______, _______, _______,                                    
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, KC_MS_U, _______, _______, _______, _______,      _______, _______, KC_WH_U, _______, _______, KC_BRIU, _______,
 _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_R, _______, KC_BRID, KC_MPLY,
-_______, PM_SCROLL, PM_PRECISION, _______, _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+_______, PM_SCROLL, PM_PRECISION, CS(KC_0, KC_1), _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
 RESET  , _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
 
                                              _______, KC_BTN1,      _______, _______,
@@ -145,6 +145,8 @@ _______, _______    , _______    , _______    , _______    ,                    
                                                     _______, _______ , _______,      _______, _______, _______
 )
 };
+
+/* === TrackBall === */
 
 bool set_scrolling = false;
 int8_t precision = 127;
@@ -194,7 +196,27 @@ void set_precision(keyrecord_t *record, int8_t prec) {
   }
 }
 
+/* === Custom Shift Key === */
+
+// Process custom shift key using CS
+bool process_custom_shift(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed && (keycode>>14) == (CUSTOM_SHIFT_PAIR>>14)) {
+    if (get_mods() & MOD_MASK_SHIFT) {
+      del_mods(MOD_MASK_SHIFT);
+      tap_code16((keycode>>7)&0x7F);
+    } else {
+      tap_code16(keycode&0x7F);
+    }
+    return false;
+  }
+  return true;
+}
+
+
+/* === PROCESS === */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (!process_custom_shift(keycode, record)) { return false; }
 
   bool result = false;
   switch (keycode) {
@@ -218,6 +240,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return result;
 };
+
+/* === RGB === */
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {

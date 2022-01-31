@@ -2,3 +2,6 @@
 #define USE_I2C
 #define POINTING_DEVICE_INVERT_X
 #define POINTING_DEVICE_INVERT_Y
+
+#define CUSTOM_SHIFT_PAIR 0x8000
+#define CS(i, j) (CUSTOM_SHIFT_PAIR | ((i)&0x7F) | (((j)&0x7F) << 7))
