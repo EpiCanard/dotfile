@@ -101,16 +101,16 @@ KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, PM_PRECISION,   
 KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_SCROLL  ,       KC_LCTL  , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
 TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
 KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3)     ,       OSL(3)   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
-LT(1,KC_GRV), KC_QUOT     , KC_LALT, KC_LEFT, KC_RGHT,                                                 KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
+LT(1,KC_GRV), PM_SCROLL   , KC_LALT, KC_LEFT, KC_RGHT,                                                 KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
 
                                                        CG_SWAP, KC_HOME    ,       KC_PGUP  , UC_MOD ,
                                                                 KC_END     ,       KC_PGDN  ,
-                                              KC_SPC , KC_TAB , KC_LGUI    ,       KC_ESC   , KC_ENT , KC_BSPC
+                                              KC_SPC , KC_TAB , KC_LGUI    ,       _______  , KC_ENT , KC_BSPC
 ),
 
 [1] = LAYOUT_ergodox_pretty(
 _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , C(S(G(KC_NO))),      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10, KC_F11 , KC_F12 ,
-_______, KC_EXLM, KC_AT  , KC_LCBR, KC_RCBR, KC_PIPE, _______     ,      _______, KC_UP  , KC_7   , KC_8   , KC_9  , KC_ASTR, _______,
+_______, KC_EXLM, KC_AT  , KC_LCBR, KC_RCBR, KC_PIPE, _______       ,      _______, KC_UP  , KC_7   , KC_8   , KC_9  , KC_ASTR, _______,
 _______, KC_HASH, KC_DLR , KC_LPRN, KC_RPRN, KC_GRV ,                               KC_DOWN, KC_4   , KC_5   , KC_6  , KC_PLUS, _______,
 _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______       ,      _______, KC_AMPR, KC_1   , KC_2   , KC_3  , KC_BSLS, _______,
 _______, _______, _______, _______, _______,                                                 _______, _______, KC_0  , KC_EQL , _______,
@@ -124,25 +124,38 @@ _______, _______, _______, _______, _______,                                    
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, KC_MS_U, _______, _______, _______, _______,      _______, _______, KC_WH_U, _______, _______, KC_BRIU, _______,
 _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_R, _______, KC_BRID, KC_MPLY,
-_______, PM_SCROLL, PM_PRECISION, CS(KC_0, KC_1), _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
-RESET  , _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
+_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+_______, _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
 
-                                             _______, KC_BTN1,      _______, _______,
+                                             _______, _______,      _______, _______,
                                                       _______,      _______,
-                                    KC_BTN1, KC_BTN2, KC_BTN3,      KC_WREF, KC_WBAK, KC_WFWD
+                                    _______, _______, _______,      _______, _______, _______
 ),
 
-
+// Unicode layer
 [3] = LAYOUT_ergodox_pretty(
-_______, _______    , _______    , _______    , _______    , _______ , _______,      _______, _______, _______    , _______, X(EURO)    , _______, _______,
-_______, _______    , XP(EG, EGM), XP(EA, EAM), XP(EC, ECM), _______ , _______,      _______, _______, XP(UG, UGM), _______, XP(OC, OCM), _______, _______,
-_______, XP(AG, AGM), XP(AC, ACM), XP(AR, ARM), _______    , _______ ,                        _______, _______    , _______, _______    , _______, _______,
-_______, _______    , _______    , XP(CC, CCM), _______    , _______ , _______,      _______, _______, _______    , _______, _______    , _______, _______,
-_______, _______    , _______    , _______    , _______    ,                                           _______    , _______, _______    , _______, _______,
+_______, _______        , _______    , _______    , _______    , _______ , _______,      _______, _______, _______    , _______, X(EURO)    , _______, _______,
+_______, _______        , XP(EG, EGM), XP(EA, EAM), XP(EC, ECM), _______ , _______,      _______, _______, XP(UG, UGM), _______, XP(OC, OCM), _______, _______,
+_______, XP(AG, AGM)    , XP(AC, ACM), XP(AR, ARM), _______    , _______ ,                        _______, _______    , _______, _______    , _______, _______,
+_______, _______        , _______    , XP(CC, CCM), _______    , _______ , _______,      _______, _______, _______    , _______, _______    , _______, _______,
+RESET  , CS(KC_0, KC_1) , _______    , _______    , _______    ,                                           _______    , _______, _______    , _______, _______,
 
-                                                              _______, _______,      _______, _______,
-                                                                       _______,      _______,
-                                                    _______, _______ , _______,      _______, _______, _______
+                                                                 _______ , _______,      _______, _______,
+                                                                           _______,      _______,
+                                                        _______, _______ , _______,      _______, _______, _______
+),
+
+// Mouse Layer
+[4] = LAYOUT_ergodox_pretty(
+_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______,
+
+                                             _______, _______,      _______, _______,
+                                                      _______,      TO(0)  ,
+                                    KC_BTN1, KC_BTN2, KC_BTN3,      _______, KC_WBAK, KC_WFWD
 )
 };
 
@@ -176,7 +189,9 @@ int8_t apply_precision(int8_t value) {
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-
+  if ((layer_state & 0x10) == 0 && (mouse_report.x != 0 || mouse_report.y != 0))   {
+    layer_state_set(0x10);
+  }
   if (set_scrolling) {
     mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
     mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
@@ -211,7 +226,6 @@ bool process_custom_shift(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
 
 /* === PROCESS === */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
