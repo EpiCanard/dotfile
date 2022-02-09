@@ -15,6 +15,8 @@ nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap q <cmd>TroubleClose<cr>
 nnoremap gr <cmd>Trouble lsp_references<cr>
 nnoremap gi <cmd>Trouble lsp_implementations<cr>
+nnoremap <leader>dd <cmd>Trouble document_diagnostics<cr>
+nnoremap <leader>wd <cmd>Trouble workspace_diagnostics<cr>
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
