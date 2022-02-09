@@ -7,6 +7,8 @@ nnoremap <leader>fg "zyiw<ESC>:Telescope live_grep default_text=<C-r>z<cr>
 vnoremap <leader>fg "zy<ESC>:Telescope live_grep default_text=<C-r>z<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
+nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
