@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "timer.h"
 
 enum unicode_names {
   // Accute
@@ -149,7 +150,7 @@ RESET  , CS(KC_0, KC_1) , _______    , _______    , _______    ,                
 [4] = LAYOUT_ergodox_pretty(
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
+TO(0)  , _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______,
 
@@ -163,6 +164,7 @@ _______, _______, _______, _______, _______,                                    
 
 bool set_scrolling = false;
 int8_t precision = 127;
+uint16_t ttimer = 0;
 
 void update_color(void) {
   if (set_scrolling) {
@@ -189,8 +191,11 @@ int8_t apply_precision(int8_t value) {
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-  if ((layer_state & 0x10) == 0 && (mouse_report.x != 0 || mouse_report.y != 0))   {
-    layer_state_set(0x10);
+  if (mouse_report.x != 0 || mouse_report.y != 0) {
+    ttimer = timer_read();
+    if ((layer_state & 0x10) == 0) {
+      layer_state_set(0x10);
+    }
   }
   if (set_scrolling) {
     mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
@@ -246,11 +251,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case PM_PRECISION_3:
       set_precision(record, 64);
       break;
+    case KC_BTN1 | KC_BTN2 | KC_BTN3 | KC_WBAK | KC_WFWD:
+      ttimer = timer_read();
     default:
       result = true;
   }
   if (!result) {
     update_color();
+  }
+  if ((layer_state & 0x10) == 0x10 && ttimer > 0 && timer_elapsed(ttimer) > TRACKBALL_OFF_TIMEOUT) {
+    layer_state_set(0);
   }
   return result;
 };

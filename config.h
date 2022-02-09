@@ -5,3 +5,5 @@
 
 #define CUSTOM_SHIFT_PAIR 0x8000
 #define CS(i, j) (CUSTOM_SHIFT_PAIR | ((i)&0x7F) | (((j)&0x7F) << 7))
+
+#define TRACKBALL_OFF_TIMEOUT 1000 // ms
