@@ -59,9 +59,7 @@ const uint32_t PROGMEM unicode_map[] = {
 
 enum custom_keycodes {
   PM_SCROLL = SAFE_RANGE,
-  PM_PRECISION,
-  PM_PRECISION_2,
-  PM_PRECISION_3
+  PM_FACTOR
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -98,15 +96,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 [0] = LAYOUT_ergodox_pretty(
-KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, PM_PRECISION,       KC_CIRC  , KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
-KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_SCROLL  ,       KC_LCTL  , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
-TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
-KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3)     ,       OSL(3)   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
+KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______  ,       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
+KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_FACTOR,       KC_LCTL, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
+TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                              KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3)   ,       OSL(3) , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
 LT(1,KC_GRV), PM_SCROLL   , KC_LALT, KC_LEFT, KC_RGHT,                                                 KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
 
-                                                       CG_SWAP, KC_HOME    ,       KC_PGUP  , UC_MOD ,
-                                                                KC_END     ,       KC_PGDN  ,
-                                              KC_SPC , KC_TAB , KC_LGUI    ,       _______  , KC_ENT , KC_BSPC
+                                                       CG_SWAP, KC_HOME  ,       _______, UC_MOD ,
+                                                                KC_END   ,       TT(4)  ,
+                                              KC_SPC , KC_TAB , KC_LGUI  ,       _______, KC_ENT , KC_BSPC
 ),
 
 [1] = LAYOUT_ergodox_pretty(
@@ -116,8 +114,8 @@ _______, KC_HASH, KC_DLR , KC_LPRN, KC_RPRN, KC_GRV ,                           
 _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______       ,      _______, KC_AMPR, KC_1   , KC_2   , KC_3  , KC_BSLS, _______,
 _______, _______, _______, _______, _______,                                                 _______, _______, KC_0  , KC_EQL , _______,
 
-                                             CG_NORM, _______       ,      _______, _______,
-                                                      _______       ,      _______,
+                                             CG_NORM, KC_PGUP       ,      _______, _______,
+                                                      KC_PGDN       ,      _______,
                                     _______, _______, _______       ,      _______, _______, _______
 ),
 
@@ -150,12 +148,12 @@ RESET  , CS(KC_0, KC_1) , _______    , _______    , _______    ,                
 [4] = LAYOUT_ergodox_pretty(
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-TO(0)  , _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
+_______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
 _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______,
+_______, _______, _______, KC_TAB , KC_SPC ,                                          _______, _______, _______, _______, _______,
 
                                              _______, _______,      _______, _______,
-                                                      _______,      TO(0)  ,
+                                                      _______,      _______,
                                     KC_BTN1, KC_BTN2, KC_BTN3,      _______, KC_WBAK, KC_WFWD
 )
 };
@@ -163,31 +161,22 @@ _______, _______, _______, _______, _______,                                    
 /* === TrackBall === */
 
 bool set_scrolling = false;
-int8_t precision = 127;
 uint16_t ttimer = 0;
+int factor = 1;
+bool mouse_toggle = false;
 
 void update_color(void) {
   if (set_scrolling) {
     pimoroni_trackball_set_rgbw(255, 0, 0, 0);
   } else {
-    switch (precision) {
-      case 10:
-        pimoroni_trackball_set_rgbw(0, 255, 0, 0);
-        break;
-      case 32:
+    switch (factor) {
+      case 3:
         pimoroni_trackball_set_rgbw(0, 255, 255, 0);
-        break;
-      case 64:
-        pimoroni_trackball_set_rgbw(0, 0, 255, 0);
         break;
       default:
         pimoroni_trackball_set_rgbw(0, 0, 0, 0);
     }
   }
-}
-
-int8_t apply_precision(int8_t value) {
-  return (value > precision) ? precision : value;
 }
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
@@ -196,23 +185,30 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if ((layer_state & 0x10) == 0) {
       layer_state_set(0x10);
     }
+  } else {
+    if ((layer_state & 0x10) == 0x10 && ttimer > 0 && timer_elapsed(ttimer) > TRACKBALL_OFF_TIMEOUT && mouse_toggle == false) {
+      layer_state_set(0);
+    }
   }
   if (set_scrolling) {
-    mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
-    mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
+    // mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
+    // mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
+
+    mouse_report.h = mouse_report.x / 3;
+    mouse_report.v = mouse_report.y / 3;
     mouse_report.x = mouse_report.y = 0;
   } else {
-    mouse_report.x = apply_precision(mouse_report.x);
-    mouse_report.y = apply_precision(mouse_report.y);
+    mouse_report.x = mouse_report.x * factor;
+    mouse_report.y = mouse_report.y * factor;
   }
   return mouse_report;
 }
 
-void set_precision(keyrecord_t *record, int8_t prec) {
+void set_factor(keyrecord_t *record, int8_t fac) {
   if (record->event.pressed) {
-    precision = prec;
+    factor = fac;
   } else {
-    precision = 127;
+    factor = 1;
   }
 }
 
@@ -235,32 +231,23 @@ bool process_custom_shift(uint16_t keycode, keyrecord_t *record) {
 /* === PROCESS === */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_custom_shift(keycode, record)) { return false; }
+  // if (!process_custom_shift(keycode, record)) { return false; }
 
   bool result = false;
   switch (keycode) {
     case PM_SCROLL:
       set_scrolling = record->event.pressed;
       break;
-    case PM_PRECISION:
-      set_precision(record, 10);
+    case PM_FACTOR:
+      set_factor(record, 3);
       break;
-    case PM_PRECISION_2:
-      set_precision(record, 32);
-      break;
-    case PM_PRECISION_3:
-      set_precision(record, 64);
-      break;
-    case KC_BTN1 | KC_BTN2 | KC_BTN3 | KC_WBAK | KC_WFWD:
-      ttimer = timer_read();
+    case TT(4):
+      mouse_toggle = record->event.pressed;
     default:
       result = true;
   }
   if (!result) {
     update_color();
-  }
-  if ((layer_state & 0x10) == 0x10 && ttimer > 0 && timer_elapsed(ttimer) > TRACKBALL_OFF_TIMEOUT) {
-    layer_state_set(0);
   }
   return result;
 };
@@ -272,6 +259,11 @@ void keyboard_post_init_user(void) {
 #ifdef RGBLIGHT_COLOR_LAYER_0
   rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
+  // Customise these values to desired behaviour
+  // debug_enable=true;
+  //debug_matrix=true;
+  //debug_keyboard=true;
+  //debug_mouse=true;
 };
 
 // Runs whenever there is a layer state change.
