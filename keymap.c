@@ -3,31 +3,31 @@
 #include "timer.h"
 
 enum unicode_names {
-  // Accute
-  EA,
-  EAM,
-  // Grave
-  EG,
-  EGM,
-  AG,
-  AGM,
-  UG,
-  UGM,
-  // Circumflex
-  EC,
-  ECM,
-  AC,
-  ACM,
-  OC,
-  OCM,
-  // Cedilla
-  CC,
-  CCM,
-  // Ring
-  AR,
-  ARM,
+    // Accute
+    EA,
+    EAM,
+    // Grave
+    EG,
+    EGM,
+    AG,
+    AGM,
+    UG,
+    UGM,
+    // Circumflex
+    EC,
+    ECM,
+    AC,
+    ACM,
+    OC,
+    OCM,
+    // Cedilla
+    CC,
+    CCM,
+    // Ring
+    AR,
+    ARM,
 
-  EURO,
+    EURO,
 };
 
 const uint32_t PROGMEM unicode_map[] = {
@@ -58,12 +58,11 @@ const uint32_t PROGMEM unicode_map[] = {
 };
 
 enum custom_keycodes {
-  PM_SCROLL = SAFE_RANGE,
-  PM_FACTOR
+    PM_SCROLL = SAFE_RANGE,
+    PM_FACT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
 
     /*
      * ,--------------------------------------------------.    ,--------------------------------------------------.
@@ -96,160 +95,185 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 [0] = LAYOUT_ergodox_pretty(
-KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______  ,       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
-KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_FACTOR,       KC_LCTL, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
-TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                              KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
-KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3)   ,       OSL(3) , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
-LT(1,KC_GRV), PM_SCROLL   , KC_LALT, KC_LEFT, KC_RGHT,                                                 KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
+// ,------------------------------------------------------------------------.    ,--------------------------------------------------------------.
+     KC_ESC      , KC_EXLM     , KC_AT  , KC_HASH, KC_DLR , KC_PERC, _______,      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_MINS, KC_EQL ,
+// |-------------+-------------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     KC_DEL      , KC_Q        , KC_W   , KC_E   , KC_R   , KC_T   , PM_FACT,      KC_LCTL, KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
+// |-------------+-------------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     TT(2)       , KC_A        , KC_S   , KC_D   , KC_F   , KC_G   ,                        KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
+// |-------------+-------------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     KC_LSFT     , LCTL_T(KC_Z), KC_X   , KC_C   , KC_V   , KC_B   , OSL(3) ,      OSL(3) , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, TT(2)  ,
+// |-------------+-------------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     LT(1,KC_GRV), PM_SCROLL   , KC_LALT, KC_LEFT, KC_RGHT,                                          KC_DOWN, KC_UP  , KC_LBRC, KC_RBRC, TT(1)  ,
+// `------------------------------------------------------'                                        `--------------------------------------------'
 
-                                                       CG_SWAP, KC_HOME  ,       _______, UC_MOD ,
-                                                                KC_END   ,       TT(4)  ,
-                                              KC_SPC , KC_TAB , KC_LGUI  ,       _______, KC_ENT , KC_BSPC
+//                                                        ,-----------------.    ,-----------------.
+                                                            CG_SWAP, KC_HOME,      _______, UC_MOD ,
+//                                               ,--------+--------+--------|    |--------+--------+--------.
+                                                                     KC_END ,      TT(4)  ,
+//                                               |        |        |--------|    |--------|        |        |
+                                                   KC_SPC , KC_TAB , KC_LGUI,      _______, KC_ENT , KC_BSPC
+//                                               `--------------------------'    `--------------------------'
 ),
 
 [1] = LAYOUT_ergodox_pretty(
-_______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , C(S(G(KC_NO))),      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10, KC_F11 , KC_F12 ,
-_______, KC_EXLM, KC_AT  , KC_LCBR, KC_RCBR, KC_PIPE, _______       ,      _______, KC_UP  , KC_7   , KC_8   , KC_9  , KC_ASTR, _______,
-_______, KC_HASH, KC_DLR , KC_LPRN, KC_RPRN, KC_GRV ,                               KC_DOWN, KC_4   , KC_5   , KC_6  , KC_PLUS, _______,
-_______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______       ,      _______, KC_AMPR, KC_1   , KC_2   , KC_3  , KC_BSLS, _______,
-_______, _______, _______, _______, _______,                                                 _______, _______, KC_0  , KC_EQL , _______,
+// ,---------------------------------------------------------------------.    ,--------------------------------------------------------------.
+     _______, KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , C(S(G(KC_NO))),      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10, KC_F11 , KC_F12 ,
+// |--------+--------+--------+--------+--------+--------+---------------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, KC_EXLM, KC_AT  , KC_LCBR, KC_RCBR, KC_PIPE, _______       ,      _______, KC_UP  , KC_7   , KC_8   , KC_9  , KC_ASTR, _______,
+// |--------+--------+--------+--------+--------+--------+---------------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, KC_HASH, KC_DLR , KC_LPRN, KC_RPRN, KC_GRV ,                               KC_DOWN, KC_4   , KC_5   , KC_6  , KC_PLUS, _______,
+// |--------+--------+--------+--------+--------+--------+---------------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______       ,      _______, KC_AMPR, KC_1   , KC_2   , KC_3  , KC_BSLS, _______,
+// |--------+--------+--------+--------+--------+--------+---------------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______,                                                 _______, _______, KC_0  , KC_EQL , _______,
+// `--------------------------------------------'                                               `--------------------------------------------'
 
-                                             CG_NORM, KC_PGUP       ,      _______, _______,
-                                                      KC_PGDN       ,      _______,
-                                    _______, _______, _______       ,      _______, _______, _______
+//                                                     ,-----------------.    ,-----------------.
+                                                         CG_NORM, KC_PGUP,      _______, _______,
+//                                            ,--------+--------+--------|    |--------+--------+--------.
+                                                                  KC_PGDN,      _______,
+//                                            |        |        |--------|    |--------|        |        |
+                                                _______, _______, _______,      _______, _______, _______
+//                                            `--------------------------'    `--------------------------'
 ),
 
 [2] = LAYOUT_ergodox_pretty(
-_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, KC_MS_U, _______, _______, _______, _______,      _______, _______, KC_WH_U, _______, _______, KC_BRIU, _______,
-_______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_R, _______, KC_BRID, KC_MPLY,
-_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
-_______, _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
+// ,--------------------------------------------------------------.    ,--------------------------------------------------------------.
+     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, KC_MS_U, _______, _______, _______, _______,      _______, _______, KC_WH_U, _______, _______, KC_BRIU, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_R, _______, KC_BRID, KC_MPLY,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, KC_RSFT,
+// `--------------------------------------------'                                        `--------------------------------------------'
 
-                                             _______, _______,      _______, _______,
-                                                      _______,      _______,
-                                    _______, _______, _______,      _______, _______, _______
+//                                              ,-----------------.    ,-----------------.
+                                                  _______, _______,      _______, _______,
+//                                     ,--------+--------+--------|    |--------+--------+--------.
+                                                           _______,      _______,
+//                                     |        |        |--------|    |--------|        |        |
+                                         _______, _______, _______,      _______, _______, _______
+//                                     `--------------------------'    `--------------------------'
 ),
 
 // Unicode layer
 [3] = LAYOUT_ergodox_pretty(
-_______, _______        , _______    , _______    , _______    , _______ , _______,      _______, _______, _______    , _______, X(EURO)    , _______, _______,
-_______, _______        , XP(EG, EGM), XP(EA, EAM), XP(EC, ECM), _______ , _______,      _______, _______, XP(UG, UGM), _______, XP(OC, OCM), _______, _______,
-_______, XP(AG, AGM)    , XP(AC, ACM), XP(AR, ARM), _______    , _______ ,                        _______, _______    , _______, _______    , _______, _______,
-_______, _______        , _______    , XP(CC, CCM), _______    , _______ , _______,      _______, _______, _______    , _______, _______    , _______, _______,
-RESET  , CS(KC_0, KC_1) , _______    , _______    , _______    ,                                           _______    , _______, _______    , _______, _______,
+// ,----------------------------------------------------------------------------------.    ,----------------------------------------------------------------------.
+     _______, _______        , _______    , _______    , _______    , _______, _______,      _______, _______, _______    , _______, X(EURO)    , _______, _______,
+// |--------+----------------+------------+------------+------------+--------+--------|    |--------+--------+------------+--------+------------+--------+--------|
+     _______, _______        , XP(EG, EGM), XP(EA, EAM), XP(EC, ECM), _______, _______,      _______, _______, XP(UG, UGM), _______, XP(OC, OCM), _______, _______,
+// |--------+----------------+------------+------------+------------+--------+--------|    |--------+--------+------------+--------+------------+--------+--------|
+     _______, XP(AG, AGM)    , XP(AC, ACM), XP(AR, ARM), _______    , _______,                        _______, _______    , _______, _______    , _______, _______,
+// |--------+----------------+------------+------------+------------+--------+--------|    |--------+--------+------------+--------+------------+--------+--------|
+     _______, _______        , _______    , XP(CC, CCM), _______    , _______, _______,      _______, _______, _______    , _______, _______    , _______, _______,
+// |--------+----------------+------------+------------+------------+--------+--------|    |--------+--------+------------+--------+------------+--------+--------|
+     RESET  , CS(KC_0, KC_1) , _______    , _______    , _______    ,                                           _______    , _______, _______   , _______, _______,
+// `----------------------------------------------------------------'                                        `----------------------------------------------------'
 
-                                                                 _______ , _______,      _______, _______,
-                                                                           _______,      _______,
-                                                        _______, _______ , _______,      _______, _______, _______
+//                                                                  ,-----------------.    ,-----------------.
+                                                                      _______, _______,      _______, _______,
+//                                                         ,--------+--------+--------|    |--------+--------+--------.
+                                                                               _______,      _______,
+//                                                         |        |        |--------|    |--------|        |        |
+                                                             _______, _______, _______,      _______, _______, _______
+//                                                         `--------------------------'    `--------------------------'
+
 ),
 
 // Mouse Layer
 [4] = LAYOUT_ergodox_pretty(
-_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
-_______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
-_______, _______, _______, KC_TAB , KC_SPC ,                                          _______, _______, _______, _______, _______,
+// ,--------------------------------------------------------------.    ,--------------------------------------------------------------.
+     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+// |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
+     _______, _______, _______, KC_BTN2, KC_BTN1,                                          KC_WBAK, KC_WFWD, _______, _______, _______,
+// `--------------------------------------------'                                        `--------------------------------------------'
 
-                                             _______, _______,      _______, _______,
-                                                      _______,      _______,
-                                    KC_BTN1, KC_BTN2, KC_BTN3,      _______, KC_WBAK, KC_WFWD
+//                                              ,-----------------.    ,-----------------.
+                                                  _______, _______,      _______, _______,
+//                                     ,--------+--------+--------|    |--------+--------+--------.
+                                                           _______,      _______,
+//                                     |        |        |--------|    |--------|        |        |
+                                         _______, _______, KC_BTN3,      _______, _______, _______
+//                                     `--------------------------'    `--------------------------'
 )
 };
 
 /* === TrackBall === */
 
-bool set_scrolling = false;
-uint16_t ttimer = 0;
-int factor = 1;
-bool mouse_toggle = false;
+bool     set_scrolling = false;
+uint16_t ttimer        = 0;
+int      factor        = 1;
+bool     mouse_toggle  = false;
 
 void update_color(void) {
-  if (set_scrolling) {
-    pimoroni_trackball_set_rgbw(255, 0, 0, 0);
-  } else {
-    switch (factor) {
-      case 3:
-        pimoroni_trackball_set_rgbw(0, 255, 255, 0);
-        break;
-      default:
-        pimoroni_trackball_set_rgbw(0, 0, 0, 0);
+    if (set_scrolling) {
+        pimoroni_trackball_set_rgbw(255, 0, 0, 0);
+    } else {
+        switch (factor) {
+            case 3:
+                pimoroni_trackball_set_rgbw(0, 255, 255, 0);
+                break;
+            default:
+                pimoroni_trackball_set_rgbw(0, 0, 0, 0);
+        }
     }
-  }
-}
-
-report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-  if (mouse_report.x != 0 || mouse_report.y != 0) {
-    ttimer = timer_read();
-    if ((layer_state & 0x10) == 0) {
-      layer_state_set(0x10);
-    }
-  } else {
-    if ((layer_state & 0x10) == 0x10 && ttimer > 0 && timer_elapsed(ttimer) > TRACKBALL_OFF_TIMEOUT && mouse_toggle == false) {
-      layer_state_set(0);
-    }
-  }
-  if (set_scrolling) {
-    // mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
-    // mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
-
-    mouse_report.h = mouse_report.x / 3;
-    mouse_report.v = mouse_report.y / 3;
-    mouse_report.x = mouse_report.y = 0;
-  } else {
-    mouse_report.x = mouse_report.x * factor;
-    mouse_report.y = mouse_report.y * factor;
-  }
-  return mouse_report;
 }
 
 void set_factor(keyrecord_t *record, int8_t fac) {
-  if (record->event.pressed) {
-    factor = fac;
-  } else {
-    factor = 1;
-  }
+    if (record->event.pressed) {
+        factor = fac;
+    } else {
+        factor = 1;
+    }
 }
 
 /* === Custom Shift Key === */
 
 // Process custom shift key using CS
 bool process_custom_shift(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed && (keycode>>14) == (CUSTOM_SHIFT_PAIR>>14)) {
-    if (get_mods() & MOD_MASK_SHIFT) {
-      del_mods(MOD_MASK_SHIFT);
-      tap_code16((keycode>>7)&0x7F);
-    } else {
-      tap_code16(keycode&0x7F);
+    if (record->event.pressed && (keycode >> 14) == (CUSTOM_SHIFT_PAIR >> 14)) {
+        if (get_mods() & MOD_MASK_SHIFT) {
+            del_mods(MOD_MASK_SHIFT);
+            tap_code16((keycode >> 7) & 0x7F);
+        } else {
+            tap_code16(keycode & 0x7F);
+        }
+        return false;
     }
-    return false;
-  }
-  return true;
+    return true;
 }
 
 /* === PROCESS === */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // if (!process_custom_shift(keycode, record)) { return false; }
 
-  // if (!process_custom_shift(keycode, record)) { return false; }
-
-  bool result = false;
-  switch (keycode) {
-    case PM_SCROLL:
-      set_scrolling = record->event.pressed;
-      break;
-    case PM_FACTOR:
-      set_factor(record, 3);
-      break;
-    case TT(4):
-      mouse_toggle = record->event.pressed;
-    default:
-      result = true;
-  }
-  if (!result) {
-    update_color();
-  }
-  return result;
+    bool result = false;
+    switch (keycode) {
+        case PM_SCROLL:
+            set_scrolling = record->event.pressed;
+            break;
+        case PM_FACT:
+            set_factor(record, 3);
+            break;
+        case TT(4):
+            mouse_toggle = record->event.pressed;
+        default:
+            result = true;
+    }
+    if (!result) {
+        update_color();
+    }
+    return result;
 };
 
 /* === RGB === */
@@ -257,79 +281,141 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
 #ifdef RGBLIGHT_COLOR_LAYER_0
-  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+    rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
-  // Customise these values to desired behaviour
-  // debug_enable=true;
-  //debug_matrix=true;
-  //debug_keyboard=true;
-  //debug_mouse=true;
+    // Customise these values to desired behaviour
+    // debug_enable=true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
 };
 
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
-  ergodox_board_led_off();
-  ergodox_right_led_1_off();
-  ergodox_right_led_2_off();
-  ergodox_right_led_3_off();
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
 
-  uint8_t layer = get_highest_layer(state);
-  switch (layer) {
-      case 0:
-        #ifdef RGBLIGHT_COLOR_LAYER_0
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-        #endif
-        break;
-      case 1:
-        ergodox_right_led_1_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_1
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
-        #endif
-        break;
-      case 2:
-        ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_2
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
-        #endif
-        break;
-      case 3:
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_3
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
-        #endif
-        break;
-      case 4:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_4
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
-        #endif
-        break;
-      case 5:
-        ergodox_right_led_1_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_5
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
-        #endif
-        break;
-      case 6:
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_6
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
-        #endif
-        break;
-      case 7:
-        ergodox_right_led_1_on();
-        ergodox_right_led_2_on();
-        ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_7
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
-        #endif
-        break;
-      default:
-        break;
+    uint8_t layer = get_highest_layer(state);
+    switch (layer) {
+        case 0:
+#ifdef RGBLIGHT_COLOR_LAYER_0
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+#endif
+            break;
+        case 1:
+            ergodox_right_led_1_on();
+#ifdef RGBLIGHT_COLOR_LAYER_1
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
+#endif
+            break;
+        case 2:
+            ergodox_right_led_2_on();
+#ifdef RGBLIGHT_COLOR_LAYER_2
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
+#endif
+            break;
+        case 3:
+            ergodox_right_led_3_on();
+#ifdef RGBLIGHT_COLOR_LAYER_3
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
+#endif
+            break;
+        case 4:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+#ifdef RGBLIGHT_COLOR_LAYER_4
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
+#endif
+            break;
+        case 5:
+            ergodox_right_led_1_on();
+            ergodox_right_led_3_on();
+#ifdef RGBLIGHT_COLOR_LAYER_5
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
+#endif
+            break;
+        case 6:
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+#ifdef RGBLIGHT_COLOR_LAYER_6
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
+#endif
+            break;
+        case 7:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+#ifdef RGBLIGHT_COLOR_LAYER_7
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
+#endif
+            break;
+        default:
+            break;
     }
 
-  return state;
+    return state;
 };
+
+void adapt_smoothing_value(int8_t* mouse, int16_t* buffer) {
+    *buffer += round(factor * *mouse);
+    if (abs(*buffer > 0) && abs(*buffer) <= TRACKBALL_SMOOTHING_CYCLES) {
+        if (*buffer < 0) {
+            *mouse = -1;
+            *buffer += 1;
+        } else {
+            *mouse = 1;
+            *buffer -= 1;
+        }
+    } else {
+        uint16_t delta = *buffer / TRACKBALL_SMOOTHING_CYCLES;
+        *mouse = delta;
+        *buffer -= delta;
+    }
+}
+
+report_mouse_t apply_trackball_smoothing(report_mouse_t mouse_report) {
+    static int16_t      x_buffer = 0, y_buffer = 0;
+    static int16_t      mov_counter = 0;
+
+    if (mouse_report.x == 0 && mouse_report.y == 0) {
+        mov_counter = 0;
+    } else {
+        mov_counter++;
+    }
+
+    adapt_smoothing_value(&mouse_report.x, &x_buffer);
+    adapt_smoothing_value(&mouse_report.y, &y_buffer);
+
+    if (mov_counter != 0) {
+        dprintf("smoothing : counters : %d - factor : %d - offsets : %d / %d - buffer : %d / %d\n", mov_counter, factor, mouse_report.x, mouse_report.y, x_buffer, y_buffer);
+    }
+    return mouse_report;
+}
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    // Automatic layer switching
+    if (mouse_report.x != 0 || mouse_report.y != 0) {
+        ttimer = timer_read();
+        if ((layer_state & 0x10) == 0) {
+            layer_state_set(0x10);
+        }
+    } else {
+        if ((layer_state & 0x10) == 0x10 && ttimer > 0 && timer_elapsed(ttimer) > TRACKBALL_OFF_TIMEOUT && mouse_toggle == false) {
+            layer_state_set(0);
+        }
+        return mouse_report;
+    }
+
+    if (set_scrolling) {
+        mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
+        mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
+        mouse_report.x = mouse_report.y = 0;
+    } else {
+        // mouse_report = apply_trackball_smoothing(mouse_report);
+        mouse_report.x = mouse_report.x * factor;
+        mouse_report.y = mouse_report.y * factor;
+    }
+    return mouse_report;
+}
