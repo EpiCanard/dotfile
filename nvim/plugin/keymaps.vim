@@ -24,7 +24,7 @@ nnoremap <leader>) :NvimTreeFindFileToggle<CR>
 nnoremap <leader>n :Neogit<CR>
 
 vnoremap < <gv
-vnoremap < <gv
+vnoremap > >gv
 
 " easy switch between windows
 nmap <silent> <C-h> <C-w>h
@@ -40,3 +40,6 @@ tnoremap <Esc> <C-\><C-n>
 " copy to system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
+
+" visually select your last past
+nnoremap gp `[v`]
