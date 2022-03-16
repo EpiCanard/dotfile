@@ -10,6 +10,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 
+nnoremap df "_dd
+
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap q <cmd>TroubleClose<cr>
