@@ -35,7 +35,7 @@ nmap <silent> <C-k> <C-w>k
 nmap <silent> <C-l> <C-w>l
 
 " clean highlight after a search with /
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+nnoremap <silent> <leader><Esc> :nohlsearch<CR>
 " when in terminal, remap tu use Esc
 tnoremap <Esc> <C-\><C-n>
 
