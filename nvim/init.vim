@@ -49,5 +49,9 @@ call plug#begin()
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'wbthomason/lsp-status.nvim'
 "   Plug 'arkav/lualine-lsp-progress'
+
+
+  " Test
+  Plug 'vim-test/vim-test'
 call plug#end()
 

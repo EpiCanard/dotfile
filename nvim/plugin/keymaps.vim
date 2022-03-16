@@ -45,3 +45,5 @@ noremap <Leader>p "*p
 
 " visually select your last past
 nnoremap gp `[v`]
+
+nmap <silent> <leader>t :TestNearest<CR>
