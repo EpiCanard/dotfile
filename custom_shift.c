@@ -3,7 +3,7 @@
 
 
 const custom_shift_t custom_shift_map[] = {
-    [SR( CS_BSPC )] = {KC_BSPC, KC_DEL},
+    [SR( CS_BSPC )] = {KC_BSPC, KC_DEL}, // FIXME handle key keep press
     [SR( CS_COLN )] = {FR_COLN, FR_SCLN},
     [SR( CS_QUOT )] = {FR_QUOT, FR_DQUO},
     [SR( CS_BSLS )] = {ALGR(FR_UNDS), ALGR(FR_MINS)},
