@@ -12,6 +12,7 @@ nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>o <cmd>MetalsOrganizeImports<cr>
 
 nnoremap df "_dd
+nnoremap vp viwp
 
 " Trouble
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
