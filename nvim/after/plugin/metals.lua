@@ -146,6 +146,7 @@ metals_config.settings = {
   showImplicitArguments = true,
   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
   serverVersion = "0.10.9+133-9aae968a-SNAPSHOT",
+  scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf"
 }
 
 -- Example of how to ovewrite a handler

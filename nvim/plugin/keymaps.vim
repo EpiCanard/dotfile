@@ -9,6 +9,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>o <cmd>MetalsOrganizeImports<cr>
 
 nnoremap df "_dd
 
