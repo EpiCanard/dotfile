@@ -3,7 +3,6 @@
 #include "timer.h"
 #include "keymap_french.h"
 
-
 #define LT1_G LT(1, FR_G)
 #define LT2_F LT(2, FR_F)
 #define LT4_B LT(4, FR_B)
