@@ -1,8 +1,6 @@
-UNICODE_ENABLE = no
-UNICODEMAP_ENABLE = yes
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = pimoroni_trackball
 PIMORONI_TRACKBALL_SCALE = 1
-SRC+=custom_shift.c rgb.c unicode.c
+SRC+=rgb.c
 CONSOLE_ENABLE = yes
 MOUSEKEY_ENABLE = yes
