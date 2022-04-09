@@ -14,7 +14,7 @@
 #define C_I FR_D  // I
 #define C_O FR_S  // O
 #define C_U FR_A  // U
-#define C_C LT4_B // C
+#define C_C LT3_B // C
 
 #define X_CIRC X_LBRACKET
 

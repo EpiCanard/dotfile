@@ -16,6 +16,6 @@
 
 #define LT1_G LT(1, FR_G)
 #define LT2_F LT(2, FR_F)
-#define LT4_B LT(4, FR_B)
+#define LT3_B LT(3, FR_B)
 
 #define CSG_NO C(S(G(KC_NO)))
