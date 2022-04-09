@@ -9,12 +9,12 @@
 #define GRV  FR_K // `
 #define TRM  FR_L // ¨
 
-#define C_A FR_T // A
-#define C_E FR_R // E
-#define C_I FR_E // I
-#define C_O FR_W // O
-#define C_U FR_Q // U
-#define C_C FR_A // C
+#define C_A LT1_G // A
+#define C_E LT2_F // E
+#define C_I FR_D  // I
+#define C_O FR_S  // O
+#define C_U FR_A  // U
+#define C_C LT4_B // C
 
 #define X_CIRC X_LBRACKET
 
