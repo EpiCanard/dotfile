@@ -13,3 +13,9 @@
 #define MOUSEKEY_TIME_TO_MAX       80
 
 #define MOUSEKEY_MOVE_DELTA        8
+
+#define LT1_G LT(1, FR_G)
+#define LT2_F LT(2, FR_F)
+#define LT4_B LT(4, FR_B)
+
+#define CSG_NO C(S(G(KC_NO)))

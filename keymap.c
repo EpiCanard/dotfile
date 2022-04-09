@@ -3,27 +3,6 @@
 #include "timer.h"
 #include "keymap_french.h"
 
-#define LT1_G LT(1, FR_G)
-#define LT2_F LT(2, FR_F)
-#define LT4_B LT(4, FR_B)
-
-#define CSG_NO C(S(G(KC_NO)))
-
-#define CS(trigger_key, replacement_key)  ko_make_basic(MOD_MASK_SHIFT, trigger_key, replacement_key)
-
-// This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
-    &CS(KC_BSPC, KC_DEL),
-    &CS(FR_COLN, FR_SCLN),
-    &CS(FR_QUOT, FR_DQUO),
-    &CS(FR_BSLS, FR_PIPE),
-    &CS(FR_COMM, FR_LABK),
-    &CS(FR_DOT, FR_RABK),
-    &CS(FR_SLSH, FR_QUES),
-    &CS(FR_MINS, FR_UNDS),
-    NULL // Null terminate the array of overrides!
-};
-
 enum custom_keycodes {
     PM_SCRL = SAFE_RANGE,
     PM_FACT
