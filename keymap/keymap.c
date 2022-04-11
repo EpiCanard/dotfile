@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // `--------------------------------------------'                                        `--------------------------------------------'
 
 //                                              ,-----------------.    ,-----------------.
-                                                  CG_SWAP, KC_HOME,      _______, UC_MOD ,
+                                                  _______, KC_HOME,      _______, _______,
 //                                     ,--------+--------+--------|    |--------+--------+--------.
                                                            KC_END ,      TT(1)  ,
 //                                     |        |        |--------|    |--------|        |        |
@@ -186,9 +186,9 @@ void keyboard_post_init_user(void) {
     rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
     // Customise these values to desired behaviour
-    debug_enable=true;
-    debug_matrix=true;
-    debug_keyboard=true;
+    // debug_enable=true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
     // debug_mouse=true;
 };
 

@@ -1,9 +1,6 @@
-#define UNICODE_SELECTED_MODES UC_LNX, UC_MAC, UC_WIN
-#define USE_I2C
 #define POINTING_DEVICE_INVERT_X
 #define POINTING_DEVICE_INVERT_Y
 
-#define TRACKBALL_OFF_TIMEOUT 650 // ms
 #define TRACKBALL_SMOOTHING_CYCLES 10
 
 // Remove ergodox_ez MOUSEKEY config to allow to override
