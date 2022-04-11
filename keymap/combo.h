@@ -4,10 +4,10 @@
 #define COMB(cb, replace) COMBO(combos_map[cb], replace)
 #define COMB_ACTION(cb) COMBO_ACTION(combos_map[cb])
 
-#define ACU  FR_H // '
-#define CIRC FR_J // ^
-#define GRV  FR_K // `
-#define TRM  FR_L // ¨
+#define ACU  FR_J    // '
+#define CIRC FR_K    // ^
+#define GRV  FR_L    // `
+#define TRM  FR_COLN // ¨
 
 #define C_A LT1_G // A
 #define C_E LT2_F // E
