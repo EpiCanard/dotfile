@@ -16,6 +16,8 @@ call plug#begin()
   Plug 'hrsh7th/vim-vsnip'
   Plug 'mfussenegger/nvim-dap'
   Plug 'onsails/lspkind-nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'p00f/clangd_extensions.nvim'
 
   " Style
   Plug 'kyazdani42/nvim-web-devicons'
