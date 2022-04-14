@@ -7,31 +7,31 @@ const uint16_t COMBO_LEN = CB_LENGTH;
 
 const uint16_t PROGMEM combos_map[][3] = {
     // Acute
-    [CB_A_ACU]  = { ACU , C_A, COMBO_END },
-    [CB_E_ACU]  = { ACU , C_E, COMBO_END },
-    [CB_I_ACU]  = { ACU , C_I, COMBO_END },
-    [CB_O_ACU]  = { ACU , C_O, COMBO_END },
-    [CB_U_ACU]  = { ACU , C_U, COMBO_END },
+    [CB_A_ACU]  = { R_ACU , C_A, COMBO_END },
+    [CB_E_ACU]  = { R_ACU , C_E, COMBO_END },
+    [CB_I_ACU]  = { L_ACU , C_I, COMBO_END },
+    [CB_O_ACU]  = { L_ACU , C_O, COMBO_END },
+    [CB_U_ACU]  = { L_ACU , C_U, COMBO_END },
     // Circumflex
-    [CB_A_CIRC] = { CIRC, C_A, COMBO_END },
-    [CB_E_CIRC] = { CIRC, C_E, COMBO_END },
-    [CB_I_CIRC] = { CIRC, C_I, COMBO_END },
-    [CB_O_CIRC] = { CIRC, C_O, COMBO_END },
-    [CB_U_CIRC] = { CIRC, C_U, COMBO_END },
+    [CB_A_CIRC] = { R_CIRC, C_A, COMBO_END },
+    [CB_E_CIRC] = { R_CIRC, C_E, COMBO_END },
+    [CB_I_CIRC] = { L_CIRC, C_I, COMBO_END },
+    [CB_O_CIRC] = { L_CIRC, C_O, COMBO_END },
+    [CB_U_CIRC] = { L_CIRC, C_U, COMBO_END },
     // Grave
-    [CB_A_GRV]  = { GRV , C_A, COMBO_END },
-    [CB_E_GRV]  = { GRV , C_E, COMBO_END },
-    [CB_I_GRV]  = { GRV , C_I, COMBO_END },
-    [CB_O_GRV]  = { GRV , C_O, COMBO_END },
-    [CB_U_GRV]  = { GRV , C_U, COMBO_END },
+    [CB_A_GRV]  = { R_GRV , C_A, COMBO_END },
+    [CB_E_GRV]  = { R_GRV , C_E, COMBO_END },
+    [CB_I_GRV]  = { L_GRV , C_I, COMBO_END },
+    [CB_O_GRV]  = { L_GRV , C_O, COMBO_END },
+    [CB_U_GRV]  = { L_GRV , C_U, COMBO_END },
     // Trema
-    [CB_A_TRM]  = { TRM , C_A, COMBO_END },
-    [CB_E_TRM]  = { TRM , C_E, COMBO_END },
-    [CB_I_TRM]  = { TRM , C_I, COMBO_END },
-    [CB_O_TRM]  = { TRM , C_O, COMBO_END },
-    [CB_U_TRM]  = { TRM , C_U, COMBO_END },
+    [CB_A_TRM]  = { R_TRM , C_A, COMBO_END },
+    [CB_E_TRM]  = { R_TRM , C_E, COMBO_END },
+    [CB_I_TRM]  = { L_TRM , C_I, COMBO_END },
+    [CB_O_TRM]  = { L_TRM , C_O, COMBO_END },
+    [CB_U_TRM]  = { L_TRM , C_U, COMBO_END },
     // Cedilla
-    [CB_C_CED]  = { ACU , C_C, COMBO_END }
+    [CB_C_CED]  = { R_ACU , C_C, COMBO_END }
 };
 
 
