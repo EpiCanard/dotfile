@@ -5,9 +5,7 @@
 
 enum custom_keycodes {
     PM_SCRL = SAFE_RANGE,
-    PM_FACT,
-    CK_CIRC,
-    CK_GRV
+    PM_FACT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -44,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [0] = LAYOUT_ergodox_pretty(
 // ,--------------------------------------------------------------.    ,--------------------------------------------------------------.
-     KC_ESC , FR_EXLM, FR_AT  , FR_HASH, FR_DLR , FR_PERC, TT(4)  ,      CK_CIRC, FR_AMPR, FR_ASTR, FR_LPRN, FR_RPRN, FR_MINS, FR_EQL ,
+     KC_ESC , FR_EXLM, FR_AT  , FR_HASH, FR_DLR , FR_PERC, TT(4)  ,      FR_CIRC, FR_AMPR, FR_ASTR, FR_LPRN, FR_RPRN, FR_MINS, FR_EQL ,
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
      KC_DEL , FR_Q   , FR_W   , FR_E   , FR_R   , FR_T   , PM_FACT,      C(FR_Z), FR_Y   , FR_U   , FR_I   , FR_O   , FR_P   , FR_BSLS,
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
@@ -72,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
      _______, FR_HASH, FR_DLR , FR_LPRN, FR_RPRN, _______,                        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, FR_PLUS, _______,
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
-     _______, FR_PERC, FR_CIRC, FR_LBRC, FR_RBRC, FR_TILD, _______,      _______, FR_AMPR, FR_TILD, CK_GRV , _______, FR_BSLS, _______,
+     _______, FR_PERC, FR_CIRC, FR_LBRC, FR_RBRC, FR_TILD, _______,      _______, FR_AMPR, FR_TILD, FR_GRV , _______, FR_BSLS, _______,
 // |--------+--------+--------+--------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------+--------|
      _______, _______, _______, _______, _______,                                          _______, _______, _______, FR_EQL , _______,
 // `--------------------------------------------'                                        `--------------------------------------------'
@@ -170,19 +168,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case PM_FACT:
             set_factor(record, 3);
-            break;
-        case CK_GRV:
-            if (record->event.pressed) {
-                tap_code16(FR_GRV);
-                tap_code16(KC_RGHT);
-            }
-            break;
-            break;
-        case CK_CIRC:
-            if (record->event.pressed) {
-                tap_code16(FR_CIRC);
-                tap_code16(KC_RGHT);
-            }
             break;
         default:
             result = true;
