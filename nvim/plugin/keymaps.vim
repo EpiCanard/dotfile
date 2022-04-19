@@ -45,6 +45,12 @@ tnoremap <Esc> <C-\><C-n>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 
+" Replace current word
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>S :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>s "*y<esc>:%s/<C-r>*/
+vnoremap <Leader>S "*y<esc>:%s/<C-r>*/<C-r>*
+
 " visually select your last past
 nnoremap gp `[v`]
 
