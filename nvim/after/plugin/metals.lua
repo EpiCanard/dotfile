@@ -116,9 +116,9 @@ cmp.setup({
     ["<ESC>"] = cmp.mapping.abort(),
     -- I use tabs... some say you should stick to ins-completion
     ["<Tab>"] = next_item,
-    ["j"] = next_item,
+    ["<Down>"] = next_item,
     ["<S-Tab>"] = prev_item,
-    ["k"] = prev_item
+    ["<Up>"] = prev_item
   },
 })
 
@@ -144,8 +144,9 @@ metals_config = require("metals").bare_config()
 -- Example of settings
 metals_config.settings = {
   showImplicitArguments = true,
+  showImplicitConversionsAndClasses = true,
   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-  serverVersion = "0.10.9+133-9aae968a-SNAPSHOT",
+  serverVersion = "0.11.2",
   scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf"
 }
 
