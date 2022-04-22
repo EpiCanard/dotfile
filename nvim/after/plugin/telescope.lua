@@ -26,5 +26,7 @@ telescope.setup {
 
 telescope.load_extension('fzf')
 telescope.load_extension('project')
+telescope.load_extension('metals')
 
 map('n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>")
+map('n', '<C-n>', ":lua require'telescope'.extensions.metals.commands{}<CR>")
