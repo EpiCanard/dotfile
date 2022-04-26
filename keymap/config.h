@@ -12,6 +12,7 @@
 #define MOUSEKEY_MOVE_DELTA        8
 
 #define LT1_G LT(1, FR_G)
+#define LT1_M LT(1, FR_M)
 #define LT2_F LT(2, FR_F)
 #define LT3_B LT(3, FR_B)
 
