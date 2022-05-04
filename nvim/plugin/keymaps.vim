@@ -19,8 +19,10 @@ nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap q <cmd>TroubleClose<cr>
 nnoremap gr <cmd>Trouble lsp_references<cr>
 nnoremap gi <cmd>Trouble lsp_implementations<cr>
+nnoremap gs <cmd>MetalsGotoSuperMethod<cr>
 nnoremap <leader>dd <cmd>Trouble document_diagnostics<cr>
 nnoremap <leader>wd <cmd>Trouble workspace_diagnostics<cr>
+nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Trouble lsp_references<cr>
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
@@ -48,8 +50,8 @@ noremap <Leader>p "*p
 " Replace current word
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/<C-r><C-w>
-vnoremap <Leader>s "*y<esc>:%s/<C-r>*/
-vnoremap <Leader>S "*y<esc>:%s/<C-r>*/<C-r>*
+vnoremap <Leader>s "ay<esc>:%s/<C-r>a/
+vnoremap <Leader>S "ay<esc>:%s/<C-r>a/<C-r>a
 
 " visually select your last past
 nnoremap gp `[v`]
