@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'scalameta/nvim-metals'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'mfussenegger/nvim-dap'
