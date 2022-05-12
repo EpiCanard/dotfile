@@ -47,6 +47,7 @@ call plug#begin()
   Plug 'jiangmiao/auto-pairs'
   Plug 'unblevable/quick-scope'
   Plug 'terryma/vim-expand-region'
+  Plug 'norcalli/nvim-colorizer.lua'
 
   " Status line
   Plug 'nvim-lualine/lualine.nvim'
