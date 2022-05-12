@@ -44,7 +44,7 @@ call plug#begin()
   " Utils
   Plug 'numToStr/Comment.nvim'
   Plug 'psliwka/vim-smoothie'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
   Plug 'unblevable/quick-scope'
   Plug 'terryma/vim-expand-region'
   Plug 'norcalli/nvim-colorizer.lua'
