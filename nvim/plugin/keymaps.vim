@@ -32,6 +32,11 @@ nnoremap <leader>n :Neogit<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Fold
+nnoremap <leader>zz zMzvzz
+nnoremap n nzMzvzz
+nnoremap N NzMzvzz
+
 " easy switch between windows
 nmap <silent> <C-h> <C-w>h
 nmap <silent> <C-j> <C-w>j
