@@ -20,8 +20,13 @@ telescope.setup {
     path_display = display_path,
     mappings = {
       n = {
-        ['dd'] = require('telescope.actions').delete_buffer
+        ['dd'] = require('telescope.actions').delete_buffer,
+        ['pp'] = require('telescope.actions.layout').toggle_preview
       },
+      i = {
+        ['<C-d>'] = require('telescope.actions').delete_buffer,
+        ['<C-p>'] = require('telescope.actions.layout').toggle_preview
+      }
     }
   },
   extensions = {
