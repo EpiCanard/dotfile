@@ -4,7 +4,7 @@ set shortmess-=F
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files previewer=false<cr>
 nnoremap <leader>fg "zyiw<ESC>:Telescope live_grep layout_strategy=vertical default_text=<C-r>z<cr>
-vnoremap <leader>fg "zy<ESC>:Telescope live_grep default_text=<C-r>z<cr>
+vnoremap <leader>fg "zy<ESC>:lua require('telescope.builtin').live_grep({default_text='<C-r>z'})<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
