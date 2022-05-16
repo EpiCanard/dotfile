@@ -4,11 +4,20 @@ local function map(mode, mapping, cmd)
   vim.api.nvim_set_keymap(mode, mapping, cmd, {noremap = true, silent = true})
 end
 
+
+local function display_path(_, path)
+  path = path:gsub("^%./", "")
+  local prefix = path:match("applications/([%w-_]+)/") or path:match("modules/([%w-_]+)/")
+  local short_path = path:match("scala/[%w-_]+/[%w-_]+/[%w-_]+/(.*)") or path:match("resources/.*") or path
+  prefix = prefix and prefix .. " | " or ""
+
+  return prefix .. short_path
+end
+
+
 telescope.setup {
   defaults = {
-    path_display = {
-      shorten = { len = 1, exclude = {1, -2, -1} }
-    },
+    path_display = display_path,
     mappings = {
       n = {
         ['dd'] = require('telescope.actions').delete_buffer
