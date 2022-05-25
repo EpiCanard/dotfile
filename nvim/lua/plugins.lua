@@ -1,6 +1,11 @@
 return require('packer').startup(function(use)
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-lua/plenary.nvim'
+
+  -- Tree sitter
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use { 'nvim-treesitter/playground' }
+  use { 'RRethy/nvim-treesitter-textsubjects' }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects' }
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'

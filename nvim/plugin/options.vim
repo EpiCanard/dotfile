@@ -38,4 +38,8 @@ set splitbelow
 set splitright
 
 " Fold
-set foldmethod=marker
+"set foldmethod=marker
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+set foldlevel=2
