@@ -7,7 +7,7 @@ end
 
 local function display_path(_, path)
   path = path:gsub("^%./", "")
-  local prefix = path:match("applications/([%w-_]+)/") or path:match("modules/([%w-_]+)/")
+  local prefix = path:match("applications?/([%w-_]+)/") or path:match("modules/([%w-_]+)/")
   local short_path = path:match("scala/[%w-_]+/[%w-_]+/[%w-_]+/(.*)") or path:match("resources/.*") or path
   prefix = prefix and prefix .. " | " or ""
 
