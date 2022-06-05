@@ -1,4 +1,4 @@
-let mapleader = "="
+let mapleader = " "
 set shortmess-=F
 
 " Telescope
