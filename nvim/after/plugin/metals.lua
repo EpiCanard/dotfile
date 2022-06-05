@@ -1,5 +1,6 @@
-local cmd = vim.cmd
 local map = require("epicanard.utils").map
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 ----------------------------------
 -- OPTIONS -----------------------
@@ -25,21 +26,6 @@ map("n", "<leader>aw", [[<cmd>lua vim.diagnostic.setqflist({severity = "W"})<CR>
 map("n", "<leader>d", "<cmd>lua vim.diagnostic.setloclist()<CR>") -- buffer diagnostics only
 map("n", "[c", "<cmd>lua vim.diagnostic.goto_prev { wrap = false }<CR>")
 map("n", "]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>")
-
-----------------------------------
--- COMMANDS ----------------------
-----------------------------------
--- LSP
-cmd([[augroup lsp]])
-cmd([[autocmd!]])
-cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
-cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)]])
-cmd([[augroup end]])
-
--- Need for symbol highlights to work correctly
-vim.cmd([[hi! link LspReferenceText CursorColumn]])
-vim.cmd([[hi! link LspReferenceRead CursorColumn]])
-vim.cmd([[hi! link LspReferenceWrite CursorColumn]])
 
 ----------------------------------
 -- LSP Setup ---------------------
@@ -80,10 +66,19 @@ metals_config.on_attach = function(client, bufnr)
   lsp_status.on_attach(client)
 end
 
--- Should link to something to see your code lenses
-cmd([[hi! link LspCodeLens CursorColumn]])
--- Should link to something so workspace/symbols are highlighted
-cmd([[hi! link LspReferenceText CursorColumn]])
-cmd([[hi! link LspReferenceRead CursorColumn]])
-cmd([[hi! link LspReferenceWrite CursorColumn]])
+----------------------------------
+-- COMMANDS ----------------------
+----------------------------------
+-- LSP
+local lsp_augroup = augroup("lsp", { clear = true })
+autocmd("FileType", { pattern = "scala", command = "setlocal omnifunc=v:lua.vim.lsp.omnifunc", group = lsp_augroup })
+autocmd("FileType", { pattern = { "scala", "sbt" }, callback = function()
+  require("metals").initialize_or_attach(metals_config)
+end, group = lsp_augroup })
+
+-- Need for symbol highlights to work correctly
+vim.highlight.link("LspCodeLens", "CursorColumn", true)
+vim.highlight.link("LspReferenceText", "CursorColumn", true)
+vim.highlight.link("LspReferenceRead", "CursorColumn", true)
+vim.highlight.link("LspReferenceWrite", "CursorColumn", true)
 
