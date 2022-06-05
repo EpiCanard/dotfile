@@ -26,7 +26,7 @@ nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Trouble lsp_re
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
-nnoremap <leader>) :NvimTreeFindFileToggle<CR>
+nnoremap <leader>b :NvimTreeFindFileToggle<CR>
 nnoremap <leader>n :Neogit<CR>
 
 vnoremap < <gv
