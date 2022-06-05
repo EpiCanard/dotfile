@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
   use 'onsails/lspkind-nvim'
   use 'neovim/nvim-lspconfig'
   use 'p00f/clangd_extensions.nvim'
