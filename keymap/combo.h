@@ -12,7 +12,7 @@
 #define R_ACU  FR_J    // '
 #define R_CIRC FR_K    // ^
 #define R_GRV  FR_L    // `
-#define R_TRM  FR_COLN // ¨
+#define R_TRM  LT2_COL // ¨
 
 #define C_A FR_A // A
 #define C_E FR_E // E
