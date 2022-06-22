@@ -20,8 +20,6 @@ dap.configurations.scala = {
     name = "Run",
     metals = {
       runType = "run",
-      -- again... example, don't leave these in here
-      args = { "firstArg", "secondArg", "thirdArg" },
     },
   },
   {

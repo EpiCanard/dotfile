@@ -30,7 +30,7 @@ map("n", "]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>")
 ----------------------------------
 -- LSP Setup ---------------------
 ----------------------------------
-local metals_config = require("metals").bare_config()
+metals_config = require("metals").bare_config()
 
 -- Example of settings
 metals_config.settings = {
