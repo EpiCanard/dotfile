@@ -43,3 +43,5 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 set foldlevel=2
+
+let g:db_ui_use_nerd_fonts=1
