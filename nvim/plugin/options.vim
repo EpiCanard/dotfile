@@ -29,9 +29,10 @@ set colorcolumn=120
 
 " Scroll
 set scrolloff=8
-set sidescrolloff=8
+set sidescrolloff=2
 
 set mouse=a
+set cursorline
 
 " Open on right and below on split
 set splitbelow
@@ -45,3 +46,5 @@ set foldexpr=nvim_treesitter#foldexpr()
 set foldlevel=2
 
 let g:db_ui_use_nerd_fonts=1
+
+:command Db :tabnew +DBUIToggle
