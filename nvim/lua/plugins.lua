@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'sainnhe/gruvbox-material'
   use 'chrisbra/Colorizer'
+  use 'nanozuki/tabby.nvim'
 
   -- File tree
   use 'kyazdani42/nvim-tree.lua'
