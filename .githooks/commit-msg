@@ -1,0 +1,14 @@
+#!/bin/bash
+
+REGEX_ISSUE_ID='s#^\[\(.*\)\] [A-Z].*#\1#p'
+ISSUE_ID_IN_COMMIT=$(cat $1 | sed -ne "$REGEX_ISSUE_ID")
+
+if [[ -z "$ISSUE_ID_IN_COMMIT" ]]; then
+    echo "[commit-msg-hook] Your commit message is illegal. It must match : [folder] A commit message"
+    exit 1
+else
+    if [ ! -d "$(git rev-parse --show-toplevel)/$ISSUE_ID_IN_COMMIT" ]; then
+        echo "[commit-msg-hook] Your commit message is illegal. The folder part must match a real folder"
+        exit 1
+    fi
+fi
