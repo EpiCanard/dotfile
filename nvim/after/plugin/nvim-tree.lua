@@ -1,14 +1,19 @@
-vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_group_empty = 1
-
 require('nvim-tree').setup {
-  auto_close = true,
   hijack_cursor = true,
   update_cwd = true,
   diagnostics = {
     enable = true
   },
   view = {
-    auto_resize = true
+    adaptive_size = true
+  },
+  renderer = {
+    group_empty = true,
+    highlight_git = true
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    }
   }
 }
