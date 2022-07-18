@@ -1,6 +1,7 @@
 local cb = require'diffview.config'.diffview_callback
+local diffview = require'diffview'
 
-require'diffview'.setup {
+diffview.setup {
   diff_binaries = false,    -- Show diffs for binaries
   enhanced_diff_hl = true,
   use_icons = true,        -- Requires nvim-web-devicons
@@ -17,6 +18,7 @@ require'diffview'.setup {
       ["<s-tab>"]   = cb("select_prev_entry"),  -- Open the diff for the previous file
       ["<leader>e"] = cb("focus_files"),        -- Bring focus to the files panel
       ["<leader>b"] = cb("toggle_files"),       -- Toggle the files panel.
+      ["q"]         = diffview.close,
     },
     file_panel = {
       ["j"]         = cb("next_entry"),         -- Bring the cursor to the next file entry
@@ -30,6 +32,13 @@ require'diffview'.setup {
       ["<s-tab>"]   = cb("select_prev_entry"),
       ["<leader>e"] = cb("focus_files"),
       ["<leader>b"] = cb("toggle_files"),
+      ["q"]         = diffview.close,
+    },
+    file_history_panel = {
+      ["q"] = diffview.close,
+    },
+    option_panel = {
+      ["q"] = diffview.close,
     }
   }
 }
