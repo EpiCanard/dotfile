@@ -2,6 +2,7 @@
 #define POINTING_DEVICE_INVERT_Y
 
 #define TRACKBALL_SMOOTHING_CYCLES 10
+#define PIMORONI_TRACKBALL_SCALE 1
 
 // Remove ergodox_ez MOUSEKEY config to allow to override
 #define MOUSEKEY_INTERVAL          80

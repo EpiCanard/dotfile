@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
      _______, FR_HASH, FR_DLR , FR_LPRN, FR_RPRN, _______,                        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, FR_PLUS, _______,
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
-     KC_CAPS, FR_PERC, FR_CIRC, FR_LBRC, FR_RBRC, FR_TILD, _______,      _______, FR_AMPR, _______, _______, _______, FR_BSLS, _______,
+     CAPSWRD, FR_PERC, FR_CIRC, FR_LBRC, FR_RBRC, FR_TILD, _______,      _______, FR_AMPR, _______, _______, _______, FR_BSLS, _______,
 // |--------+--------+--------+--------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------+--------|
      _______, _______, _______, _______, _______,                                          _______, _______, _______, FR_EQL , _______,
 // `--------------------------------------------'                                        `--------------------------------------------'
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
      _______, _______, KC_BRID, _______, _______, _______,                        KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______, _______,
 // |--------+--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------+--------|
-     _______, _______, _______, _______, _______, _______, _______,      _______, _______, KC_MPRV, KC_MNXT, KC_MPLY, _______, _______,
+     KC_CAPS, _______, _______, _______, _______, _______, _______,      _______, _______, KC_MPRV, KC_MNXT, KC_MPLY, _______, _______,
 // |--------+--------+--------+--------+--------+--------+--------'    `--------+--------+--------+--------+--------+--------+--------|
      RESET  , _______, _______, _______, _______,                                          KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,
 // `--------------------------------------------'                                        `--------------------------------------------'
@@ -136,20 +136,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool     set_scrolling = false;
 int      factor        = 1;
 
-void update_color(void) {
-    if (set_scrolling) {
-        pimoroni_trackball_set_rgbw(255, 0, 0, 0);
-    } else {
-        switch (factor) {
-            case 3:
-                pimoroni_trackball_set_rgbw(0, 255, 255, 0);
-                break;
-            default:
-                pimoroni_trackball_set_rgbw(0, 0, 0, 0);
-        }
-    }
-}
-
 void set_factor(keyrecord_t *record, int8_t fac) {
     if (record->event.pressed) {
         factor = fac;
@@ -160,32 +146,33 @@ void set_factor(keyrecord_t *record, int8_t fac) {
 
 /* === PROCESS === */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    uprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-
-    bool result = false;
     switch (keycode) {
         case PM_SCRL:
             set_scrolling = record->event.pressed;
             break;
         case PM_FACT:
-            set_factor(record, 3);
+            set_factor(record, 8);
             break;
-        default:
-            result = true;
     }
-    if (!result) {
-        update_color();
-    }
-    return result;
+    return true;
 };
+
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (set_scrolling) {
+        pimoroni_trackball_set_rgbw(255, 0, 0, 0);
+    } else if (factor != 1) {
+        pimoroni_trackball_set_rgbw(0, 255, 255, 0);
+    } else if (is_caps_word_on()) {
+        pimoroni_trackball_set_rgbw(255, 255, 0, 0);
+    } else {
+        pimoroni_trackball_set_rgbw(0, 0, 0, 0);
+    }
+}
 
 /* === RGB === */
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
-#ifdef RGBLIGHT_COLOR_LAYER_0
-    rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-#endif
     // Customise these values to desired behaviour
     // debug_enable=true;
     // debug_matrix=true;
@@ -193,53 +180,46 @@ void keyboard_post_init_user(void) {
     // debug_mouse=true;
 };
 
-// === UNUSED for now ===
-
-void adapt_smoothing_value(int8_t* mouse, int16_t* buffer) {
-    *buffer += round(factor * *mouse);
-    if (abs(*buffer > 0) && abs(*buffer) <= TRACKBALL_SMOOTHING_CYCLES) {
-        if (*buffer < 0) {
-            *mouse = -1;
-            *buffer += 1;
-        } else {
-            *mouse = 1;
-            *buffer -= 1;
-        }
-    } else {
-        uint16_t delta = *buffer / TRACKBALL_SMOOTHING_CYCLES;
-        *mouse = delta;
-        *buffer -= delta;
-    }
-}
-
-report_mouse_t apply_trackball_smoothing(report_mouse_t mouse_report) {
-    static int16_t      x_buffer = 0, y_buffer = 0;
-    static int16_t      mov_counter = 0;
-
-    if (mouse_report.x == 0 && mouse_report.y == 0) {
-        mov_counter = 0;
-    } else {
-        mov_counter++;
-    }
-
-    adapt_smoothing_value(&mouse_report.x, &x_buffer);
-    adapt_smoothing_value(&mouse_report.y, &y_buffer);
-
-    if (mov_counter != 0) {
-        dprintf("smoothing : counters : %d - factor : %d - offsets : %d / %d - buffer : %d / %d\n", mov_counter, factor, mouse_report.x, mouse_report.y, x_buffer, y_buffer);
-    }
-    return mouse_report;
-}
-
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (set_scrolling) {
         mouse_report.h = (mouse_report.x > 0) ? 1 : ((mouse_report.x < 0) ? -1 : 0);
         mouse_report.v = (mouse_report.y > 0) ? -1 : ((mouse_report.y < 0) ? 1 : 0);
         mouse_report.x = mouse_report.y = 0;
     } else {
-        // mouse_report = apply_trackball_smoothing(mouse_report);
         mouse_report.x = mouse_report.x * factor;
         mouse_report.y = mouse_report.y * factor;
     }
     return mouse_report;
+}
+
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case FR_M:
+            add_weak_mods(MOD_BIT(KC_LSFT));
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case FR_0:
+        case FR_1:
+        case FR_2:
+        case FR_3:
+        case FR_4:
+        case FR_5:
+        case FR_6:
+        case FR_7:
+        case FR_8:
+        case FR_9:
+        case KC_BSPC:
+        case KC_DEL:
+        case FR_UNDS:
+        case KC_LSFT:
+        case LT3_B:
+        case FR_MINS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
 }
