@@ -134,13 +134,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* === TrackBall === */
 
 bool     set_scrolling = false;
-int      factor        = 1;
+int      factor        = 4;
 
-void set_factor(keyrecord_t *record, int8_t fac) {
+void next_factor(keyrecord_t *record) {
     if (record->event.pressed) {
-        factor = fac;
-    } else {
-        factor = 1;
+        switch(factor) {
+            case 1:
+                factor = 4;
+                break;
+            case 4:
+                factor = 8;
+                break;
+            case 8:
+                factor = 1;
+                break;
+        }
     }
 }
 
@@ -151,7 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             set_scrolling = record->event.pressed;
             break;
         case PM_FACT:
-            set_factor(record, 8);
+            next_factor(record);
             break;
     }
     return true;
@@ -160,7 +168,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (set_scrolling) {
         pimoroni_trackball_set_rgbw(255, 0, 0, 0);
-    } else if (factor != 1) {
+    } else if (factor == 1) {
+        pimoroni_trackball_set_rgbw(0, 127, 127, 0);
+    } else if (factor == 8) {
         pimoroni_trackball_set_rgbw(0, 255, 255, 0);
     } else if (is_caps_word_on()) {
         pimoroni_trackball_set_rgbw(255, 255, 0, 0);
