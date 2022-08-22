@@ -56,6 +56,7 @@ return require('packer').startup(function(use)
   use 'unblevable/quick-scope'
   use 'terryma/vim-expand-region'
   use 'norcalli/nvim-colorizer.lua'
+  use 'stevearc/dressing.nvim'
 
   -- Status line
   use 'nvim-lualine/lualine.nvim'
