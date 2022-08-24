@@ -12,6 +12,8 @@ nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>o <cmd>MetalsOrganizeImports<cr>
 nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 
+nnoremap <leader>P <cmd>Telescope neoclip<cr>
+
 nnoremap df "_dd
 nnoremap vp viwp
 

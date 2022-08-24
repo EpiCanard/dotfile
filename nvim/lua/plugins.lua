@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
   -- Utils
   use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
   use {'stevearc/dressing.nvim', config = function() require('dressing').setup() end}
+  use {'AckslD/nvim-neoclip.lua', config = function() require('neoclip').setup() end}
   use 'psliwka/vim-smoothie'
   use 'windwp/nvim-autopairs'
   use 'unblevable/quick-scope'
