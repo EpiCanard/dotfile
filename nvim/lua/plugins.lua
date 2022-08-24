@@ -3,13 +3,13 @@ return require('packer').startup(function(use)
 
   -- Tree sitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use { 'nvim-treesitter/playground' }
-  use { 'RRethy/nvim-treesitter-textsubjects' }
-  use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+  use 'nvim-treesitter/playground'
+  use 'RRethy/nvim-treesitter-textsubjects'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use 'nvim-telescope/telescope-symbols.nvim'
   use 'nvim-telescope/telescope-project.nvim'
 
@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
 
   -- Trouble
-  use 'folke/trouble.nvim'
+  use {'folke/trouble.nvim', config = function() require('trouble').setup({}) end}
 
   -- Git
   use 'TimUntersberger/neogit'
@@ -50,13 +50,13 @@ return require('packer').startup(function(use)
   use 'kristijanhusak/vim-dadbod-completion'
 
   -- Utils
-  use 'numToStr/Comment.nvim'
+  use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
+  use {'stevearc/dressing.nvim', config = function() require('dressing').setup() end}
   use 'psliwka/vim-smoothie'
   use 'windwp/nvim-autopairs'
   use 'unblevable/quick-scope'
   use 'terryma/vim-expand-region'
   use 'norcalli/nvim-colorizer.lua'
-  use 'stevearc/dressing.nvim'
 
   -- Status line
   use 'nvim-lualine/lualine.nvim'
