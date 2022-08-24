@@ -18,6 +18,8 @@ end
 telescope.setup {
   defaults = {
     path_display = display_path,
+    prompt_prefix = ' ',
+    selection_caret = ' ',
     mappings = {
       n = {
         ['dd'] = require('telescope.actions').delete_buffer,
