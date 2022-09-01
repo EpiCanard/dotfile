@@ -94,9 +94,16 @@ end
 
 ins_left({
   function()
+    local color
+    if table.getn(vim.lsp.buf_get_clients()) >= 1 then
+      color = colors.green
+    else
+      color = colors.blue
+    end
+    vim.api.nvim_command('hi! LualineLeftBar guifg=' .. color .. ' guibg=' .. colors.bg)
     return '▊'
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
+  color = 'LualineLeftBar', -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 })
 
