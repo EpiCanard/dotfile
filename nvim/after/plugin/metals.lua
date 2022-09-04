@@ -77,8 +77,8 @@ autocmd("FileType", { pattern = { "scala", "sbt" }, callback = function()
 end, group = lsp_augroup })
 
 -- Need for symbol highlights to work correctly
-vim.highlight.link("LspCodeLens", "CursorColumn", true)
-vim.highlight.link("LspReferenceText", "CursorColumn", true)
-vim.highlight.link("LspReferenceRead", "CursorColumn", true)
-vim.highlight.link("LspReferenceWrite", "CursorColumn", true)
+vim.api.nvim_set_hl(0, "LspCodeLens", { link = "CursorColumn" })
+vim.api.nvim_set_hl(0, "LspReferenceText", { link = "CursorColumn" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "CursorColumn" })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "CursorColumn" })
 
