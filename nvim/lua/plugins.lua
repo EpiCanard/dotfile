@@ -1,3 +1,4 @@
+--stylua: ignore
 return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
@@ -32,6 +33,7 @@ return require('packer').startup(function(use)
   use 'sainnhe/gruvbox-material'
   use 'chrisbra/Colorizer'
   use 'nanozuki/tabby.nvim'
+  use 'ckipp01/stylua-nvim'
 
   -- File tree
   use 'kyazdani42/nvim-tree.lua'

@@ -1,18 +1,18 @@
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
 
 require("clangd_extensions").setup()
 
-lspconfig.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
+        version = "LuaJIT",
         -- Setup your lua path
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim', 'next', 'pairs', 'pcall', 'type', 'tostring', 'ipairs', 'table', 'string'},
+        globals = { "vim", "next", "pairs", "pcall", "type", "tostring", "ipairs", "table", "string" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -24,5 +24,4 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
-}
-
+})
