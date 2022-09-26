@@ -14,7 +14,7 @@ require('gitsigns').setup {
     ['v <leader>hr'] = ':Gitsigns reset_hunk<CR>',
     ['n <leader>hR'] = '<cmd>Gitsigns reset_buffer<CR>',
 
-    ['n <leader>hp'] = '<cmd>Gitsigns preview_hunk<CR>',
+    ['n <leader>hh'] = '<cmd>Gitsigns preview_hunk<CR>',
 
     ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
     ['n <leader>hB'] = '<cmd>Gitsigns toggle_current_line_blame<CR>',

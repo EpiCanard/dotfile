@@ -13,6 +13,7 @@ nnoremap <leader>o <cmd>MetalsOrganizeImports<cr>
 nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 
 nnoremap <leader>P <cmd>Telescope neoclip<cr>
+nnoremap <leader>c <cmd>Neogit commit<cr>
 
 nnoremap df "_dd
 nnoremap vp viwp
