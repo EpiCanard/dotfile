@@ -11,7 +11,7 @@ vim.opt_global.shortmess:remove("F"):append("c")
 
 -- LSP
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("", "K", ":lua vim.lsp.buf.hover()<CR>", {silent = true})
+map("", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
 -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 -- map("n", "gs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
@@ -38,7 +38,7 @@ metals_config.settings = {
   showImplicitConversionsAndClasses = true,
   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
   serverVersion = "0.11.7",
-  scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf"
+  scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf",
 }
 
 -- Example of how to ovewrite a handler
@@ -53,7 +53,7 @@ metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp
 -- docs about this
 metals_config.init_options.statusBarProvider = "on"
 
-local lsp_status = require('lsp-status')
+local lsp_status = require("lsp-status")
 local capabilities = lsp_status.capabilities
 
 --local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -73,13 +73,16 @@ end
 -- LSP
 local lsp_augroup = augroup("lsp", { clear = true })
 autocmd("FileType", { pattern = "scala", command = "setlocal omnifunc=v:lua.vim.lsp.omnifunc", group = lsp_augroup })
-autocmd("FileType", { pattern = { "scala", "sbt" }, callback = function()
-  require("metals").initialize_or_attach(metals_config)
-end, group = lsp_augroup })
+autocmd("FileType", {
+  pattern = { "scala", "sbt" },
+  callback = function()
+    require("metals").initialize_or_attach(metals_config)
+  end,
+  group = lsp_augroup,
+})
 
 -- Need for symbol highlights to work correctly
 vim.api.nvim_set_hl(0, "LspCodeLens", { link = "CursorColumn" })
 vim.api.nvim_set_hl(0, "LspReferenceText", { link = "CursorColumn" })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "CursorColumn" })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "CursorColumn" })
-

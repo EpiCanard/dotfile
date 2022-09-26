@@ -1,10 +1,10 @@
-require('nvim-treesitter.configs').setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
     "json",
     "scala",
     "vim",
-    "lua"
+    "lua",
   },
   sync_install = false,
   ignore_install = {},
@@ -38,14 +38,14 @@ require('nvim-treesitter.configs').setup {
   query_linter = {
     enable = true,
     use_virtual_text = true,
-    lint_events = {"BufWrite", "CursorHold"},
+    lint_events = { "BufWrite", "CursorHold" },
   },
   textsubjects = {
     enable = true,
-    prev_selection = ',', -- (Optional) keymap to select the previous selection
+    prev_selection = ",", -- (Optional) keymap to select the previous selection
     keymaps = {
-        ['.'] = 'textsubjects-smart',
-        [';'] = 'textsubjects-container-outer',
+      ["."] = "textsubjects-smart",
+      [";"] = "textsubjects-container-outer",
     },
   },
   textobjects = {
@@ -57,7 +57,7 @@ require('nvim-treesitter.configs').setup {
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner",
-        ["aco"] = "@comment.outer"
+        ["aco"] = "@comment.outer",
       },
     },
     swap = {
@@ -71,7 +71,7 @@ require('nvim-treesitter.configs').setup {
     },
     lsp_interop = {
       enable = true,
-      border = 'none',
+      border = "none",
       peek_definition_code = {
         ["<leader>df"] = "@function.outer",
         ["<leader>dF"] = "@class.outer",
@@ -86,14 +86,14 @@ require('nvim-treesitter.configs').setup {
       scope_incremental = "grc",
       node_decremental = "grm",
     },
-  }
-}
+  },
+})
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.sql = {
   install_info = {
     url = "https://github.com/m-novikov/tree-sitter-sql", -- local path or git repo
-    files = {"src/parser.c"},
+    files = { "src/parser.c" },
     -- optional entries:
     branch = "main", -- default branch in case of git repo if different from master
   },
@@ -103,7 +103,7 @@ parser_config.sql = {
 parser_config.markdown = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
-    files = {"src/parser.c"},
+    files = { "src/parser.c" },
     branch = "main",
   },
   filetype = "md",

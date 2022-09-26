@@ -1,9 +1,8 @@
-local telescope = require('telescope')
+local telescope = require("telescope")
 
 local function map(mode, mapping, cmd)
-  vim.api.nvim_set_keymap(mode, mapping, cmd, {noremap = true, silent = true})
+  vim.api.nvim_set_keymap(mode, mapping, cmd, { noremap = true, silent = true })
 end
-
 
 local function display_path(_, path)
   path = path:gsub("^%./", "")
@@ -14,38 +13,37 @@ local function display_path(_, path)
   return prefix .. short_path
 end
 
-
-telescope.setup {
+telescope.setup({
   defaults = {
     path_display = display_path,
-    prompt_prefix = ' ',
-    selection_caret = ' ',
+    prompt_prefix = " ",
+    selection_caret = " ",
     mappings = {
       n = {
-        ['dd'] = require('telescope.actions').delete_buffer,
-        ['pp'] = require('telescope.actions.layout').toggle_preview
+        ["dd"] = require("telescope.actions").delete_buffer,
+        ["pp"] = require("telescope.actions.layout").toggle_preview,
       },
       i = {
-        ['<C-d>'] = require('telescope.actions').delete_buffer,
-        ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
-        ["<C-j>"] = require('telescope.actions').cycle_history_next,
-        ["<C-k>"] = require('telescope.actions').cycle_history_prev,
-      }
-    }
+        ["<C-d>"] = require("telescope.actions").delete_buffer,
+        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["<C-j>"] = require("telescope.actions").cycle_history_next,
+        ["<C-k>"] = require("telescope.actions").cycle_history_prev,
+      },
+    },
   },
   extensions = {
     project = {
       base_dirs = {
-        '~/Projects'
-      }
-    }
-  }
-}
+        "~/Projects",
+      },
+    },
+  },
+})
 
-telescope.load_extension('fzf')
-telescope.load_extension('project')
-telescope.load_extension('metals')
-telescope.load_extension('neoclip')
+telescope.load_extension("fzf")
+telescope.load_extension("project")
+telescope.load_extension("metals")
+telescope.load_extension("neoclip")
 
-map('n', '<C-p>', ":lua require'telescope'.extensions.project.project{}<CR>")
-map('n', '<C-n>', ":lua require'telescope'.extensions.metals.commands{}<CR>")
+map("n", "<C-p>", ":lua require'telescope'.extensions.project.project{}<CR>")
+map("n", "<C-n>", ":lua require'telescope'.extensions.metals.commands{}<CR>")
