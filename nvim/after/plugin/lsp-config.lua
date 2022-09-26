@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local navic = require("nvim-navic")
 
 require("clangd_extensions").setup()
 
@@ -24,4 +25,7 @@ lspconfig.sumneko_lua.setup({
       },
     },
   },
+  on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+  end,
 })

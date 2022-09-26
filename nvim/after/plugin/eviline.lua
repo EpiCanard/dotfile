@@ -2,6 +2,7 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 local lualine = require('lualine')
+local navic = require("nvim-navic")
 
 -- Color table for highlights
 -- stylua: ignore
@@ -79,6 +80,16 @@ local config = {
     lualine_z = {},
     lualine_c = {},
     lualine_x = {},
+  },
+  winbar = {
+    lualine_a = {
+      function()
+        if navic.is_available() then
+          return navic.get_location()
+        end
+        return " "
+      end,
+    },
   },
 }
 

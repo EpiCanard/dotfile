@@ -64,6 +64,7 @@ metals_config.capabilities = capabilities
 metals_config.on_attach = function(client, bufnr)
   require("metals").setup_dap()
   lsp_status.on_attach(client)
+  require("nvim-navic").attach(client, bufnr)
 end
 
 ----------------------------------

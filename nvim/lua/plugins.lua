@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind-nvim'
   use 'neovim/nvim-lspconfig'
   use 'p00f/clangd_extensions.nvim'
+  use 'SmiteshP/nvim-navic'
 
   -- Style
   use 'kyazdani42/nvim-web-devicons'
