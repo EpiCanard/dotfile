@@ -1,5 +1,10 @@
 --stylua: ignore
 return require('packer').startup(function(use)
+
+  -- Packer
+  use 'wbthomason/packer.nvim'
+
+  -- Library
   use 'nvim-lua/plenary.nvim'
 
   -- Tree sitter
@@ -35,6 +40,7 @@ return require('packer').startup(function(use)
   use 'chrisbra/Colorizer'
   use 'nanozuki/tabby.nvim'
   use 'ckipp01/stylua-nvim'
+  use 'norcalli/nvim-colorizer.lua'
 
   -- File tree
   use 'kyazdani42/nvim-tree.lua'
@@ -60,7 +66,6 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'unblevable/quick-scope'
   use 'terryma/vim-expand-region'
-  use 'norcalli/nvim-colorizer.lua'
 
   -- Status line
   use 'nvim-lualine/lualine.nvim'
