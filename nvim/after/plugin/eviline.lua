@@ -1,37 +1,21 @@
--- Eviline config for lualine
--- Author: shadmansaleh
--- Credit: glepnir
 local lualine = require("lualine")
 local navic = require("nvim-navic")
+local link = require("epicanard/color_utils").link
+local hif = require("epicanard/color_utils").hif
+local oneduck = require("epicanard/themes/oneduck")
 
--- Color table for highlights
--- stylua: ignore
--- local colors = {
---   bg       = '#202328',
---   fg       = '#bbc2cf',
---   yellow   = '#ECBE7B',
---   cyan     = '#008080',
---   darkblue = '#081633',
---   green    = '#98be65',
---   orange   = '#FF8800',
---   violet   = '#a9a1e1',
---   magenta  = '#c678dd',
---   blue     = '#51afef',
---   red      = '#ec5f67',
--- }
 local colors = {
-  bg       = '#202328',
-  fg       = '#e2cca9',
-  yellow   = '#e9b143',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#b0b846',
-  orange   = '#f28534',
-  violet   = '#d3869b',
-  magenta  = '#c678dd',
-  blue     = '#80aa9e',
-  red      = '#f2594b',
+  yellow = "#e9b143",
+  cyan = "#008080",
+  green = "#b0b846",
+  orange = "#f28534",
+  violet = "#d3869b",
+  magenta = "#c678dd",
+  blue = "#80aa9e",
+  red = "#f2594b",
 }
+
+local theme = oneduck.get_current_theme()
 
 local conditions = {
   buffer_not_empty = function()
@@ -39,11 +23,6 @@ local conditions = {
   end,
   hide_in_width = function()
     return vim.fn.winwidth(0) > 80
-  end,
-  check_git_workspace = function()
-    local filepath = vim.fn.expand("%:p:h")
-    local gitdir = vim.fn.finddir(".git", filepath .. ";")
-    return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
 }
 
@@ -58,8 +37,8 @@ local config = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      normal = { c = { fg = theme.fg, bg = theme.cursor_line } },
+      inactive = { c = { fg = theme.fg, bg = theme.cursor_line } },
     },
   },
   sections = {
@@ -85,9 +64,9 @@ local config = {
     lualine_a = {
       function()
         if navic.is_available() then
-          return navic.get_location()
+          return navic.get_location() or ""
         end
-        return " "
+        return ""
       end,
     },
   },
@@ -105,17 +84,15 @@ end
 
 ins_left({
   function()
-    local color
-    if table.getn(vim.lsp.buf_get_clients()) >= 1 then
-      color = colors.green
+    if #vim.lsp.buf_get_clients() >= 1 then
+      link("EvilineLeftBar", "EvilineLeftBarConnected")
     else
-      color = colors.blue
+      link("EvilineLeftBar", "EvilineLeftBarDefault")
     end
-    vim.api.nvim_command("hi! LualineLeftBar guifg=" .. color .. " guibg=" .. colors.bg)
     return "▊"
   end,
-  color = "LualineLeftBar", -- Sets highlighting of component
-  padding = { left = 0, right = 1 }, -- We don't need space before this
+  color = "EvilineLeftBar",
+  padding = { left = 0, right = 1 },
 })
 
 ins_left({
@@ -144,15 +121,15 @@ ins_left({
       ["!"] = colors.red,
       t = colors.red,
     }
-    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
-    return ""
+    hif("EvilineMode", mode_color[vim.fn.mode()], {}, false)
+    --return ""
+    return ""
   end,
-  color = "LualineMode",
+  color = "EvilineMode",
   padding = { right = 1 },
 })
 
 ins_left({
-  -- filesize component
   "filesize",
   cond = conditions.buffer_not_empty,
 })
@@ -160,42 +137,35 @@ ins_left({
 ins_left({
   "filename",
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = "bold" },
+  color = "EvilineFileName",
 })
 
-ins_left({ "location" })
+ins_left("location")
 
-ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+ins_left({ "progress", color = "EvilineProgress" })
 
 ins_left({
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = { error = " ", warn = " ", info = " " },
   diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
+    error = "EvilineDiagnosticError",
+    warn = "EvilineDiagnosticWarn",
+    info = "EvilineDiagnosticInfo",
+    hint = "EvilineDiagnosticHint",
   },
 })
 
 ins_left({
   function()
-    local status = vim.g["metals_status"]
-    if status ~= nil then
-      return status
-    end
-    return ""
-  end,
-})
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
-ins_left({
-  function()
-    return "%="
+    return vim.g["metals_status"] or ""
   end,
 })
 
--- Add components to right sections
+ins_left("%=")
+
+-- Right section
+
 ins_right({
   function()
     local current_function = vim.b.lsp_current_function
@@ -207,10 +177,10 @@ ins_right({
 })
 
 ins_right({
-  "o:encoding", -- option component same as &encoding in viml
-  fmt = string.upper, -- I'm not sure why it's upper case either ;)
+  "o:encoding",
+  fmt = string.upper,
   cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = "bold" },
+  color = "EvilineEncoding",
 })
 
 ins_right({
@@ -221,27 +191,25 @@ ins_right({
     mac = "", -- e711
   },
   fmt = string.upper,
-  icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = "bold" },
+  icons_enabled = true,
+  color = "EvilineFileFormat",
 })
 
 ins_right({
   "branch",
   icon = "",
-  color = { fg = colors.violet, gui = "bold" },
+  color = "EvilineBranch",
 })
 
 ins_right({
   "diff",
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = " ", modified = "柳 ", removed = " " },
+  symbols = { added = " ", modified = "柳", removed = " " },
   diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
+    added = "EvilineDiffAdd",
+    modified = "EvilineDiffChange",
+    removed = "EvilineDiffDelete",
   },
   cond = conditions.hide_in_width,
 })
 
--- Now don't forget to initialize lualine
 lualine.setup(config)

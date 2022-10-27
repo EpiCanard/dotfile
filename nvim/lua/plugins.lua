@@ -40,7 +40,9 @@ return require('packer').startup(function(use)
   use 'chrisbra/Colorizer'
   use 'nanozuki/tabby.nvim'
   use 'ckipp01/stylua-nvim'
-  use 'norcalli/nvim-colorizer.lua'
+  use 'ayu-theme/ayu-vim'
+  use {'sonph/onehalf', rtp = '/vim'}
+  use {'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
 
   -- File tree
   use 'kyazdani42/nvim-tree.lua'
