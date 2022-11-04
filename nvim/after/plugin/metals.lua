@@ -37,7 +37,7 @@ metals_config.settings = {
   showImplicitArguments = true,
   showImplicitConversionsAndClasses = true,
   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-  serverVersion = "0.11.7",
+  serverVersion = "0.11.9",
   scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf",
 }
 
