@@ -7,6 +7,7 @@ nnoremap <leader>fg "zyiw<ESC>:Telescope live_grep layout_strategy=vertical defa
 vnoremap <leader>fg "zy<ESC>:lua require('telescope.builtin').live_grep({default_text='<C-r>z'})<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope resume<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>o <cmd>MetalsOrganizeImports<cr>
