@@ -68,6 +68,7 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'unblevable/quick-scope'
   use 'terryma/vim-expand-region'
+  use {'phaazon/hop.nvim', branch = 'v2'}
 
   -- Status line
   use 'nvim-lualine/lualine.nvim'
