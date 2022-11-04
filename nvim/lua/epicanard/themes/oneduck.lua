@@ -1,15 +1,4 @@
--- vim: set fdm=marker
--- ==============================================================================
---   Name:        One Half Light
---   Author:      Son A. Pham <sp@sonpham.me>
---   Url:         httptheme.//github.com/sonph/onehalf
---   License:     The MIT License (MIT)
---
---   A light vim color scheme based on Atom's One. See github.com/sonph/onehalf
---   for installation instructions, a dark color scheme, versions for other
---   editors/terminals, and a matching theme for vim-airline.
--- ==============================================================================
-local color_utils = require("epicanard/color_utils")
+local color_utils = require("epicanard.color_utils")
 local link = color_utils.link
 local hib = color_utils.hib
 local hif = color_utils.hif
@@ -23,13 +12,18 @@ local M = {
 M.themes = {
   light = {
     black = "#383a42",
-    red = "#e45649", --
-    green = "#50a14f", --
-    yellow = "#c18401", --
-    blue = "#0184bc", --
+    red = "#e45649",
+    green = "#50a14f",
+    yellow = "#c18401",
+    blue = "#0184bc",
     purple = "#ca62a4",
     cyan = "#0997b3",
     white = "#ebebeb",
+
+    light_green = "#c4d9c4",
+    light_yellow = "#e1d1b1",
+    light_red = "#e9c6c3",
+    light_blue = "#b1d1df",
 
     fg = "#383a42",
     bg = "#ebebeb",
@@ -55,6 +49,11 @@ M.themes = {
     purple = "#c678dd",
     cyan = "#56b6c2",
     white = "#dcdfe4",
+
+    light_green = "#445245",
+    light_yellow = "#575146",
+    light_red = "#563c44",
+    light_blue = "#364d63",
 
     fg = "#dcdfe4",
     bg = "#282c34",
@@ -85,10 +84,10 @@ local function set_highlight(theme)
   hifb("LineNr", theme.gutter_fg, theme.gutter_bg)
   hif("CursorLineNr", theme.fg)
 
-  hif("DiffAdd", theme.green)
-  hif("DiffChange", theme.yellow)
-  hif("DiffDelete", theme.red)
-  hif("DiffText", theme.blue)
+  hib("DiffAdd", theme.light_green)
+  hib("DiffChange", theme.light_yellow)
+  hib("DiffDelete", theme.light_red)
+  hib("DiffText", theme.light_blue)
 
   hifb("IncSearch", theme.bg, theme.yellow)
   hifb("Search", theme.bg, theme.yellow)
@@ -104,7 +103,6 @@ local function set_highlight(theme)
   hib("PmenuSbar", theme.cursor_line)
   hib("PmenuThumb", theme.comment_fg)
 
-  hifb("EvilineLeftBarConnected", theme.blue, theme.bg)
   hif("SpellBad", theme.red)
   hif("SpellCap", theme.yellow)
   hif("SpellLocal", theme.yellow)
@@ -277,3 +275,4 @@ function M.get_current_theme()
 end
 
 return M
+-- vim: fdm=marker fmr={{{,}}}:
