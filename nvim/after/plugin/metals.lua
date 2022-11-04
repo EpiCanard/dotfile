@@ -1,4 +1,4 @@
-local map = require("epicanard.utils").map
+local map = require("epicanard.api.map").map
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 

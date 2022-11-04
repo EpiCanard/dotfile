@@ -1,6 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
-local map = require("epicanard.utils").map
+local map = require("epicanard.api.map").map
 
 -- Mapping
 map("n", "<leader>dc", [[<cmd>lua require"dap".continue()<CR>]])
