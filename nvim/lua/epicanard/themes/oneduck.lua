@@ -31,7 +31,7 @@ M.themes = {
     comment_fg = "#a0a1a7",
     gutter_bg = "#ebebeb",
     gutter_fg = "#d4d4d4",
-    non_text = "#e5e5e5",
+    non_text = "#a0a1a7",
 
     cursor_line = "#e1e1e1",
     color_col = "#e1e1e1",
@@ -61,7 +61,7 @@ M.themes = {
     comment_fg = "#5c6370",
     gutter_bg = "#282c34",
     gutter_fg = "#919baa",
-    non_text = "#373C45",
+    non_text = "#5c6370",
 
     cursor_line = "#313640",
     color_col = "#313640",
@@ -89,8 +89,8 @@ local function set_highlight(theme)
   hib("DiffDelete", theme.light_red)
   hib("DiffText", theme.light_blue)
 
-  hifb("IncSearch", theme.bg, theme.yellow)
-  hifb("Search", theme.bg, theme.yellow)
+  hifb("IncSearch", theme.bg, theme.light_blue)
+  hifb("Search", theme.bg, theme.light_blue)
 
   hif("ErrorMsg", theme.fg)
   hif("ModeMsg", theme.fg)
