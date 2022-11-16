@@ -34,8 +34,9 @@ local cmp_mappings = {
 
 -- Setup
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   completion = {
-    completeopt = "menu,menuone,noinsert",
+    completeopt = "menu,menuone,noinsert,preview",
     autocomplete = true,
   },
   formatting = {

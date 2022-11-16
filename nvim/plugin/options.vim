@@ -15,8 +15,6 @@ set shiftwidth=2
 set expandtab
 set smarttab
 
-set completeopt=menuone,noinsert,noselect,preview
-
 " Number column
 set number
 set relativenumber
