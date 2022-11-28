@@ -202,6 +202,10 @@ local function set_highlight(theme)
   load("git")
   -- }}}
 
+  -- Tabby {{{
+  load("tabby")
+  -- }}}
+
   -- Fix colors in neovim terminal buffers {{{
   -- vim.g.terminal_color_0 = theme.black.gui
   -- vim.g.terminal_color_1 = theme.red.gui
