@@ -37,7 +37,6 @@ return require('packer').startup(function(use)
   -- Style
   use 'kyazdani42/nvim-web-devicons'
   use 'sainnhe/gruvbox-material'
-  use 'chrisbra/Colorizer'
   use 'nanozuki/tabby.nvim'
   use 'ckipp01/stylua-nvim'
   use 'ayu-theme/ayu-vim'
