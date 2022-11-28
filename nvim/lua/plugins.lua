@@ -43,6 +43,18 @@ return require('packer').startup(function(use)
   use 'ayu-theme/ayu-vim'
   use {'sonph/onehalf', rtp = '/vim'}
   use {'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
+  use {
+    'cormacrelf/dark-notify',
+    cond = function() return vim.fn.has('macunix') end,
+    config = function()
+      require('dark_notify').run({
+        schemes = {
+          dark  = "oneduckdark",
+          light = "oneducklight"
+        }
+      })
+    end
+  }
 
   -- File tree
   use 'kyazdani42/nvim-tree.lua'
