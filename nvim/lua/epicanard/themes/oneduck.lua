@@ -3,6 +3,7 @@ local link = color_utils.link
 local hib = color_utils.hib
 local hif = color_utils.hif
 local hifb = color_utils.hifb
+local hi = color_utils.hi
 
 local M = {
   current_theme = "dark",
@@ -73,7 +74,22 @@ M.themes = {
 }
 -- }}}
 
+local function loader(theme)
+  return function(group)
+    local highlights = require("epicanard.themes.groups." .. group)(theme)
+
+    for key, value in pairs(highlights) do
+      if type(value) == "string" then
+        link(key, value)
+      else
+        hi(key, value)
+      end
+    end
+  end
+end
+
 local function set_highlight(theme)
+  local load = loader(theme)
   -- User interface colors {{{
   hifb("Normal", theme.fg, theme.bg)
 
@@ -92,10 +108,10 @@ local function set_highlight(theme)
   hifb("IncSearch", theme.bg, theme.light_blue)
   hifb("Search", theme.bg, theme.light_blue)
 
-  hif("ErrorMsg", theme.fg)
+  hif("ErrorMsg", theme.red)
   hif("ModeMsg", theme.fg)
   hif("MoreMsg", theme.fg)
-  hif("WarningMsg", theme.red)
+  hif("WarningMsg", theme.yellow)
   hif("Question", theme.purple)
 
   hifb("Pmenu", theme.fg, theme.cursor_line)
@@ -110,8 +126,8 @@ local function set_highlight(theme)
 
   hifb("StatusLine", theme.blue, theme.cursor_line)
   hifb("StatusLineNC", theme.comment_fg, theme.cursor_line)
-  hifb("TabLine", theme.comment_fg, theme.cursor_line)
-  hifb("TabLineFill", theme.comment_fg, theme.cursor_line)
+  hifb("TabLine", theme.fg, theme.gutter_fg)
+  hifb("TabLineFill", theme.fg, theme.cursor_line)
   hifb("TabLineSel", theme.fg, theme.bg)
 
   hib("Visual", theme.selection)
@@ -132,27 +148,7 @@ local function set_highlight(theme)
   -- }}}
 
   -- Eviline {{{
-  hifb("EvilineLeftBarDefault", theme.green, theme.eviline)
-  hifb("EvilineLeftBarConnected", theme.blue, theme.eviline)
-  hifb("EvilineFileName", theme.purple, theme.eviline, { bold = true })
-  hifb("EvilineProgress", theme.fg, theme.eviline, { bold = true })
-  hifb("EvilineEncoding", theme.green, theme.eviline, { bold = true })
-  hifb("EvilineFileFormat", theme.green, theme.eviline, { bold = true })
-  hifb("EvilineBranch", theme.purple, theme.eviline, { bold = true })
-  hib("EvilineMode", theme.eviline)
-  hifb("EvilineDiagnosticError", theme.red, theme.eviline)
-  hifb("EvilineDiagnosticWarn", theme.yellow, theme.eviline)
-  hifb("EvilineDiagnosticInfo", theme.cyan, theme.eviline)
-  hifb("EvilineDiagnosticHint", theme.comment_fg, theme.eviline)
-  hifb("EvilineDiffAdd", theme.green, theme.eviline)
-  hifb("EvilineDiffChange", theme.yellow, theme.eviline)
-  hifb("EvilineDiffDelete", theme.red, theme.eviline)
-  -- }}}
-
-  -- Neogit {{{
-  hif("NeogitNotificationInfo", theme.green)
-  hif("NeogitNotificationWarning", theme.yellow)
-  hif("NeogitNotificationError", theme.red)
+  load("eviline")
   -- }}}
 
   -- Syntax colors {{{
@@ -196,45 +192,14 @@ local function set_highlight(theme)
   hif("Delimiter", theme.fg)
   hif("SpecialComment", theme.fg)
   hif("Debug", theme.fg)
-  hif("Underlined", theme.fg)
+  hif("Underlined", theme.fg, { underline = true })
   hif("Ignore", theme.fg)
   hifb("Error", theme.red, theme.gutter_bg)
   hif("Todo", theme.purple)
   -- }}}
 
-  -- GitGutter {{{
-  hifb("GitGutterAdd", theme.green, theme.gutter_bg)
-  hifb("GitGutterDelete", theme.red, theme.gutter_bg)
-  hifb("GitGutterChange", theme.yellow, theme.gutter_bg)
-  hifb("GitGutterChangeDelete", theme.red, theme.gutter_bg)
-  -- }}}
-
-  -- Fugitive {{{
-  hif("diffAdded", theme.green)
-  hif("diffRemoved", theme.red)
-  -- }}}
-
   -- Git {{{
-  hif("gitcommitComment", theme.comment_fg)
-  hif("gitcommitUnmerged", theme.red)
-  hif("gitcommitOnBranch", theme.fg)
-  hif("gitcommitBranch", theme.purple)
-  hif("gitcommitDiscardedType", theme.red)
-  hif("gitcommitSelectedType", theme.green)
-  hif("gitcommitHeader", theme.fg)
-  hif("gitcommitUntrackedFile", theme.cyan)
-  hif("gitcommitDiscardedFile", theme.red)
-  hif("gitcommitSelectedFile", theme.green)
-  hif("gitcommitUnmergedFile", theme.yellow)
-  hif("gitcommitFile", theme.fg)
-
-  link("gitcommitNoBranch", "gitcommitBranch")
-  link("gitcommitUntracked", "gitcommitComment")
-  link("gitcommitDiscarded", "gitcommitComment")
-  link("gitcommitSelected", "gitcommitComment")
-  link("gitcommitDiscardedArrow", "gitcommitDiscardedFile")
-  link("gitcommitSelectedArrow", "gitcommitSelectedFile")
-  link("gitcommitUnmergedArrow", "gitcommitUnmergedFile")
+  load("git")
   -- }}}
 
   -- Fix colors in neovim terminal buffers {{{

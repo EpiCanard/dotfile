@@ -11,6 +11,10 @@ function M.link(group, linkName)
   vim.api.nvim_set_hl(0, group, { link = linkName })
 end
 
+function M.hi(group, extra, override)
+  vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", get_base(group, override), extra or {}))
+end
+
 function M.hif(group, foreground, extra, override)
   vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", get_base(group, override), { fg = foreground }, extra or {}))
 end
