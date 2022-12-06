@@ -1,3 +1,1 @@
-local oneduck = require("epicanard/themes/oneduck")
-
-oneduck.setup("dark")
+require("epicanard/themes/oneduck").setup("dark")

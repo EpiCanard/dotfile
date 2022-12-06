@@ -2,7 +2,6 @@ local lualine = require("lualine")
 local navic = require("nvim-navic")
 local link = require("epicanard/color_utils").link
 local hif = require("epicanard/color_utils").hif
-local oneduck = require("epicanard/themes/oneduck")
 
 local colors = {
   yellow = "#e9b143",
@@ -14,8 +13,6 @@ local colors = {
   blue = "#80aa9e",
   red = "#f2594b",
 }
-
-local theme = oneduck.get_current_theme()
 
 local conditions = {
   buffer_not_empty = function()
@@ -33,13 +30,7 @@ local config = {
     -- Disable sections and component separators
     component_separators = "",
     section_separators = "",
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = theme.fg, bg = theme.cursor_line } },
-      inactive = { c = { fg = theme.fg, bg = theme.cursor_line } },
-    },
+    theme = "oneduck",
   },
   sections = {
     -- these are to remove the defaults
