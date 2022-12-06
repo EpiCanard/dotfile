@@ -16,7 +16,7 @@ map("", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
 -- map("n", "gs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
 map("n", "gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
 map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
 map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map("n", "<leader>ws", '<cmd>lua require"metals".worksheet_hover()<CR>')
 map("n", "<leader>aa", [[<cmd>lua vim.diagnostic.setqflist()<CR>]]) -- all workspace diagnostics
