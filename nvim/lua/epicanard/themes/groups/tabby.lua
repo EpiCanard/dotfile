@@ -3,7 +3,8 @@ return function (theme)
   local tabline_bg = theme.gutter_fg
   local tablinefill_bg = theme.cursor_line
   local tablinesel_bg = theme.bg
-return {
+
+  return {
     -- Tabby
     ["TabbyHead"]         = { fg = tablinefill_bg,  bg = tablinefill_bg }, -- Foreground don't care it's head
     ["TabbyActiveTab"]    = { fg = tablinesel_bg,   bg = tablinefill_bg },

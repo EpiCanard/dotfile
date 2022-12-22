@@ -206,6 +206,10 @@ local function set_highlight(theme)
   load("tabby")
   -- }}}
 
+  -- TreeSitter {{{
+  load("treesitter")
+  -- }}}
+
   -- Fix colors in neovim terminal buffers {{{
   -- vim.g.terminal_color_0 = theme.black.gui
   -- vim.g.terminal_color_1 = theme.red.gui
