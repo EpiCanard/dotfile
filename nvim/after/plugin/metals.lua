@@ -73,7 +73,7 @@ end
 local lsp_augroup = augroup("lsp", { clear = true })
 autocmd("FileType", { pattern = "scala", command = "setlocal omnifunc=v:lua.vim.lsp.omnifunc", group = lsp_augroup })
 autocmd("FileType", {
-  pattern = { "scala", "sbt" },
+  pattern = { "scala", "sbt", "sc" },
   callback = function()
     require("metals").initialize_or_attach(metals_config)
   end,

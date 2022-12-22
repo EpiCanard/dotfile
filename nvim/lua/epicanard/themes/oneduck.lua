@@ -134,7 +134,7 @@ local function set_highlight(theme)
   hib("VisualNOS", theme.selection)
 
   hib("ColorColumn", theme.color_col)
-  hif("Conceal", theme.fg)
+  hif("Conceal", theme.blue)
   hif("Directory", theme.blue)
   hifb("VertSplit", theme.vertsplit, theme.vertsplit)
   hif("Folded", theme.fg)
