@@ -80,6 +80,7 @@ return require('packer').startup(function(use)
   use 'unblevable/quick-scope'
   use 'terryma/vim-expand-region'
   use {'phaazon/hop.nvim', branch = 'v2'}
+  use {'asiryk/auto-hlsearch.nvim', config = function() require('auto-hlsearch').setup() end}
 
   -- Status line
   use 'nvim-lualine/lualine.nvim'
