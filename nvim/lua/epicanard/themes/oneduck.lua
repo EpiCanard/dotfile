@@ -105,8 +105,8 @@ local function set_highlight(theme)
   hib("DiffDelete", theme.light_red)
   hib("DiffText", theme.light_blue)
 
-  hifb("IncSearch", theme.bg, theme.light_blue)
-  hifb("Search", theme.bg, theme.light_blue)
+  hib("IncSearch", theme.light_blue)
+  hib("Search", theme.light_blue)
 
   hif("ErrorMsg", theme.red)
   hif("ModeMsg", theme.fg)
