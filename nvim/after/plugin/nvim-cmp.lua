@@ -1,9 +1,20 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 local function next_item(fallback)
   if cmp.visible() then
     cmp.select_next_item()
+  elseif luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  elseif has_words_before() then
+    cmp.complete()
   else
     fallback()
   end
@@ -12,8 +23,8 @@ end
 local function prev_item(fallback)
   if cmp.visible() then
     cmp.select_prev_item()
-  else
-    fallback()
+  elseif luasnip.jumpable(-1) then
+    luasnip.jump(-1)
   end
 end
 
@@ -26,10 +37,10 @@ local cmp_mappings = {
   -- snippets you need to remove this select
   ["<CR>"] = cmp.mapping.confirm({ select = true }),
   ["<ESC>"] = cmp.mapping.abort(),
-  ["<Tab>"] = next_item,
-  ["<Down>"] = next_item,
-  ["<S-Tab>"] = prev_item,
-  ["<Up>"] = prev_item,
+  ["<Tab>"] = cmp.mapping(next_item, { "i", "s" }),
+  ["<Down>"] = cmp.mapping(next_item, { "i", "s" }),
+  ["<S-Tab>"] = cmp.mapping(prev_item, { "i", "s" }),
+  ["<Up>"] = cmp.mapping(prev_item, { "i", "s" }),
 }
 
 -- Setup
@@ -50,11 +61,11 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "vsnip" },
     { name = "nvim_lsp_signature_help" },
+    { name = "luasnip" },
   },
   snippet = {
     expand = function(args)
-      -- Comes from vsnip
-      vim.fn["vsnip#anonymous"](args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = cmp_mappings,

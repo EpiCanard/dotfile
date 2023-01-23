@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'p00f/clangd_extensions.nvim'
   use 'SmiteshP/nvim-navic'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- Style
   use 'kyazdani42/nvim-web-devicons'
