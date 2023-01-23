@@ -35,11 +35,8 @@ return {
 
   -- Style
   "kyazdani42/nvim-web-devicons",
-  "sainnhe/gruvbox-material",
   "nanozuki/tabby.nvim",
   "ckipp01/stylua-nvim",
-  "ayu-theme/ayu-vim",
-  "sonph/onehalf",
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -103,7 +100,6 @@ return {
   },
   "psliwka/vim-smoothie",
   "windwp/nvim-autopairs",
-  "unblevable/quick-scope",
   "terryma/vim-expand-region",
   { "phaazon/hop.nvim", branch = "v2" },
   {
