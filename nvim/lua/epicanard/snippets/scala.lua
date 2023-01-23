@@ -73,6 +73,10 @@ ls.add_snippets("scala", {
       case  =>
     }
   ]])),
+  pf({trig = "(%w+): (%w+)%.opt", regTrig = true}, c(1, {
+    l(l.LS_CAPTURE_1 .. ": Option[" .. l.LS_CAPTURE_2.. "]"),
+    l("maybe" .. l.LS_CAPTURE_1:gsub("^%l", string.upper) .. ": Option[" .. l.LS_CAPTURE_2.. "]"),
+  })),
   s("def", fmt("def {}({}): {} = {}", {
     i(1),
     d(2, argument_rec(), {}),
