@@ -23,6 +23,22 @@ argument_rec = function(prefix)
   end
 end
 
+local function pair_character(char)
+  if char == "[" then
+    return "]"
+  elseif char == "(" then
+    return ")"
+  elseif char == "{" then
+    return "}"
+  else
+    return char
+  end
+end
+
+local function surround(key, char)
+  return l(key .. char .. l.POSTFIX_MATCH .. pair_character(char))
+end
+
 -- stylua: ignore start
 ls.add_snippets("scala", {
   s("tr", {
@@ -77,8 +93,9 @@ ls.add_snippets("scala", {
     l(l.LS_CAPTURE_1 .. ": Option[" .. l.LS_CAPTURE_2 .. "]"),
     l("maybe" .. l.LS_CAPTURE_1:gsub("^%l", string.upper) .. ": Option[" .. l.LS_CAPTURE_2 .. "]"),
   })),
-  pf(".opt", l("Option[" .. l.POSTFIX_MATCH .. "]")),
-  pf(".io", l("IO[" .. l.POSTFIX_MATCH .. "]")),
+  pf(".opt", surround("Option", "[")),
+  pf(".io", surround("IO", "[")),
+  pf(".so", surround("Some", "(")),
   pf(".ei", fmt("Either[{}, {}]", { i(1), l(l.POSTFIX_MATCH) })),
   s("def", fmt("def {}({}): {} = {}", {
     i(1),
