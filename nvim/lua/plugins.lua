@@ -109,6 +109,7 @@ return {
     end,
   },
 
+  "lpoto/telescope-docker.nvim",
   -- Status line
   "nvim-lualine/lualine.nvim",
   "wbthomason/lsp-status.nvim",
