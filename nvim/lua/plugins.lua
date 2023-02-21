@@ -114,6 +114,7 @@ return {
   "nvim-lualine/lualine.nvim",
   "wbthomason/lsp-status.nvim",
   --   use 'arkav/lualine-lsp-progress'
+  "liangxianzhe/nap.nvim",
 
   -- Test
   "vim-test/vim-test",
