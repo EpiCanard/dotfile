@@ -117,4 +117,5 @@ return {
 
   -- Test
   "vim-test/vim-test",
+  "ziontee113/SelectEase",
 }
