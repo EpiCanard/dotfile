@@ -3,7 +3,7 @@ local navic = require("nvim-navic")
 
 require("clangd_extensions").setup()
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       runtime = {
