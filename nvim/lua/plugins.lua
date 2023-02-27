@@ -17,12 +17,13 @@ return {
   "nvim-telescope/telescope-project.nvim",
 
   -- Lsp
+  "L3MON4D3/LuaSnip",
+
   "scalameta/nvim-metals",
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lsp-signature-help",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
+  "saadparwaiz1/cmp_luasnip",
   "mfussenegger/nvim-dap",
   "rcarriga/nvim-dap-ui",
   "theHamsta/nvim-dap-virtual-text",
@@ -30,8 +31,6 @@ return {
   "neovim/nvim-lspconfig",
   "p00f/clangd_extensions.nvim",
   "SmiteshP/nvim-navic",
-  "L3MON4D3/LuaSnip",
-  "saadparwaiz1/cmp_luasnip",
 
   -- Style
   "kyazdani42/nvim-web-devicons",
