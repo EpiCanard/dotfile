@@ -38,9 +38,7 @@ local cmp_mappings = {
   ["<CR>"] = cmp.mapping.confirm({ select = true }),
   ["<ESC>"] = cmp.mapping.abort(),
   ["<Tab>"] = cmp.mapping(next_item, { "i", "s" }),
-  ["<Down>"] = cmp.mapping(next_item, { "i", "s" }),
   ["<S-Tab>"] = cmp.mapping(prev_item, { "i", "s" }),
-  ["<Up>"] = cmp.mapping(prev_item, { "i", "s" }),
 }
 
 -- Setup
