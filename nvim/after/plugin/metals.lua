@@ -6,7 +6,8 @@ local augroup = vim.api.nvim_create_augroup
 -- OPTIONS -----------------------
 ----------------------------------
 -- global
-vim.opt_global.shortmess:remove("F"):append("c")
+vim.opt_global.shortmess:remove("F")
+vim.opt_global.shortmess:append("c")
 
 -- LSP
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
