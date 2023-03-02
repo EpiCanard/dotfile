@@ -1,3 +1,12 @@
+local function setup(package, module)
+  return {
+    package,
+    config = function()
+      require(module).setup({})
+    end,
+  }
+end
+
 return {
 
   -- Library
@@ -36,12 +45,7 @@ return {
   "kyazdani42/nvim-web-devicons",
   "nanozuki/tabby.nvim",
   "ckipp01/stylua-nvim",
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
-  },
+  setup("norcalli/nvim-colorizer.lua", "colorizer"),
   {
     "cormacrelf/dark-notify",
     cond = function()
@@ -61,12 +65,7 @@ return {
   "kyazdani42/nvim-tree.lua",
 
   -- Trouble
-  {
-    "folke/trouble.nvim",
-    config = function()
-      require("trouble").setup({})
-    end,
-  },
+  setup("folke/trouble.nvim", "trouble"),
 
   -- Git
   "TimUntersberger/neogit",
@@ -79,36 +78,20 @@ return {
   "kristijanhusak/vim-dadbod-completion",
 
   -- Utils
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
-  },
-  {
-    "stevearc/dressing.nvim",
-    config = function()
-      require("dressing").setup()
-    end,
-  },
-  {
-    "AckslD/nvim-neoclip.lua",
-    config = function()
-      require("neoclip").setup()
-    end,
-  },
-  "psliwka/vim-smoothie",
+  setup("numToStr/Comment.nvim", "Comment"),
+  setup("stevearc/dressing.nvim", "dressing"),
+  setup("kylechui/nvim-surround", "nvim-surround"),
+  setup("AckslD/nvim-neoclip.lua", "neoclip"),
   "windwp/nvim-autopairs",
-  "terryma/vim-expand-region",
-  { "phaazon/hop.nvim", branch = "v2" },
-  {
-    "asiryk/auto-hlsearch.nvim",
-    config = function()
-      require("auto-hlsearch").setup()
-    end,
-  },
+  setup("asiryk/auto-hlsearch.nvim", "auto-hlsearch"),
 
   "lpoto/telescope-docker.nvim",
+
+  -- Motion
+  "psliwka/vim-smoothie",
+  "terryma/vim-expand-region",
+  { "phaazon/hop.nvim", branch = "v2" },
+
   -- Status line
   "nvim-lualine/lualine.nvim",
   "wbthomason/lsp-status.nvim",
