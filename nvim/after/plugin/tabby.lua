@@ -12,7 +12,7 @@ local function win_label(icon)
   return function(winid)
     local fname = filename.tail(winid)
     local extension = vim.fn.fnamemodify(fname, ":e")
-    local fileIcon = require("nvim-web-devicons").get_icon(filename, extension)
+    local fileIcon = require("nvim-web-devicons").get_icon(fname, extension)
     local buid = vim.api.nvim_win_get_buf(winid)
     local is_modified = vim.api.nvim_buf_get_option(buid, "modified")
     local modifiedIcon = is_modified and "" or ""
