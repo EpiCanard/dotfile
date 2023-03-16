@@ -10,7 +10,7 @@ autopairs.add_rules({
   Rule('"""', '"""', "scala"):replace_map_cr(function()
     return "\n  |\n|<c-o>$.stripMargin<Up>"
   end),
-  Rule("^%s+|.*", "", "scala"):use_regex(true):with_pair(cond.none()):replace_map_cr(function()
+  Rule("^%s+|.*", "", "scala"):use_regex(true):only_cr():replace_map_cr(function()
     return "\n|"
   end),
   Rule("%$(%a+)%.$", "", "scala"):use_regex(true):replace_endpair(function(opts)
