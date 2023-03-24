@@ -203,4 +203,11 @@ ins_right({
   cond = conditions.hide_in_width,
 })
 
+ins_right({
+  function()
+    return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  end,
+  color = "EvilineFileName",
+})
+
 lualine.setup(config)
