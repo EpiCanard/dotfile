@@ -198,6 +198,11 @@ local function set_highlight(theme)
   hif("Todo", theme.purple)
   -- }}}
 
+  -- {{{ IndentBlankLine
+  hif("IndentBlanklineChar", theme.cursor_line)
+  hif("IndentBlanklineContextChar", theme.comment_fg)
+  -- }}}
+
   -- Git {{{
   load("git")
   -- }}}

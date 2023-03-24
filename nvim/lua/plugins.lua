@@ -60,6 +60,17 @@ return {
       })
     end,
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        show_current_context = true,
+        show_trailing_blankline_indent = false,
+        char_blankline = "┊",
+        use_treesitter = true,
+      })
+    end,
+  },
 
   -- File tree
   "kyazdani42/nvim-tree.lua",
