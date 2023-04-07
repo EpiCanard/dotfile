@@ -21,7 +21,7 @@
 #define C_U FR_U // U
 #define C_C FR_C // C
 
-#define X_CIRC X_LBRACKET
+#define X_CIRC X_LBRC
 
 enum combos {
     // Acute
