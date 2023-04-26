@@ -46,19 +46,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AG_FR_C LAG(FR_C)
 
 #define CSG_NO C(S(G(KC_NO)))
-// Underglow configuration
-#ifdef RGBLIGHT_ENABLE
-#    define RGBLIGHT_EFFECT_BREATHING
-#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    define RGBLIGHT_EFFECT_SNAKE
-#    define RGBLIGHT_EFFECT_KNIGHT
-#    define RGBLIGHT_EFFECT_CHRISTMAS
-#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#    define RGBLIGHT_EFFECT_RGB_TEST
-#    define RGBLIGHT_EFFECT_ALTERNATING
-#    define RGBLIGHT_EFFECT_TWINKLE
-#    define RGBLIGHT_HUE_STEP 8
-#    define RGBLIGHT_SAT_STEP 8
-#    define RGBLIGHT_VAL_STEP 8
-#endif
+
+// RGB
+#undef RGB_DI_PIN
+#define RGB_DI_PIN 25
+#undef RGBLED_NUM
+#define RGBLED_NUM 2
+#undef RGBLED_SPLIT
+#define RGBLED_SPLIT {1, 1}
+
+#define SPLIT_LED_STATE_ENABLE
+#define SPLIT_LAYER_STATE_ENABLE

@@ -93,6 +93,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /* === PROCESS === */
+void keyboard_pre_init_user(void) {
+  // Disable power led of MCU
+  setPinOutput(24);
+  writePinHigh(24);
+}
+
+void keyboard_post_init_user(void) {
+    // Initialize RGB to static black
+    rgblight_enable_noeeprom();
+    rgblight_sethsv_noeeprom(HSV_BLACK);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
         // Keycodes that continue Caps Word, with shift applied.
