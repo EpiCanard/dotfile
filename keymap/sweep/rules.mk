@@ -6,3 +6,4 @@ SRC                     +=    combo.c         \
 KEY_OVERRIDE_ENABLE      =     yes
 COMBO_ENABLE             =     yes
 CAPS_WORD_ENABLE         =     yes
+BOOTMAGIC_ENABLE         =     yes
