@@ -44,9 +44,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LT2_COL LT(2, FR_COLN)
 #define LT3_B LT(3, FR_B)
 #define AG_FR_C LAG(FR_C)
+#define LGUI_A  LGUI_T(FR_A)
+#define LSFT_S  LSFT_T(FR_S)
+#define LALT_D  LALT_T(FR_D)
+#define LCTL_Z  LCTL_T(FR_Z)
 
 #define CSG_NO C(S(G(KC_NO)))
-
+#define IGNORE_MOD_TAP_INTERRUPT
 // RGB
 #undef RGB_DI_PIN
 #define RGB_DI_PIN 25
