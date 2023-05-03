@@ -4,22 +4,22 @@
 #define COMB(cb, replace) COMBO(combos_map[cb], replace)
 #define COMB_ACTION(cb) COMBO_ACTION(combos_map[cb])
 
-#define L_ACU  LSFT_S  // '
-#define L_CIRC LALT_D  // ^
-#define L_GRV  LT2_F // `
-#define L_TRM  LT1_G // ¨
+#define L_ACU  GUI_S  // '
+#define L_CIRC ALT_D  // ^
+#define L_GRV  LT2_F  // `
+#define L_TRM  FR_G   // ¨
 
-#define R_ACU  FR_J    // '
-#define R_CIRC FR_K    // ^
-#define R_GRV  FR_L    // `
-#define R_TRM  LT2_COL // ¨
+#define R_ACU  LT2_J   // '
+#define R_CIRC ALT_K   // ^
+#define R_GRV  GUI_L   // `
+#define R_TRM  SFT_COL // ¨
 
-#define C_A LGUI_A // A
-#define C_E FR_E // E
-#define C_I FR_I // I
-#define C_O FR_O // O
-#define C_U FR_U // U
-#define C_C FR_C // C
+#define C_A SFT_A // A
+#define C_E FR_E  // E
+#define C_I FR_I  // I
+#define C_O FR_O  // O
+#define C_U FR_U  // U
+#define C_C FR_C  // C
 
 #define X_CIRC X_LBRC
 

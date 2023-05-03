@@ -38,16 +38,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IGNORE_MOD_TAP_INTERRUPT
 #define QUICK_TAP_TERM 0
 
-#define LT1_G LT(1, FR_G)
-#define LT1_M LT(1, FR_M)
+// === CUSOM KEYCODES ===
+// Toggle layer 1
+#define LT1_ESC LT(1, KC_ESC)
+#define LT1_ENT LT(1, KC_ENT)
+
+// Toggle layer 2
 #define LT2_F LT(2, FR_F)
-#define LT2_COL LT(2, FR_COLN)
-#define LT3_B LT(3, FR_B)
-#define AG_FR_C LAG(FR_C)
-#define LGUI_A  LGUI_T(FR_A)
-#define LSFT_S  LSFT_T(FR_S)
-#define LALT_D  LALT_T(FR_D)
-#define LCTL_Z  LCTL_T(FR_Z)
+#define LT2_J LT(2, FR_J)
+
+// Toggle layer 3
+#define LT3_V LT(3, FR_V)
+
+// Left hand mod row
+#define SFT_A  LSFT_T(FR_A)
+#define GUI_S  LGUI_T(FR_S)
+#define ALT_D  LALT_T(FR_D)
+#define CTL_Q  LCTL_T(FR_Q)
+
+// Right hand mod row
+#define SFT_COL LSFT_T(FR_COLN)
+#define GUI_L   LGUI_T(FR_L)
+#define ALT_K   LALT_T(FR_K)
+#define CTL_P   LCTL_T(FR_P)
 
 #define CSG_NO C(S(G(KC_NO)))
 #define IGNORE_MOD_TAP_INTERRUPT

@@ -34,18 +34,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                            `-----------------'    `-----------------'
 
 
-// ctl on D ? toggle on esc and enter
 [0] = LAYOUT_split_3x5_2(
 // ,--------------------------------------------.    ,--------------------------------------------.
-     FR_Q   , FR_W   , FR_E   , FR_R   , FR_T   ,      FR_Y   , FR_U   , FR_I   , FR_O   , FR_P   ,
+     CTL_Q  , FR_W   , FR_E   , FR_R   , FR_T   ,      FR_Y   , FR_U   , FR_I   , FR_O   , CTL_P  ,
 // |--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------|
-     LGUI_A , LSFT_S , LALT_D , LT2_F  , LT1_G  ,      FR_H   , FR_J   , FR_K   , FR_L   , LT2_COL,
+     SFT_A  , GUI_S  , ALT_D  , LT2_F  , FR_G   ,      FR_H   , LT2_J  , ALT_K   , GUI_L , SFT_COL,
 // |--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------|
-     LCTL_Z , FR_X   , FR_C   , FR_V   , LT3_B  ,      FR_N   , LT1_M  , FR_COMM, FR_DOT , FR_SLSH,
+     FR_Z   , FR_X   , FR_C   , LT3_V  , FR_B   ,      FR_N   , FR_M  , FR_COMM, FR_DOT , FR_SLSH,
 // `--------------------------------------------'    `--------------------------------------------'
 
 //                            ,-----------------.    ,-----------------.
-                                KC_ESC , KC_SPC ,      KC_ENT , KC_BSPC
+                                LT1_ESC, KC_SPC ,      LT1_ENT, KC_BSPC
 //                            `-----------------'    `-----------------'
 ),
 
@@ -131,7 +130,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_DEL:
         case FR_UNDS:
         case KC_LSFT:
-        case LT3_B:
+        case LT3_V:
         case FR_MINS:
             return true;
 
