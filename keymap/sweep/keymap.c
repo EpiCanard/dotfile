@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // ,--------------------------------------------.    ,--------------------------------------------.
      FR_EXLM, FR_AT  , FR_LCBR, FR_RCBR, FR_PIPE,      FR_BSLS, FR_QUOT, FR_EQL , _______, FR_ASTR,
 // |--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------|
-     FR_HASH, FR_DLR , FR_LPRN, FR_RPRN, _______,      KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, FR_PLUS,
+     SFT_ASH, FR_DLR , FR_LPRN, FR_RPRN, _______,      KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, SFT_PLS,
 // |--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------|
      FR_PERC, FR_CIRC, FR_LBRC, FR_RBRC, FR_TILD,      FR_AMPR, FR_MINS, FR_GRV , _______, FR_BSLS,
 // `--------------------------------------------'    `--------------------------------------------'

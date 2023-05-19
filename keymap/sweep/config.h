@@ -51,13 +51,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LT3_V LT(3, FR_V)
 
 // Left hand mod row
-#define SFT_A  LSFT_T(FR_A)
-#define GUI_S  LGUI_T(FR_S)
-#define ALT_D  LALT_T(FR_D)
-#define CTL_Q  LCTL_T(FR_Q)
+#define SFT_A   LSFT_T(FR_A)
+#define SFT_ASH LSFT_T(FR_HASH)
+#define GUI_S   LGUI_T(FR_S)
+#define ALT_D   LALT_T(FR_D)
+#define CTL_Q   LCTL_T(FR_Q)
 
 // Right hand mod row
 #define SFT_COL LSFT_T(FR_COLN)
+#define SFT_PLS LSFT_T(FR_PLUS)
 #define GUI_L   LGUI_T(FR_L)
 #define ALT_K   LALT_T(FR_K)
 #define CTL_P   LCTL_T(FR_P)
