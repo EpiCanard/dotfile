@@ -44,7 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Left hand mod row
 #define SFT_A   LSFT_T(FR_A)
-#define SFT_ASH LSFT_T(FR_HASH)
 #define GUI_S   LGUI_T(FR_S)
 #define ALT_D   LALT_T(FR_D)
 #define CTL_Q   LCTL_T(FR_Q)
