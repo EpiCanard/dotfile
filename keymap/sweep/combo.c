@@ -32,7 +32,8 @@ const uint16_t PROGMEM combos_map[][3] = {
     [CB_U_TRM]  = { L_TRM , C_U, COMBO_END },
     // Cedilla
     [CB_C_CED]  = { R_ACU , C_C, COMBO_END },
-    [CB_EQUAL]  = { L_GRV , R_ACU, COMBO_END }
+    [CB_EQUAL]  = { L_GRV , R_ACU, COMBO_END },
+    [CB_TG_2]   = { LT2_F , LT2_J, COMBO_END }
 };
 
 combo_t key_combos[] = {
@@ -62,7 +63,8 @@ combo_t key_combos[] = {
     COMB_ACTION(CB_U_TRM),
     // cedilla
     COMB(CB_C_CED, FR_CCED),
-    COMB(CB_EQUAL, FR_EQL)
+    COMB(CB_EQUAL, FR_EQL),
+    COMB(CB_TG_2, TG(2))
 };
 
 char* getTapKC(combo_t *combo) {

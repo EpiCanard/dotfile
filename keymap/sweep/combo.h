@@ -51,5 +51,6 @@ enum combos {
     // Cedilla
     CB_C_CED,
     CB_EQUAL,
+    CB_TG_2,
     CB_LENGTH
 };
