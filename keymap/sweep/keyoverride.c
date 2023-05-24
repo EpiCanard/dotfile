@@ -15,5 +15,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     CS(FR_MINS, FR_UNDS),
     CS(FR_GRV, FR_TILD),
     CS(KC_SPC, KC_TAB),
+    CS(KC_MS_L, KC_WH_L),
+    CS(KC_MS_D, KC_WH_D),
+    CS(KC_MS_U, KC_WH_U),
+    CS(KC_MS_R, KC_WH_R),
     NULL // Null terminate the array of overrides!
 };
