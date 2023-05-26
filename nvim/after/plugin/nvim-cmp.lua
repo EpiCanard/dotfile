@@ -48,7 +48,6 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   completion = {
     completeopt = "menu,menuone,noinsert,preview",
-    autocomplete = true,
   },
   formatting = {
     fields = { "abbr", "kind", "menu" },
