@@ -33,7 +33,7 @@ const uint16_t PROGMEM combos_map[][3] = {
     // Cedilla
     [CB_C_CED]  = { R_ACU , C_C, COMBO_END },
     [CB_EQUAL]  = { L_GRV , R_ACU, COMBO_END },
-    [CB_TG_2]   = { LT2_F , LT2_J, COMBO_END }
+    [CB_TG_2]   = { LT2_F , LT2_H, COMBO_END }
 };
 
 combo_t key_combos[] = {

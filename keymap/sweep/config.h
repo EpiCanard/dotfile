@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Toggle layer 2
 #define LT2_F LT(2, FR_F)
-#define LT2_J LT(2, FR_J)
+#define LT2_H LT(2, FR_H)
 
 // Toggle layer 3
 #define LT3_V LT(3, FR_V)
@@ -49,10 +49,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CTL_Q   LCTL_T(FR_Q)
 
 // Right hand mod row
-#define SFT_COL LSFT_T(FR_COLN)
-#define SFT_PLS LSFT_T(FR_PLUS)
-#define GUI_L   LGUI_T(FR_L)
-#define ALT_K   LALT_T(FR_K)
+#define SFT_L   LSFT_T(FR_L)
+#define SFT_RGT LSFT_T(KC_RGHT)
+#define GUI_K   LGUI_T(FR_K)
+#define ALT_J   LALT_T(FR_J)
 #define CTL_P   LCTL_T(FR_P)
 
 #define CSG_NO C(S(G(KC_NO)))

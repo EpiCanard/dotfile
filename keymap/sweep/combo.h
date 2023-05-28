@@ -9,10 +9,10 @@
 #define L_GRV  LT2_F  // `
 #define L_TRM  FR_G   // ¨
 
-#define R_ACU  LT2_J   // '
-#define R_CIRC ALT_K   // ^
-#define R_GRV  GUI_L   // `
-#define R_TRM  SFT_COL // ¨
+#define R_ACU  LT2_H  // '
+#define R_CIRC ALT_J  // ^
+#define R_GRV  GUI_K  // `
+#define R_TRM  SFT_L  // ¨
 
 #define C_A SFT_A // A
 #define C_E FR_E  // E
