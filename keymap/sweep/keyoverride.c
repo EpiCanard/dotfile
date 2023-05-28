@@ -2,6 +2,7 @@
 #include "keymap_french.h"
 
 #define CS(trigger_key, replacement_key)  &ko_make_basic(MOD_MASK_SHIFT, trigger_key, replacement_key)
+#define CG(trigger_key, replacement_key)  &ko_make_basic(MOD_MASK_GUI, trigger_key, replacement_key)
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
@@ -19,5 +20,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     CS(KC_MS_D, KC_WH_D),
     CS(KC_MS_U, KC_WH_U),
     CS(KC_MS_R, KC_WH_R),
+    CG(FR_B, LCTL(FR_B)),
     NULL // Null terminate the array of overrides!
 };
