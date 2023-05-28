@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MK_C_INTERVAL_UNMOD 16
 
 // Pick good defaults for enabling homerow modifiers
-#define TAPPING_TERM 400
+#define TAPPING_TERM 300
 #define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
 #define QUICK_TAP_TERM 0
