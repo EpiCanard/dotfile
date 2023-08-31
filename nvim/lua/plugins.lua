@@ -102,6 +102,12 @@ return {
   "psliwka/vim-smoothie",
   "terryma/vim-expand-region",
   { "phaazon/hop.nvim", branch = "v2" },
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    config = function()
+      require("various-textobjs").setup({ useDefaultKeymaps = true })
+    end,
+  },
 
   -- Status line
   "nvim-lualine/lualine.nvim",
