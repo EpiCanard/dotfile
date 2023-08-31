@@ -1,2 +1,4 @@
 nvim/plugged
 **/packer_compiled.lua
+**/lazy-lock.json
+**/.luarc.json

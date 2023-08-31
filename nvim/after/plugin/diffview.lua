@@ -6,6 +6,8 @@ diffview.setup({
   key_bindings = {
     view = {
       ["q"] = diffview.close,
+      ["<C-x>"] = actions.cycle_layout,
+      ["<esc>"] = "<esc>",
     },
     file_panel = {
       ["<tab>"] = actions.select_next_entry,
@@ -13,6 +15,7 @@ diffview.setup({
       ["<leader>e"] = actions.focus_files,
       ["<leader>b"] = actions.toggle_files,
       ["q"] = diffview.close,
+      ["<esc>"] = "<esc>",
     },
     file_history_panel = {
       ["q"] = diffview.close,
