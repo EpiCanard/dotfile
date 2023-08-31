@@ -6,8 +6,10 @@ alias zsc='nvim ~/.zshrc && source ~/.zshrc'
 alias al='print -z -- $(alias | fzf | cut -d '=' -f 1)'
 
 # -- LS --
+alias l='ls'
 alias la='ls -a'
 alias ll='ls -l'
+alias lr='ls -R'
 
 # -- TMUX --
 alias mux='tmuxinator'
@@ -65,6 +67,7 @@ alias gpf!='git push --force'
 alias gr='cd $(git rev-parse --show-toplevel)'
 alias gup='git rev-parse --abbrev-ref HEAD | xargs -I{} git branch --set-upstream-to=origin/{} {}'
 alias gas='git add --all && git stash'
+alias gmf='git merge --ff-only'
 
 alias bsync="ls -d $BASE_PROJECTS/*/.git | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git pull'"
 alias btmm="git stash && git checkout master || git checkout main && git pull"
@@ -80,4 +83,6 @@ if type "glab" > /dev/null; then
   alias gmc='glab mr view -c'
   alias gcv='glab ci view'
   alias gps='glab pipeline status --live'
+  alias gro='glab repo view -w'
+
 fi
