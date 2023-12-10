@@ -40,6 +40,8 @@ return {
   "neovim/nvim-lspconfig",
   "p00f/clangd_extensions.nvim",
   "SmiteshP/nvim-navic",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
 
   -- Style
   "kyazdani42/nvim-web-devicons",
