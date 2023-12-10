@@ -62,12 +62,10 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     config = function()
-      require("indent_blankline").setup({
-        show_current_context = true,
-        show_trailing_blankline_indent = false,
-        char_blankline = "┊",
-        use_treesitter = true,
+      require("ibl").setup({
+        indent = { char = "┊" },
       })
     end,
   },
@@ -119,4 +117,16 @@ return {
   "vim-test/vim-test",
   "ziontee113/SelectEase",
   setup("akinsho/toggleterm.nvim", "toggleterm"),
+  {
+    "BooleanCube/keylab.nvim",
+    config = function()
+      local keylab = require("keylab")
+      keylab.setup({
+        LINES = 10,
+        force_accuracy = false,
+        correct_fg = "#B8BB26",
+        wrong_bg = "#FB4934",
+      })
+    end,
+  },
 }

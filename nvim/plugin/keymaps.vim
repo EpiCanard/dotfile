@@ -17,6 +17,7 @@ nnoremap <leader>P <cmd>Telescope neoclip<cr>
 nnoremap <leader>c <cmd>Neogit commit<cr>
 nnoremap <C-t> <cmd>ToggleTerm<CR>
 tnoremap <C-t> <cmd>ToggleTerm<CR>
+nnoremap <leader>c <cmd>Telescope colorscheme default_text=duck<cr>
 
 nnoremap df "_dd
 nnoremap vp viwp
