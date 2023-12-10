@@ -44,4 +44,17 @@ lspconfig.lua_ls.setup({
   end,
 })
 
-lspconfig.jdtls.setup({})
+lspconfig.jdtls.setup({
+  settings = {
+    java = {
+      completion = {
+        importOrder = {
+          "",
+          "java",
+          "javax",
+          "#",
+        },
+      },
+    },
+  },
+})
