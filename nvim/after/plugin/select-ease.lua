@@ -11,60 +11,38 @@ local scala_query = [[
             ;; query
             ((identifier) @cap)
         ]]
+local java_query = [[
+            ;; query
+            ((identifier) @cap)
+        ]]
 
 local queries = {
   lua = lua_query,
   scala = scala_query,
+  java = java_query,
 }
 
-local function map(mapping, previous, vertical, current)
+local function map(mapping, previous, vertical, current, swap)
   vim.keymap.set({ "n", "s", "i" }, mapping, function()
-    select_ease.select_node({
+    local params = {
       queries = queries,
       direction = previous and "previous" or "next",
       vertical_drill_jump = vertical,
       current_line_only = current,
-    })
+    }
+    if swap then
+      select_ease.swap_nodes(params)
+    else
+      select_ease.select_node(params)
+    end
   end)
 end
 
-map("<C-A-h>", true, false, true)
-map("<C-A-j>", false, true, false)
-map("<C-A-k>", true, true, false)
-map("<C-A-l>", false, false, true)
-
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-k>", function()
---   select_ease.select_node({
---     queries = queries,
---     direction = "previous",
---     vertical_drill_jump = true,
---   })
--- end, {})
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-j>", function()
---   select_ease.select_node({
---     queries = queries,
---     direction = "next",
---     vertical_drill_jump = true,
---   })
--- end, {})
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-h>", function()
---   select_ease.select_node({
---     queries = queries,
---     direction = "previous",
---     current_line_only = true,
---   })
--- end, {})
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-l>", function()
---   select_ease.select_node({
---     queries = queries,
---     direction = "next",
---     current_line_only = true,
---   })
--- end, {})
---
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-p>", function()
---   select_ease.select_node({ queries = queries, direction = "previous" })
--- end, {})
--- vim.keymap.set({ "n", "s", "i" }, "<C-A-n>", function()
---   select_ease.select_node({ queries = queries, direction = "next" })
--- end, {})
+map("<A-h>", true, false, true, false)
+map("<A-j>", false, true, false, false)
+map("<A-k>", true, true, false, false)
+map("<A-l>", false, false, true, false)
+map("<C-A-h>", true, false, true, true)
+map("<C-A-j>", false, true, false, true)
+map("<C-A-k>", true, true, false, true)
+map("<C-A-l>", false, false, true, true)

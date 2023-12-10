@@ -29,3 +29,5 @@ lspconfig.lua_ls.setup({
     navic.attach(client, bufnr)
   end,
 })
+
+lspconfig.jdtls.setup({})
