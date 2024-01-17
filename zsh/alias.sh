@@ -4,6 +4,8 @@
 alias sc='source ~/.zshrc'
 alias zsc='nvim ~/.zshrc && source ~/.zshrc'
 alias al='print -z -- $(alias | fzf | cut -d '=' -f 1)'
+alias ..='cd ..'
+alias ...='cd ...'
 
 # -- LS --
 alias l='ls'
@@ -46,8 +48,8 @@ alias gcp='git cherry-pick'
 alias gcr="git status -s | fzf -m | xargs -I{} sh -c 'echo {} | cut -d \" \" -f 2' | xargs -I{} git checkout -- {}"
 alias gf='git fetch'
 alias gp='git pull'
-alias gl="git log --pretty='format:%C(auto)%h %C(auto,cyan)%<(20,trunc)%an %ad %C(auto)%s %C(auto)%d' --date='format:%DT%R' -n 30"
-alias gL="git log --pretty='format:%C(auto)%h %C(auto,cyan)%<(20,trunc)%an %ad %C(auto)%s %C(auto)%d' --date='format:%DT%R'"
+alias gl="git log --pretty='format:%C(auto)%h %C(auto,cyan)%<(20,trunc)%an %ad %cd %C(auto)%s %C(auto)%d' --date='format:%d/%m/%y %R' -n 30"
+alias gL="git log --pretty='format:%C(auto)%h %C(auto,cyan)%<(20,trunc)%an %ad %cd %C(auto)%s %C(auto)%d' --date='format:%d/%m/%y %R'"
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias gsta='git stash push'
