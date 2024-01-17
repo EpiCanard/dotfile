@@ -24,6 +24,18 @@ return {
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   "nvim-telescope/telescope-symbols.nvim",
   "nvim-telescope/telescope-project.nvim",
+  {
+    "Dynge/gitmoji.nvim",
+    config = function()
+      require("gitmoji").setup({
+        filetypes = { "NeogitCommitMessage" },
+        completion = {
+          complete_as = "text",
+        },
+      })
+    end,
+    ft = "NeogitCommitMessage",
+  },
 
   -- Lsp
   "L3MON4D3/LuaSnip",
