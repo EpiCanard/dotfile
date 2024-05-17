@@ -30,14 +30,16 @@ map("n", "]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>")
 ----------------------------------
 -- LSP Setup ---------------------
 ----------------------------------
-metals_config = require("metals").bare_config()
+local metals_config = require("metals").bare_config()
 
 -- Example of settings
 metals_config.settings = {
   showImplicitArguments = true,
   showImplicitConversionsAndClasses = true,
+  showInferredType = true,
+  autoImportBuild = "all",
   excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-  serverVersion = "1.2.0",
+  serverVersion = "1.3.1",
   scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf",
 }
 
