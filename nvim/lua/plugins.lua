@@ -1,12 +1,3 @@
-local function setup(package, module)
-  return {
-    package,
-    config = function()
-      require(module).setup({})
-    end,
-  }
-end
-
 return {
 
   -- Library
@@ -26,14 +17,11 @@ return {
   "nvim-telescope/telescope-project.nvim",
   {
     "Dynge/gitmoji.nvim",
-    config = function()
-      require("gitmoji").setup({
-        filetypes = { "NeogitCommitMessage" },
-        completion = {
-          complete_as = "text",
-        },
-      })
-    end,
+    main = "gitmoji",
+    opts = {
+      filetypes = { "NeogitCommitMessage" },
+      completion = { complete_as = "text" },
+    },
     ft = "NeogitCommitMessage",
   },
 
@@ -46,7 +34,7 @@ return {
   "hrsh7th/cmp-nvim-lsp-signature-help",
   "saadparwaiz1/cmp_luasnip",
   "mfussenegger/nvim-dap",
-  "rcarriga/nvim-dap-ui",
+  { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
   "theHamsta/nvim-dap-virtual-text",
   "onsails/lspkind-nvim",
   "neovim/nvim-lspconfig",
@@ -59,7 +47,7 @@ return {
   "kyazdani42/nvim-web-devicons",
   "nanozuki/tabby.nvim",
   "ckipp01/stylua-nvim",
-  setup("norcalli/nvim-colorizer.lua", "colorizer"),
+  { "norcalli/nvim-colorizer.lua", main = "colorizer" },
   {
     "cormacrelf/dark-notify",
     cond = function()
@@ -77,18 +65,16 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    config = function()
-      require("ibl").setup({
-        indent = { char = "┊" },
-      })
-    end,
+    opts = {
+      indent = { char = "┊" },
+    },
   },
 
   -- File tree
   "kyazdani42/nvim-tree.lua",
 
   -- Trouble
-  setup("folke/trouble.nvim", "trouble"),
+  { "folke/trouble.nvim", cmd = "Trouble", opts = {} },
 
   -- Git
   "TimUntersberger/neogit",
@@ -101,12 +87,12 @@ return {
   "kristijanhusak/vim-dadbod-completion",
 
   -- Utils
-  setup("numToStr/Comment.nvim", "Comment"),
-  setup("stevearc/dressing.nvim", "dressing"),
-  setup("kylechui/nvim-surround", "nvim-surround"),
-  setup("AckslD/nvim-neoclip.lua", "neoclip"),
+  { "numToStr/Comment.nvim", main = "Comment" },
+  { "stevearc/dressing.nvim", main = "dressing" },
+  "kylechui/nvim-surround",
+  { "AckslD/nvim-neoclip.lua", main = "neoclip" },
   "windwp/nvim-autopairs",
-  setup("asiryk/auto-hlsearch.nvim", "auto-hlsearch"),
+  { "asiryk/auto-hlsearch.nvim", main = "auto-hlsearch" },
 
   "lpoto/telescope-docker.nvim",
 
@@ -116,9 +102,8 @@ return {
   { "phaazon/hop.nvim", branch = "v2" },
   {
     "chrisgrieser/nvim-various-textobjs",
-    config = function()
-      require("various-textobjs").setup({ useDefaultKeymaps = true })
-    end,
+    main = "various-textobjs",
+    opts = { useDefaultKeymaps = true },
   },
 
   -- Status line
@@ -130,17 +115,5 @@ return {
   -- Test
   "vim-test/vim-test",
   "ziontee113/SelectEase",
-  setup("akinsho/toggleterm.nvim", "toggleterm"),
-  {
-    "BooleanCube/keylab.nvim",
-    config = function()
-      local keylab = require("keylab")
-      keylab.setup({
-        LINES = 10,
-        force_accuracy = false,
-        correct_fg = "#B8BB26",
-        wrong_bg = "#FB4934",
-      })
-    end,
-  },
+  { "akinsho/toggleterm.nvim", main = "toggleterm" },
 }
