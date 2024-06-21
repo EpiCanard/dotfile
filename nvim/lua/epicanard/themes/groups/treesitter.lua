@@ -66,6 +66,10 @@ return function(theme)
     -- Identifiers
     ["@variable"] = "Normal",                   -- various variable names
     ["@variable.builtin"] = "Normal",           -- built-in variable names (e.g. `this`)
+    ["@val_definition.identifier"] = "Normal",  -- various variable names
+    ["@assignment_expressio.identifier"] = "Normal",  -- various variable names
+    ["@lsp.type.variable.scala"] = "Normal",
+    ["@lsp.type.parameter.scala"] = "Normal",
 
     ["@constant"] = "Constant",                 -- constant identifiers
     ["@constant.builtin"] = "Special",          -- built-in constant values

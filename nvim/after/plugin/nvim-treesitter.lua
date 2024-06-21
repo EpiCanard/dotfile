@@ -4,6 +4,8 @@ require("nvim-treesitter.configs").setup({
     "json",
     "java",
     "scala",
+    "javascript",
+    "typescript",
     "vim",
     "lua",
   },

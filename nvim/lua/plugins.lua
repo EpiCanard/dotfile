@@ -1,5 +1,4 @@
 return {
-
   -- Library
   "nvim-lua/plenary.nvim",
 
@@ -19,10 +18,13 @@ return {
     "Dynge/gitmoji.nvim",
     main = "gitmoji",
     opts = {
-      filetypes = { "NeogitCommitMessage" },
-      completion = { complete_as = "text" },
+      filetypes = { "NeogitCommitMessage", "gitcommit" },
+      completion = {
+        append_space = true,
+        complete_as = "text",
+      },
     },
-    ft = "NeogitCommitMessage",
+    ft = { "NeogitCommitMessage", "gitcommit" },
   },
 
   -- Lsp
@@ -66,6 +68,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {
+      scope = { enabled = true },
       indent = { char = "┊" },
     },
   },
@@ -74,10 +77,13 @@ return {
   "kyazdani42/nvim-tree.lua",
 
   -- Trouble
-  { "folke/trouble.nvim", cmd = "Trouble", opts = {} },
+  { "folke/trouble.nvim", cmd = "Trouble", opts = {
+    auto_jump = true,
+    focus = true,
+  } },
 
   -- Git
-  "TimUntersberger/neogit",
+  "NeogitOrg/neogit",
   "lewis6991/gitsigns.nvim",
   "sindrets/diffview.nvim",
 
@@ -103,7 +109,10 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     main = "various-textobjs",
-    opts = { useDefaultKeymaps = true },
+    opts = {
+      useDefaultKeymaps = true,
+      disabledKeymaps = { "gc" },
+    },
   },
 
   -- Status line

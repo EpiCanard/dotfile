@@ -58,3 +58,22 @@ lspconfig.jdtls.setup({
     },
   },
 })
+
+lspconfig.pyright.setup({})
+
+lspconfig.robotframework_ls.setup({
+  cmd = { "typescript-language-server", "--stdio", "--jsx" },
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.html.setup({
+  capabilities = capabilities,
+})
+
+lspconfig.tsserver.setup({})
+
+lspconfig.sqlls.setup({
+  root_dir = lspconfig.util.root_pattern(".git"),
+})

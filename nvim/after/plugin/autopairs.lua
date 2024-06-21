@@ -4,6 +4,7 @@ local cond = require("nvim-autopairs.conds")
 
 autopairs.setup({
   fast_wrap = {},
+  check_ts = true,
 })
 
 autopairs.add_rules({

@@ -17,7 +17,7 @@ alias lr='ls -R'
 alias mux='tmuxinator'
 alias tl="tmux ls"
 alias t="tmux"
-alias tn='tmux new-session -n $(pwd | xargs basename) "nvim"'
+alias tn='tmux new-session -s $(pwd | xargs basename) -n nvim "nvim"'
 
 # -- NVIM --
 alias n="nvim"

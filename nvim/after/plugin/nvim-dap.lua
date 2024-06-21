@@ -25,6 +25,16 @@ dap.configurations.scala = {
   {
     type = "scala",
     request = "launch",
+    name = "Run play",
+    metals = {
+      runType = "run",
+      mainClass = "play.core.server.ProdServerStart",
+      envFile = "configurations/envs/local/perso_conf.env",
+    },
+  },
+  {
+    type = "scala",
+    request = "launch",
     name = "Test File",
     metals = {
       runType = "testFile",
@@ -39,7 +49,7 @@ dap.configurations.scala = {
     },
   },
 }
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup({})
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
