@@ -9,3 +9,5 @@ vim.o.foldcolumn = "0"
 require("epicanard.options")
 
 require("lazy").setup("plugins")
+
+require("epicanard.commands")

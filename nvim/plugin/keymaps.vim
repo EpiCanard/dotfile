@@ -34,7 +34,7 @@ nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Trouble lsp_re
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
-nnoremap <leader>b :NvimTreeFindFileToggle<CR>
+nnoremap <leader>b :lua require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd(), update_root = false, find_file = true, focus = true, })<CR>
 nnoremap <leader>n :Neogit<CR>
 
 vnoremap < <gv
