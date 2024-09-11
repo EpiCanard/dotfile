@@ -72,7 +72,7 @@ lspconfig.html.setup({
   capabilities = capabilities,
 })
 
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 
 lspconfig.sqlls.setup({
   root_dir = lspconfig.util.root_pattern(".git"),
