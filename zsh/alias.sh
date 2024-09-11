@@ -20,8 +20,10 @@ alias t="tmux"
 alias tn='tmux new-session -s $(pwd | xargs basename) -n nvim "nvim"'
 
 # -- NVIM --
-alias n="nvim"
-alias nn="nvim +Neogit"
+alias n='nvim'
+alias nn='nvim +Neogit'
+alias nf='nvim "+Telescope find_files"'
+alias ng='nvim "+Telescope live_grep"'
 
 # -- BLOOP --
 if type "bloop" > /dev/null; then
