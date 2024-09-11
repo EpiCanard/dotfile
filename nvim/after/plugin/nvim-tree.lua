@@ -1,4 +1,5 @@
 require("nvim-tree").setup({
+  sync_root_with_cwd = true,
   hijack_cursor = true,
   update_cwd = true,
   diagnostics = {
