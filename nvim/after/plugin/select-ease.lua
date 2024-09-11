@@ -15,11 +15,21 @@ local java_query = [[
             ;; query
             ((identifier) @cap)
         ]]
+local javascript_query = [[
+            ;; query
+            ((identifier) @cap)
+        ]]
+local typescript_query = [[
+            ;; query
+            ((identifier) @cap)
+        ]]
 
 local queries = {
   lua = lua_query,
   scala = scala_query,
   java = java_query,
+  javascript = javascript_query,
+  typescript = typescript_query,
 }
 
 local function map(mapping, previous, vertical, current, swap)
