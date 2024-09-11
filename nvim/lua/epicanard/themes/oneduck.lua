@@ -124,6 +124,8 @@ local function set_highlight(theme)
   hi("SpellLocal", { undercurl = true, sp = theme.yellow })
   hi("SpellRare", { undercurl = true, sp = theme.yellow })
 
+  hifb("FloatBorder", theme.fg, theme.bg)
+
   hifb("StatusLine", theme.blue, theme.cursor_line)
   hifb("StatusLineNC", theme.comment_fg, theme.cursor_line)
   hifb("TabLine", theme.fg, theme.gutter_fg)
@@ -137,7 +139,7 @@ local function set_highlight(theme)
   hif("Conceal", theme.blue)
   hif("Directory", theme.blue)
   hifb("VertSplit", theme.vertsplit, theme.vertsplit)
-  hif("Folded", theme.fg)
+  hifb("Folded", theme.fg, theme.light_yellow)
   hif("FoldColumn", theme.fg)
   hif("SignColumn", theme.fg)
 
@@ -147,6 +149,12 @@ local function set_highlight(theme)
   hif("WildMenu", theme.fg)
   -- }}}
 
+  -- Neogit {{{
+  link("NeogitCursorLine", "CursorLine")
+  -- }}}
+
+  link("NeotestDir", "Comment")
+  link("NeotestFile", "Normal")
   -- Eviline {{{
   load("eviline")
   -- }}}
@@ -199,8 +207,7 @@ local function set_highlight(theme)
   -- }}}
 
   -- {{{ IndentBlankLine
-  hif("IndentBlanklineChar", theme.cursor_line)
-  hif("IndentBlanklineContextChar", theme.comment_fg)
+  hif("IblIndent", theme.gutter_fg)
   -- }}}
 
   -- Git {{{
