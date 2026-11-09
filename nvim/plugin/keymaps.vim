@@ -14,6 +14,7 @@ nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 
 nnoremap <leader>P <cmd>Telescope neoclip<cr>
 nnoremap <leader>c <cmd>Neogit commit<cr>
+nnoremap <leader>r zR
 nnoremap <C-t> <cmd>ToggleTerm<CR>
 tnoremap <C-t> <cmd>ToggleTerm<CR>
 nnoremap <leader>c <cmd>Telescope colorscheme default_text=duck<cr>
@@ -41,8 +42,8 @@ vnoremap > >gv
 
 " Fold
 nnoremap <leader>zz zMzvzz
-nnoremap n nzMzvzz
-nnoremap N NzMzvzz
+nnoremap n nzz
+nnoremap N Nzz
 
 " clean highlight after a search with /
 nnoremap <silent> <leader><Esc> :nohlsearch<CR>

@@ -29,7 +29,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 
 -- Scroll
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 999
 vim.opt.sidescrolloff = 2
 
 vim.opt.mouse = "a"
@@ -44,7 +44,7 @@ vim.opt.splitright = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-vim.opt.foldlevel = 2
+vim.opt.foldlevel = 99
 
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_auto_execute_table_helpers = 1
