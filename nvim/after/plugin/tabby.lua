@@ -1,5 +1,5 @@
 local tabby = require("tabby")
-local filename = require("tabby.module.filename")
+local filename = require("tabby.filename")
 
 local function tab_label(icon)
   return function(tabid)
