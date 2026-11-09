@@ -12,6 +12,9 @@ The LSP configuration requires Neovim 0.11.3 or newer and a recent `nvim-lspconf
 with native server configurations in `lsp/`. On an existing installation, update
 the plugin with `:Lazy update nvim-lspconfig` after upgrading Neovim.
 
+The Treesitter configuration uses its legacy `master` branch for Neovim 0.11.
+Neovim 0.12 requires migrating Treesitter to its new `main` API.
+
 ### Tips
 
 - After editing plugins.lua, use :PackerCompile to correctly setup config

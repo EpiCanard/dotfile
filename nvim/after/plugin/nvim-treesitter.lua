@@ -8,6 +8,8 @@ require("nvim-treesitter.configs").setup({
     "typescript",
     "vim",
     "lua",
+    "markdown",
+    "markdown_inline",
   },
   sync_install = false,
   auto_install = true,
@@ -92,14 +94,3 @@ require("nvim-treesitter.configs").setup({
     },
   },
 })
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-parser_config.markdown = {
-  install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    files = { "src/parser.c" },
-    branch = "main",
-  },
-  filetype = "md",
-}
