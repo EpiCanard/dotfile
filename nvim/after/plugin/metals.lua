@@ -10,7 +10,6 @@ vim.opt_global.shortmess:remove("F")
 vim.opt_global.shortmess:append("c")
 
 -- LSP
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 map("", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
 -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
 -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")

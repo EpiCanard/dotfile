@@ -23,12 +23,13 @@ nnoremap vp viwp
 
 " Trouble
 nnoremap q <cmd>Trouble close<cr><cmd>ccl<cr>
-nnoremap gr <cmd>Trouble lsp_references<cr>
-nnoremap gi <cmd>Trouble lsp_implementations<cr>
+nnoremap gr <cmd>Glance references<cr>
+nnoremap gi <cmd>Glance implementations<cr>
 nnoremap gs <cmd>MetalsGotoSuperMethod<cr>
 nnoremap <leader>dd <cmd>Trouble diagnostics toggle filter.buf=0<cr>
 nnoremap <leader>wd <cmd>Trouble diagnostics toggle<cr>
-nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Trouble lsp_references<cr>
+nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Glance references<cr>
+nnoremap gd <cmd>Glance definitions<cr>
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
