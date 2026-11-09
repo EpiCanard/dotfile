@@ -3,3 +3,14 @@ nvim/plugged
 **/lazy-lock.json
 **/.luarc.json
 nvim/lua/plugins/wip_*
+
+# Local configurations & secrets
+**/*.local.*
+**/local.lua
+nvim/lua/epicanard/local.lua
+nvim/lua/plugins/local_*
+nvim/lua/plugins/local/
+*.local.sh
+*.local.zsh
+.env
+.env.*

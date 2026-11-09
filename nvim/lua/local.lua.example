@@ -1,0 +1,13 @@
+-- Copy this file to local.lua, which is gitignored.
+-- Customize editor preferences or settings for integrations you have enabled.
+
+-- Local editor preferences
+-- vim.opt.colorcolumn = "100"
+
+-- Notes directory (when the :Note command supports NOTES_PATH)
+-- Alternatively: export NOTES_PATH="$HOME/.notes/" in your shell
+-- vim.env.NOTES_PATH = vim.fn.expand("~/.notes/")
+
+-- Jira base URL (when the Jira ticket shortcut is enabled)
+-- Alternatively: export JIRA_URL="https://your-company.atlassian.net"
+-- vim.g.jira_url = "https://your-company.atlassian.net"
