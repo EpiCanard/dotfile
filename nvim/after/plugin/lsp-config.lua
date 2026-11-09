@@ -1,9 +1,8 @@
-local lspconfig = require("lspconfig")
 local navic = require("nvim-navic")
 
 require("clangd_extensions").setup()
 
-lspconfig.lua_ls.setup({
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
@@ -44,7 +43,7 @@ lspconfig.lua_ls.setup({
   end,
 })
 
-lspconfig.jdtls.setup({
+vim.lsp.config("jdtls", {
   settings = {
     java = {
       completion = {
@@ -59,21 +58,21 @@ lspconfig.jdtls.setup({
   },
 })
 
-lspconfig.pyright.setup({})
+vim.lsp.config("pyright", {})
 
-lspconfig.robotframework_ls.setup({
-  cmd = { "typescript-language-server", "--stdio", "--jsx" },
-})
+vim.lsp.config("robotframework_ls", {})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.html.setup({
+vim.lsp.config("html", {
   capabilities = capabilities,
 })
 
-lspconfig.ts_ls.setup({})
+vim.lsp.config("ts_ls", {})
 
-lspconfig.sqlls.setup({
-  root_dir = lspconfig.util.root_pattern(".git"),
+vim.lsp.config("sqlls", {
+  root_markers = { ".git" },
 })
+
+vim.lsp.enable({ "lua_ls", "jdtls", "pyright", "robotframework_ls", "html", "ts_ls", "sqlls" })

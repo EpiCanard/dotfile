@@ -6,6 +6,12 @@ Just execute the command below. It will create symbolic link in your XDG_CONFIG_
 
 > ./setup.sh
 
+### Neovim
+
+The LSP configuration requires Neovim 0.11.3 or newer and a recent `nvim-lspconfig`
+with native server configurations in `lsp/`. On an existing installation, update
+the plugin with `:Lazy update nvim-lspconfig` after upgrading Neovim.
+
 ### Tips
 
 - After editing plugins.lua, use :PackerCompile to correctly setup config
