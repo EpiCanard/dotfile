@@ -114,10 +114,10 @@ alias gup='git rev-parse --abbrev-ref HEAD | xargs -I{} git branch --set-upstrea
 alias gas='git add --all && git stash'
 alias gmf='git merge --ff-only'
 
-alias bsync="ls -d $BASE_PROJECTS/*/.git | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git pull'"
+alias bsync="ls -d \${BASE_PROJECTS:-\$HOME/Projects}/*/.git 2>/dev/null | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git pull'"
 alias btmm="git stash && git checkout master || git checkout main && git pull"
-alias prupru="pushd $BASE_PROJECTS && ls -d */.git | xargs -I{} dirname {} | xargs -I{} sh -c 'cd {} && git branch | rg -v \"master|main|next\" | xargs -I[] echo \"{}/[]\"' && popd"
-alias pruneTags="ls -d $BASE_PROJECTS/*/.git | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git fetch --prune --prune-tags '"
+alias prupru="pushd \${BASE_PROJECTS:-\$HOME/Projects} >/dev/null 2>&1 && ls -d */.git 2>/dev/null | xargs -I{} dirname {} | xargs -I{} sh -c 'cd {} && git branch | rg -v \"master|main|develop\" | xargs -I[] echo \"{}/[]\"' && popd >/dev/null 2>&1"
+alias pruneTags="ls -d \${BASE_PROJECTS:-\$HOME/Projects}/*/.git 2>/dev/null | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git fetch --prune --prune-tags '"
 
 # -- GLAB --
 if type "glab" > /dev/null; then
