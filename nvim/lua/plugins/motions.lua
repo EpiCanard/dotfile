@@ -20,8 +20,10 @@ return {
     "chrisgrieser/nvim-various-textobjs",
     main = "various-textobjs",
     opts = {
-      useDefaultKeymaps = true,
-      disabledKeymaps = { "gc" },
+      keymaps = {
+        useDefaults = true,
+        disabledDefaults = { "gc" },
+      },
     },
   },
 }
