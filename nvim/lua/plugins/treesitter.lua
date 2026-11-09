@@ -1,9 +1,6 @@
 return {
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-  -- Display function we are in
-  "nvim-treesitter/nvim-treesitter-context",
-
   -- Display breadcrump to see path to current location
   "SmiteshP/nvim-navic",
 
