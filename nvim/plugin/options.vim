@@ -16,4 +16,6 @@ endfun
 
 map gm :call SynGroup()<CR>
 
+let test#scala#runner = 'blooptest'
+
 syntax on
