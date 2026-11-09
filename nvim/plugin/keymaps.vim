@@ -9,7 +9,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope resume<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
-nnoremap <leader>fds <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <leader>O <cmd>MetalsOrganizeImports<cr><cmd>w<cr>
 nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 
@@ -23,13 +22,12 @@ nnoremap df "_dd
 nnoremap vp viwp
 
 " Trouble
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap q <cmd>TroubleClose<cr>
+nnoremap q <cmd>Trouble close<cr><cmd>ccl<cr>
 nnoremap gr <cmd>Trouble lsp_references<cr>
 nnoremap gi <cmd>Trouble lsp_implementations<cr>
 nnoremap gs <cmd>MetalsGotoSuperMethod<cr>
-nnoremap <leader>dd <cmd>Trouble document_diagnostics<cr>
-nnoremap <leader>wd <cmd>Trouble workspace_diagnostics<cr>
+nnoremap <leader>dd <cmd>Trouble diagnostics toggle filter.buf=0<cr>
+nnoremap <leader>wd <cmd>Trouble diagnostics toggle<cr>
 nnoremap gR <cmd>MetalsGotoSuperMethod<cr><cmd>sleep 100m<cr><cmd>Trouble lsp_references<cr>
 
 nnoremap <leader>ll :MetalsToggleLogs<CR>
