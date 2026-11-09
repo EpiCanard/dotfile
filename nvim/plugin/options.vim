@@ -1,7 +1,6 @@
 " Database
 let g:db_ui_use_nerd_fonts=1
 :command Db :tabnew +DBUIToggle
-:command Dock :Telescope docker
 
 set clipboard+=unnamedplus
 

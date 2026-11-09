@@ -33,9 +33,15 @@ telescope.setup({
       i = {
         ["<C-d>"] = require("telescope.actions").delete_buffer,
         ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["<C-n>"] = require("telescope.actions.layout").cycle_layout_next,
         ["<C-j>"] = require("telescope.actions").cycle_history_next,
         ["<C-k>"] = require("telescope.actions").cycle_history_prev,
       },
+    },
+  },
+  pickers = {
+    git_status = {
+      path_display = { "truncate" },
     },
   },
   extensions = {
@@ -51,7 +57,7 @@ telescope.load_extension("fzf")
 telescope.load_extension("project")
 telescope.load_extension("metals")
 telescope.load_extension("neoclip")
-telescope.load_extension("docker")
 
 map("n", "<C-p>", ":lua require'telescope'.extensions.project.project{}<CR>")
-map("n", "<C-n>", ":lua require'telescope'.extensions.metals.commands{}<CR>")
+map("n", "<leader>m", ":lua require'telescope'.extensions.metals.commands{}<CR>")
+map("n", "<leader>gs", ":Telescope git_status<CR>")

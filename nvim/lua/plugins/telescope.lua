@@ -10,9 +10,6 @@ return {
   -- Telescope extensions to list and navigate between projects
   "nvim-telescope/telescope-project.nvim",
 
-  -- Telescope extensions for docker
-  "lpoto/telescope-docker.nvim",
-
   -- Telescope extensions for handle clipboard
   { "AckslD/nvim-neoclip.lua", main = "neoclip" },
 }
