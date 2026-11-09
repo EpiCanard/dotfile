@@ -11,16 +11,17 @@ nnoremap <leader>fr <cmd>Telescope resume<cr>
 nnoremap <leader>fs <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>O <cmd>MetalsOrganizeImports<cr><cmd>w<cr>
 nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
+vnoremap <leader>D :DiffviewFileHistory<cr>
 
 nnoremap <leader>P <cmd>Telescope neoclip<cr>
 nnoremap <leader>c <cmd>Neogit commit<cr>
 nnoremap <leader>r zR
-nnoremap <C-t> <cmd>ToggleTerm<CR>
-tnoremap <C-t> <cmd>ToggleTerm<CR>
+nnoremap <leader>K <cmd>Telescope keymaps<cr>
 nnoremap <leader>c <cmd>Telescope colorscheme default_text=duck<cr>
+nnoremap <leader>ci <cmd>split \| terminal glab ci view<cr>
 
 nnoremap df "_dd
-nnoremap vp viwp
+nnoremap vp viw"0p
 
 " Trouble
 nnoremap q <cmd>Trouble close<cr><cmd>ccl<cr>
@@ -35,7 +36,7 @@ nnoremap gd <cmd>Glance definitions<cr>
 nnoremap <leader>ll :MetalsToggleLogs<CR>
 
 nnoremap <leader>b :lua require("nvim-tree.api").tree.toggle({ path = vim.fn.getcwd(), update_root = false, find_file = true, focus = true, })<CR>
-nnoremap <leader>n :Neogit<CR>
+nnoremap <leader>, :Neogit<CR>
 
 vnoremap < <gv
 vnoremap > >gv
@@ -65,3 +66,4 @@ nnoremap gp `[v`]
 
 nmap <silent> <leader>t :TestNearest<CR>
 
+silent! nunmap grr
