@@ -16,8 +16,15 @@ alias lr='ls -R'
 # -- TMUX --
 alias mux='tmuxinator'
 alias tl="tmux ls"
-alias t="tmux"
 alias tn='tmux new-session -s $(pwd | xargs basename) -n nvim "nvim"'
+
+function t() {
+    if [[ -n "$1" ]]; then
+        tmux new -A -s "$1"
+    else
+        tmux
+    fi
+}
 
 # -- NVIM --
 alias n='nvim'
