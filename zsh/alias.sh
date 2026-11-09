@@ -67,7 +67,21 @@ alias gb='git branch'
 alias gbd='git branch | rg -v "master|next" | fzf -m | xargs -I{} git branch -d {}'
 alias gbD='git branch | rg -v "master|next" | fzf -m | xargs -I{} git branch -D {}'
 alias gmm='git commit -m'
-alias grh='git fetch && git reset --hard'
+function grh() {
+    git fetch || return
+
+    if (( $# > 0 )); then
+        git reset --hard "$@"
+        return
+    fi
+
+    local branch
+    branch=$(git symbolic-ref --quiet --short HEAD) || {
+        print -u2 -- "grh: cannot reset to origin/current branch from a detached HEAD"
+        return 1
+    }
+    git reset --hard "origin/$branch"
+}
 alias gc='git checkout'
 # alias gC='git branch | grep -v "\*" | fzf | xargs git checkout'
 # alias grC='git branch --remote | grep -v "HEAD" | sed -e "s#origin/\(.*\)#\1#g" | grep -v  `git branch --show-current` | fzf | xargs git checkout'
