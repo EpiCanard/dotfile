@@ -8,6 +8,6 @@
 -- Alternatively: export NOTES_PATH="$HOME/.notes/" in your shell
 -- vim.env.NOTES_PATH = vim.fn.expand("~/.notes/")
 
--- Jira base URL (when the Jira ticket shortcut is enabled)
+-- Jira base URL (used by <leader>J)
 -- Alternatively: export JIRA_URL="https://your-company.atlassian.net"
 -- vim.g.jira_url = "https://your-company.atlassian.net"
