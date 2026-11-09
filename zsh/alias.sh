@@ -27,7 +27,26 @@ function t() {
 }
 
 # -- NVIM --
-alias n='nvim'
+function n() {
+    if [[ -n "$TMUX" ]]; then
+        local automatic_rename nvim_status
+        automatic_rename=$(tmux show-option -wqv automatic-rename) || {
+            nvim "$@"
+            return
+        }
+        tmux set-window-option automatic-rename off || {
+            nvim "$@"
+            return
+        }
+        tmux rename-window "[N] $(basename "$PWD")"
+        nvim "$@"
+        nvim_status=$?
+        tmux set-window-option automatic-rename "$automatic_rename"
+        return "$nvim_status"
+    fi
+
+    nvim "$@"
+}
 alias nn='nvim +Neogit'
 alias nf='nvim "+Telescope find_files"'
 alias ng='nvim "+Telescope live_grep"'
