@@ -92,6 +92,7 @@ local function set_highlight(theme)
   local load = loader(theme)
   -- User interface colors {{{
   hifb("Normal", theme.fg, theme.bg)
+  hifb("NormalFloat", theme.fg, theme.light_yellow)
 
   hifb("Cursor", theme.bg, theme.blue)
   hib("CursorColumn", theme.cursor_line)
@@ -208,6 +209,7 @@ local function set_highlight(theme)
 
   -- {{{ IndentBlankLine
   hif("IblIndent", theme.gutter_fg)
+  hif("IblScope", theme.light_blue)
   -- }}}
 
   -- Git {{{

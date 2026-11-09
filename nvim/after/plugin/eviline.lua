@@ -126,8 +126,7 @@ ins_left({
       t = colors.red,
     }
     hif("EvilineMode", mode_color[vim.fn.mode()], {}, false)
-    --return ""
-    return ""
+    return "󰇥"
   end,
   color = "EvilineMode",
   padding = { right = 1 },
