@@ -50,10 +50,14 @@ telescope.setup({
         "~/Projects",
       },
     },
+    smart_open = {
+      match_algorithm = "fzf",
+    },
   },
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("smart_open")
 telescope.load_extension("project")
 telescope.load_extension("metals")
 telescope.load_extension("neoclip")
