@@ -1,10 +1,10 @@
 return {
   -- Handle connection to database
-  "tpope/vim-dadbod",
+  "ViSHNUPrABU/vim-dadbod",
 
   -- UI design for dadbod
-  "kristijanhusak/vim-dadbod-ui",
+  "ViSHNUPrABU/vim-dadbod-ui",
 
   -- Auto-completion for dadbod
-  "kristijanhusak/vim-dadbod-completion",
+  "ViSHNUPrABU/vim-dadbod-completion",
 }
