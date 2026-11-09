@@ -1,5 +1,6 @@
 local api = require("nvim-tree.api")
 
 vim.api.nvim_create_user_command("Note", function()
-  api.tree.open({ path = "~/.notes/", update_root = false })
+  local notes_path = os.getenv("NOTES_PATH") or vim.fn.expand("~/.notes/")
+  api.tree.open({ path = notes_path, update_root = false })
 end, {})
