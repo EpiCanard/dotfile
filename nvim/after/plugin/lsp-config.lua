@@ -71,8 +71,30 @@ vim.lsp.config("html", {
 
 vim.lsp.config("ts_ls", {})
 
+local eslint_on_attach = vim.lsp.config.eslint.on_attach
+local eslint_augroup = vim.api.nvim_create_augroup("EslintFixOnSave", { clear = true })
+
+vim.lsp.config("eslint", {
+  on_attach = function(client, bufnr)
+    eslint_on_attach(client, bufnr)
+    local commands = vim.api.nvim_buf_get_commands(bufnr, {})
+    local fix_all = commands.LspEslintFixAll and "LspEslintFixAll" or "EslintFixAll"
+
+    vim.api.nvim_clear_autocmds({ group = eslint_augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = eslint_augroup,
+      buffer = bufnr,
+      callback = function()
+        if vim.lsp.buf_is_attached(bufnr, client.id) then
+          vim.cmd(fix_all)
+        end
+      end,
+    })
+  end,
+})
+
 vim.lsp.config("sqlls", {
   root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "lua_ls", "jdtls", "pyright", "robotframework_ls", "html", "ts_ls", "sqlls" })
+vim.lsp.enable({ "lua_ls", "jdtls", "pyright", "robotframework_ls", "html", "ts_ls", "eslint", "sqlls" })
