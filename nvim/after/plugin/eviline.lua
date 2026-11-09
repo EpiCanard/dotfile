@@ -88,7 +88,7 @@ end
 
 ins_left({
   function()
-    if #vim.lsp.buf_get_clients() >= 1 then
+    if #vim.lsp.get_clients({ bufnr = 0 }) >= 1 then
       link("EvilineLeftBar", "EvilineLeftBarConnected")
     else
       link("EvilineLeftBar", "EvilineLeftBarDefault")
