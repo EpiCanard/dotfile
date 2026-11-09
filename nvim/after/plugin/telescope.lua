@@ -5,12 +5,19 @@ local function map(mode, mapping, cmd)
 end
 
 local function display_path(_, path)
+  local is_test_file = path:find("src/test", 1, true) ~= nil
   path = path:gsub("^%./", "")
   local prefix = path:match("applications?/([%w-_]+)/") or path:match("modules/([%w-_]+)/")
   local short_path = path:match("scala/[%w-_]+/[%w-_]+/[%w-_]+/(.*)") or path:match("resources/.*") or path
   prefix = prefix and prefix .. " | " or ""
 
-  return prefix .. short_path
+  local formatted_path = prefix .. short_path
+  local highlights
+  if is_test_file then
+    highlights = { { { 0, #formatted_path }, "TelescopeTestFile" } }
+  end
+
+  return formatted_path, highlights
 end
 
 telescope.setup({

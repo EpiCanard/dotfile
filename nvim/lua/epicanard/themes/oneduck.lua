@@ -212,6 +212,8 @@ local function set_highlight(theme)
   hif("IblScope", theme.light_blue)
   -- }}}
 
+  hif("TelescopeTestFile", theme.green)
+
   -- Git {{{
   load("git")
   -- }}}

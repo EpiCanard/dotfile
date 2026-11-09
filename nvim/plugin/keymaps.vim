@@ -2,7 +2,8 @@ let mapleader = " "
 set shortmess-=F
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files previewer=false<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({previewer=false, file_ignore_patterns={"Spec"}})<cr>
+nnoremap <leader>FF <cmd>lua require('telescope.builtin').find_files({previewer=false})<cr>
 nnoremap <leader>fg "zyiw<ESC>:Telescope live_grep layout_strategy=vertical default_text=<C-r>z<cr>
 vnoremap <leader>fg "zy<ESC>:lua require('telescope.builtin').live_grep({default_text='<C-r>z'})<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
