@@ -14,7 +14,7 @@ nnoremap <leader>O <cmd>MetalsOrganizeImports<cr><cmd>w<cr>
 nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 vnoremap <leader>D :DiffviewFileHistory<cr>
 
-nnoremap <leader>P <cmd>Telescope neoclip<cr>
+nnoremap <leader>fy <cmd>Telescope neoclip<cr>
 nnoremap <leader>c <cmd>Neogit commit<cr>
 nnoremap <leader>r zR
 nnoremap <leader>K <cmd>Telescope keymaps<cr>
