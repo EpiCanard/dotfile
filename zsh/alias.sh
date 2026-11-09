@@ -54,9 +54,9 @@ alias ng='nvim "+Telescope live_grep"'
 # -- BLOOP --
 if type "bloop" > /dev/null; then
   alias blr="bloop projects | grep -v '\-test' | fzf | xargs bloop run"
-  alias blt="bloop projects | grep '\-test' | fzf | xargs bloop test"
+  alias blt="bloop projects | grep '\-test' | fzf -m | xargs bloop test"
   alias bll="bloop projects | fzf | xargs bloop link -p"
-  alias blc="bloop projects | fzf | xargs -I{} bloop compile {} --cascade"
+  alias blc="bloop projects | fzf -m | xargs -I{} bloop compile {} --cascade"
 fi
 
 # -- GIT --
