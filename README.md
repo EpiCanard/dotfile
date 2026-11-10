@@ -73,12 +73,24 @@ the debug UI and virtual text wait until a debug session initializes.
 In Scala buffers, `<leader>t` runs the closest preceding test suite's Metals code
 lens without opening the debug UI (or the first suite when above all classes).
 The right side of the statusline shows `Running tests ...` in blue while the test session is running.
-A native popup then reports the passed, failed and skipped test counts. Failures or
-unconfirmed results open DAP UI and preserve output in the REPL; an exit code of
+A native popup then reports the suite names and passed, failed and skipped test
+counts. Popups stack at the top right, newest first, and each expires after five
+seconds. Older popups are removed if the screen is full; all summaries remain in
+the REPL. Failures or unconfirmed results open DAP UI and preserve output in the
+REPL; an exit code of
 zero alone is not treated as a successful test run. Other filetypes keep
 `vim-test`'s `TestNearest` mapping. Press `q` in normal mode, including from the
 source file, to close DAP UI when a layout is visible. Otherwise `q` keeps closing
 Trouble and quickfix.
+
+`:ScalaTestExplorer` is an experimental equivalent of `MetalsSelectTestSuite`:
+it lists test suites from the entire workspace while keeping code lenses enabled.
+Use `Tab` to mark multiple suites and `Enter` to run them one after another, in
+marking order. Without marks, `Enter` runs the current suite. A single discovered
+suite runs immediately. The picker shows discovery time. Each suite uses the same
+background execution, statusline and result popup as `<leader>t`; a failing suite
+does not prevent the next suite from running. Cancelling the picker runs nothing.
+Discovery times out after 10 seconds without changing the normal code lens workflow.
 
 ### Machine-specific settings
 

@@ -1,6 +1,6 @@
 local M = {}
 local results = {}
-local popup
+local popups = {}
 
 function M.status()
   return next(results) and "Running tests ..." or ""
@@ -12,10 +12,26 @@ local function refresh_status()
   end
 end
 
-local function notify(message, highlight)
-  if popup and vim.api.nvim_win_is_valid(popup) then
-    vim.api.nvim_win_close(popup, true)
+local function arrange_popups()
+  local visible = {}
+  local row = 1
+  local bottom = vim.o.lines - vim.o.cmdheight - 1
+  for _, win in ipairs(popups) do
+    if vim.api.nvim_win_is_valid(win) then
+      local height = vim.api.nvim_win_get_height(win) + 2
+      if row + height <= bottom then
+        vim.api.nvim_win_set_config(win, { relative = "editor", row = row, col = vim.o.columns - 2 })
+        visible[#visible + 1] = win
+        row = row + height + 1
+      else
+        vim.api.nvim_win_close(win, true)
+      end
+    end
   end
+  popups = visible
+end
+
+local function notify(message, highlight)
   local lines = vim.split(message, "\n", { plain = true })
   local width = math.max(1, math.min(70, vim.o.columns - 4))
   local height = 0
@@ -31,18 +47,21 @@ local function notify(message, highlight)
     row = 1,
     col = vim.o.columns - 2,
     width = width,
-    height = math.min(height, math.max(1, vim.o.lines - 4)),
+    height = math.min(height, math.max(1, vim.o.lines - vim.o.cmdheight - 4)),
     style = "minimal",
     border = "rounded",
     title = " Tests Scala ",
     focusable = false,
   })
-  popup = win
+  table.insert(popups, 1, win)
   vim.wo[win].winhl = "Normal:" .. highlight .. ",FloatBorder:" .. highlight
+  vim.wo[win].wrap = true
+  arrange_popups()
   vim.defer_fn(function()
     if vim.api.nvim_win_is_valid(win) then
       vim.api.nvim_win_close(win, true)
     end
+    arrange_popups()
   end, 5000)
 end
 
@@ -69,6 +88,11 @@ local function finish(session)
   else
     message, highlight = "Résultat non confirmé : " .. summary .. "\nConsulte les sorties DAP.", "DiagnosticWarn"
   end
+  local suites = vim.tbl_keys(result.suites)
+  table.sort(suites)
+  if #suites > 0 then
+    message = table.concat(suites, ", ") .. "\n" .. message
+  end
   require("dap.repl").append(message)
   if highlight ~= "DiagnosticOk" then
     require("dapui").open()
@@ -79,7 +103,7 @@ end
 function M.setup(dap)
   dap.listeners.on_session["scala_tests"] = function(_, session)
     if session and M.is_background(session) and not results[session] then
-      results[session] = { passed = 0, failed = 0, skipped = 0, unknown = 0 }
+      results[session] = { passed = 0, failed = 0, skipped = 0, unknown = 0, suites = {} }
       refresh_status()
       session.on_close["scala_tests"] = function()
         -- Let any test events already queued by DAP arrive before reporting.
@@ -94,7 +118,11 @@ function M.setup(dap)
     if not result then
       return
     end
-    for _, test in ipairs((body.data or {}).tests or {}) do
+    local data = body.data or {}
+    if data.suiteName then
+      result.suites[data.suiteName] = true
+    end
+    for _, test in ipairs(data.tests or {}) do
       local kind = result[test.kind] ~= nil and test.kind or "unknown"
       result[kind] = result[kind] + 1
       if kind == "failed" then
