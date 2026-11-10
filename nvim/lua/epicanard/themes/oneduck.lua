@@ -164,6 +164,7 @@ local function set_highlight(theme)
   -- Whitespace is defined in Neovim, not Vim.
   -- See :help hl-Whitespace and :help hl-SpecialKey
   hif("Whitespace", theme.non_text)
+  hif("TrailingWhitespace", theme.red)
   hif("NonText", theme.non_text)
   hif("Comment", theme.comment_fg, { italic = true })
   hif("Constant", theme.cyan)
