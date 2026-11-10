@@ -1,6 +1,9 @@
 local nmap = require("epicanard.api.map").nmap
 local git = require("epicanard.api.git")
 
+nmap("<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
+nmap("<leader>c", "<cmd>Telescope colorscheme default_text=duck<cr>", { desc = "Choose colorscheme" })
+
 local function open_url(url)
   local _, err = vim.ui.open(url)
   if err then

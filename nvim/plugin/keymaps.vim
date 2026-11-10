@@ -15,10 +15,8 @@ nnoremap <leader>D <cmd>DiffviewFileHistory %<cr>
 vnoremap <leader>D :DiffviewFileHistory<cr>
 
 nnoremap <leader>fy <cmd>Telescope neoclip<cr>
-nnoremap <leader>c <cmd>Neogit commit<cr>
 nnoremap <leader>r zR
 nnoremap <leader>K <cmd>Telescope keymaps<cr>
-nnoremap <leader>c <cmd>Telescope colorscheme default_text=duck<cr>
 nnoremap <leader>ci <cmd>split \| terminal glab ci view<cr>
 
 nnoremap df "_dd
