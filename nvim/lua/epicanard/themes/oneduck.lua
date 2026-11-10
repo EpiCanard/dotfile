@@ -260,7 +260,7 @@ function M.setup(theme_name)
   vim.api.nvim_command("highlight clear")
   vim.api.nvim_command("syntax reset")
 
-  vim.g.colors_name = "onehalf" .. theme_name
+  vim.g.colors_name = "oneduck" .. theme_name
   set_highlight(theme)
 end
 

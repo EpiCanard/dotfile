@@ -1,1 +1,1 @@
-require("epicanard/themes/oneduck").setup("dark")
+require("epicanard.themes.oneduck").setup("dark")
