@@ -5,7 +5,7 @@ alias sc='source ~/.zshrc'
 alias zsc='nvim ~/.zshrc && source ~/.zshrc'
 alias al='print -z -- $(alias | fzf | cut -d '=' -f 1)'
 alias ..='cd ..'
-alias ...='cd ...'
+alias ...='cd ../..'
 
 # -- LS --
 alias l='ls'
