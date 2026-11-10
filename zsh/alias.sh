@@ -87,7 +87,20 @@ alias gc='git checkout'
 # alias grC='git branch --remote | grep -v "HEAD" | sed -e "s#origin/\(.*\)#\1#g" | grep -v  `git branch --show-current` | fzf | xargs git checkout'
 alias gcb='git checkout -b'
 alias gcp='git cherry-pick'
-alias gcr="git status -s | fzf -m | xargs -I{} sh -c 'echo {} | cut -d \" \" -f 2' | xargs -I{} git checkout -- {}"
+
+function gcr() {
+    setopt local_options pipe_fail
+    local selected
+    local -a paths
+
+    git rev-parse --is-inside-work-tree >/dev/null || return
+    selected=$(git diff --relative --name-only -z | fzf --read0 --print0 --multi) || return
+    [[ -n "$selected" ]] || return 0
+    selected=${selected%$'\0'}
+    paths=("${(@0)selected}")
+    git --literal-pathspecs restore --worktree -- "${paths[@]}"
+}
+
 alias gf='git fetch'
 alias gp='git pull'
 alias gl="git log --pretty='format:%C(auto)%h %C(auto,cyan)%<(20,trunc)%an %ad %cd %C(auto)%s %C(auto)%d' --date='format:%d/%m/%y %R' -n 30"
@@ -114,10 +127,36 @@ alias gup='git rev-parse --abbrev-ref HEAD | xargs -I{} git branch --set-upstrea
 alias gas='git add --all && git stash'
 alias gmf='git merge --ff-only'
 
-alias bsync="ls -d \${BASE_PROJECTS:-\$HOME/Projects}/*/.git 2>/dev/null | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git pull'"
+function _dotfile_project_repositories() {
+    local entry
+    for entry in "${BASE_PROJECTS:-$HOME/Projects}"/*/.git(N); do
+        printf '%s\0' "${entry:h}"
+    done
+}
+
+function bsync() {
+    _dotfile_project_repositories | xargs -0 -n 1 -P 10 sh -c 'if [ "$#" -gt 0 ]; then git -C "$1" pull; fi' sh
+}
+
 alias btmm="git stash && git checkout master || git checkout main && git pull"
-alias prupru="pushd \${BASE_PROJECTS:-\$HOME/Projects} >/dev/null 2>&1 && ls -d */.git 2>/dev/null | xargs -I{} dirname {} | xargs -I{} sh -c 'cd {} && git branch | rg -v \"master|main|develop\" | xargs -I[] echo \"{}/[]\"' && popd >/dev/null 2>&1"
-alias pruneTags="ls -d \${BASE_PROJECTS:-\$HOME/Projects}/*/.git 2>/dev/null | xargs -I {} dirname {} | xargs -P 10 -I {} sh -c 'cd {} && git fetch --prune --prune-tags '"
+
+function prupru() {
+    local repo branch
+    while IFS= read -r -d '' repo; do
+        while IFS= read -r branch; do
+            case "$branch" in
+                master|main|develop) continue ;;
+            esac
+            printf '%s/%s\n' "${repo:t}" "$branch"
+        done < <(git -C "$repo" for-each-ref --format='%(refname:short)' refs/heads)
+    done < <(_dotfile_project_repositories)
+}
+
+function pruneTags() {
+    _dotfile_project_repositories | xargs -0 -n 1 -P 10 sh -c '
+        if [ "$#" -gt 0 ]; then git -C "$1" fetch --prune --prune-tags; fi
+    ' sh
+}
 
 # -- GLAB --
 if type "glab" > /dev/null; then
