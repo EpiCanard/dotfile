@@ -1,14 +1,16 @@
 #!/bin/bash
 
-REGEX_ISSUE_ID='s#^\[\(.*\)\] [A-Z].*#\1#p'
-ISSUE_ID_IN_COMMIT=$(cat $1 | sed -ne "$REGEX_ISSUE_ID")
+IFS= read -r subject < "$1" || [[ -n "$subject" ]] || exit 1
+pattern='^\[([[:alnum:]_.-]+)\] [A-Z].*$'
 
-if [[ -z "$ISSUE_ID_IN_COMMIT" ]]; then
-    echo "[commit-msg-hook] Your commit message is illegal. It must match : [folder] A commit message"
+if [[ ! "$subject" =~ $pattern ]]; then
+    echo "[commit-msg-hook] The subject must match: [folder] A commit message (or [root] for root files)." >&2
     exit 1
-else
-    if [ ! -d "$(git rev-parse --show-toplevel)/$ISSUE_ID_IN_COMMIT" ]; then
-        echo "[commit-msg-hook] Your commit message is illegal. The folder part must match a real folder"
-        exit 1
-    fi
+fi
+
+scope=${BASH_REMATCH[1]}
+root=$(git rev-parse --show-toplevel) || exit 1
+if [[ "$scope" != root ]] && { [[ "$scope" == . || "$scope" == .. ]] || [[ ! -d "$root/$scope" ]]; }; then
+    echo "[commit-msg-hook] The scope must name a top-level repository folder, or root." >&2
+    exit 1
 fi

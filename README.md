@@ -61,4 +61,14 @@ Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
 - Use `:Lazy profile` to inspect startup and plugin loading times.
 
 ### Git hooks
-`git config --local core.hooksPath .githooks`
+
+Enable the commit-message hook with:
+
+```sh
+git config --local core.hooksPath .githooks
+```
+
+The subject must use `[folder] A commit message`, where `folder` is a top-level
+directory such as `nvim` or `zsh`. Use `[root] A commit message` for root files
+such as `README.md` or `setup.sh`. The body is unrestricted and is not validated
+as a subject.
