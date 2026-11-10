@@ -6,7 +6,11 @@ return {
   "kyazdani42/nvim-web-devicons",
 
   -- Improvate way of displaying tab
-  "nanozuki/tabby.nvim",
+  {
+    "nanozuki/tabby.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = require("epicanard.plugins.tabby"),
+  },
 
   -- Formatter for lua
   "ckipp01/stylua-nvim",
@@ -41,5 +45,9 @@ return {
   },
 
   -- Bottom status line
-  "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "SmiteshP/nvim-navic", "kyazdani42/nvim-web-devicons" },
+    config = require("epicanard.plugins.statusline"),
+  },
 }

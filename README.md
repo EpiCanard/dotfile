@@ -54,6 +54,9 @@ Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
 - Plugin declarations live in `nvim/lua/plugins/`. After editing them, restart
   Neovim and use `:Lazy install` to install newly declared plugins; no compilation
   step is needed.
+- Each declaration owns its dependencies and setup. Larger setup functions live
+  in `nvim/lua/epicanard/plugins/` and are called by the declaration's `config`;
+  plugin setup no longer depends on the order of `after/plugin` files.
 - Use `:Lazy restore` after cloning or pulling this repository to install the
   revisions recorded in the versioned `nvim/lazy-lock.json`.
 - Use `:Lazy update` for an intentional plugin upgrade, verify your usual

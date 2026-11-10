@@ -1,10 +1,10 @@
 return {
 
   -- Easily move anywhere in the file
-  { "smoka7/hop.nvim", version = "*" },
+  { "smoka7/hop.nvim", version = "*", config = require("epicanard.plugins.hop") },
 
   -- Easily move between diagnostics / git hunk / etc
-  "liangxianzhe/nap.nvim",
+  { "liangxianzhe/nap.nvim", config = require("epicanard.plugins.nap") },
 
   -- Smoothe page move
   "psliwka/vim-smoothie",

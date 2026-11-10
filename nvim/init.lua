@@ -7,6 +7,7 @@ vim.opt.termguicolors = true
 vim.o.foldcolumn = "0"
 
 require("epicanard.options")
+vim.cmd.colorscheme("oneducklight")
 
 require("lazy").setup("plugins")
 

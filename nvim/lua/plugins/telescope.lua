@@ -1,15 +1,13 @@
 return {
   "nvim-telescope/telescope.nvim",
-
-  -- Telescope extensions for fzf
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
-  -- Telescope extensions for symbols/emoji
-  "nvim-telescope/telescope-symbols.nvim",
-
-  -- Telescope extensions to list and navigate between projects
-  "nvim-telescope/telescope-project.nvim",
-
-  -- Telescope extensions for handle clipboard
-  { "AckslD/nvim-neoclip.lua", main = "neoclip" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-telescope/telescope-symbols.nvim",
+    "nvim-telescope/telescope-project.nvim",
+    { "AckslD/nvim-neoclip.lua", main = "neoclip", opts = {} },
+    "danielfalk/smart-open.nvim",
+    "scalameta/nvim-metals",
+  },
+  config = require("epicanard.plugins.telescope"),
 }
