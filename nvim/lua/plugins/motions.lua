@@ -3,9 +3,6 @@ return {
   -- Easily move anywhere in the file
   { "smoka7/hop.nvim", version = "*" },
 
-  -- Easily move between treesiter node
-  "ziontee113/SelectEase",
-
   -- Easily move between diagnostics / git hunk / etc
   "liangxianzhe/nap.nvim",
 
