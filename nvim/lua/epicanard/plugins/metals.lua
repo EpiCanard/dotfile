@@ -1,35 +1,7 @@
 return function()
-  local map = require("epicanard.api.map").map
   local autocmd = vim.api.nvim_create_autocmd
   local augroup = vim.api.nvim_create_augroup
 
-  ----------------------------------
-  -- OPTIONS -----------------------
-  ----------------------------------
-  -- global
-  vim.opt_global.shortmess:remove("F")
-  vim.opt_global.shortmess:append("c")
-
-  -- LSP
-  map("", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
-  -- map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  -- map("n", "gs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-  map("n", "gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
-  map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
-  map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("n", "<leader>ws", '<cmd>lua require"metals".worksheet_hover()<CR>')
-  map("n", "<leader>aa", [[<cmd>lua vim.diagnostic.setqflist()<CR>]]) -- all workspace diagnostics
-  map("n", "<leader>ae", [[<cmd>lua vim.diagnostic.setqflist({severity = "E"})<CR>]]) -- all workspace errors
-  map("n", "<leader>aw", [[<cmd>lua vim.diagnostic.setqflist({severity = "W"})<CR>]]) -- all workspace warnings
-  map("n", "<leader>d", "<cmd>lua vim.diagnostic.setloclist()<CR>") -- buffer diagnostics only
-  map("n", "[c", "<cmd>lua vim.diagnostic.goto_prev { wrap = false }<CR>")
-  map("n", "]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<CR>")
-
-  ----------------------------------
-  -- LSP Setup ---------------------
-  ----------------------------------
   local metals_config = require("metals").bare_config()
 
   -- Example of settings
@@ -64,7 +36,9 @@ return function()
   metals_config.capabilities = capabilities
 
   metals_config.on_attach = function(client, bufnr)
-    require("metals").setup_dap()
+    if package.loaded.dap then
+      require("metals").setup_dap()
+    end
     lsp_status.on_attach(client)
     require("nvim-navic").attach(client, bufnr)
   end
@@ -73,7 +47,7 @@ return function()
   -- COMMANDS ----------------------
   ----------------------------------
   -- LSP
-  local lsp_augroup = augroup("lsp", { clear = true })
+  local lsp_augroup = augroup("Metals", { clear = true })
   autocmd("FileType", { pattern = "scala", command = "setlocal omnifunc=v:lua.vim.lsp.omnifunc", group = lsp_augroup })
   autocmd("FileType", {
     pattern = { "scala", "sbt", "sc" },
@@ -83,9 +57,7 @@ return function()
     group = lsp_augroup,
   })
 
-  -- Need for symbol highlights to work correctly
-  vim.api.nvim_set_hl(0, "LspCodeLens", { link = "CursorColumn" })
-  vim.api.nvim_set_hl(0, "LspReferenceText", { link = "CursorColumn" })
-  vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "CursorColumn" })
-  vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "CursorColumn" })
+  if package.loaded.telescope then
+    require("telescope").load_extension("metals")
+  end
 end

@@ -6,11 +6,12 @@ return {
   { "akinsho/toggleterm.nvim", main = "toggleterm", opts = {} },
 
   -- Snippet
-  { "L3MON4D3/LuaSnip", config = require("epicanard.plugins.luasnip") },
+  { "L3MON4D3/LuaSnip", lazy = true, config = require("epicanard.plugins.luasnip") },
 
   -- File tree
   {
     "kyazdani42/nvim-tree.lua",
+    cmd = { "NvimTreeOpen", "NvimTreeClose", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile", "NvimTreeRefresh" },
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = require("epicanard.plugins.tree"),
   },
@@ -24,6 +25,7 @@ return {
   -- Automatically add pair (brackets, etc)
   {
     "windwp/nvim-autopairs",
+    event = "InsertEnter",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = require("epicanard.plugins.autopairs"),
   },

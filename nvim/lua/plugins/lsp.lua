@@ -17,6 +17,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -25,24 +26,6 @@ return {
       "onsails/lspkind-nvim",
     },
     config = require("epicanard.plugins.completion"),
-  },
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
-      "theHamsta/nvim-dap-virtual-text",
-    },
-    config = require("epicanard.plugins.dap"),
-  },
-  {
-    "scalameta/nvim-metals",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "SmiteshP/nvim-navic",
-      "wbthomason/lsp-status.nvim",
-      "mfussenegger/nvim-dap",
-    },
-    config = require("epicanard.plugins.metals"),
   },
   {
     "folke/trouble.nvim",

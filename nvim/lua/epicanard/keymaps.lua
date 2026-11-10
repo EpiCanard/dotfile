@@ -1,6 +1,18 @@
 local nmap = require("epicanard.api.map").nmap
 local git = require("epicanard.api.git")
 
+nmap("K", "<cmd>lua vim.lsp.buf.hover()<cr>", { silent = true, desc = "LSP hover" })
+nmap("gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { desc = "Workspace symbols" })
+nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename symbol" })
+nmap("<leader>f", "<cmd>lua vim.lsp.buf.format { async = true }<cr>", { desc = "Format buffer" })
+nmap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+nmap("<leader>aa", "<cmd>lua vim.diagnostic.setqflist()<cr>", { desc = "Workspace diagnostics" })
+nmap("<leader>ae", [[<cmd>lua vim.diagnostic.setqflist({severity = "E"})<cr>]], { desc = "Workspace errors" })
+nmap("<leader>aw", [[<cmd>lua vim.diagnostic.setqflist({severity = "W"})<cr>]], { desc = "Workspace warnings" })
+nmap("<leader>d", "<cmd>lua vim.diagnostic.setloclist()<cr>", { desc = "Buffer diagnostics" })
+nmap("[c", "<cmd>lua vim.diagnostic.goto_prev { wrap = false }<cr>", { desc = "Previous diagnostic" })
+nmap("]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<cr>", { desc = "Next diagnostic" })
+
 nmap("<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
 nmap("<leader>c", "<cmd>Telescope colorscheme default_text=duck<cr>", { desc = "Choose colorscheme" })
 

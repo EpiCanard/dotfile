@@ -1,7 +1,6 @@
 return {
   "nvimtools/hydra.nvim",
   dependencies = {
-    "nvim-telescope/telescope.nvim",
     { "chentoast/marks.nvim", main = "marks", opts = {} },
   },
   config = function()

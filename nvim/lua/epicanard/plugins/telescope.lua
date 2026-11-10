@@ -1,10 +1,6 @@
 return function()
   local telescope = require("telescope")
 
-  local function map(mode, mapping, cmd)
-    vim.api.nvim_set_keymap(mode, mapping, cmd, { noremap = true, silent = true })
-  end
-
   local function display_path(_, path)
     local is_test_file = path:find("src/test", 1, true) ~= nil
     path = path:gsub("^%./", "")
@@ -60,10 +56,8 @@ return function()
   telescope.load_extension("fzf")
   telescope.load_extension("smart_open")
   telescope.load_extension("project")
-  telescope.load_extension("metals")
+  if package.loaded.metals then
+    telescope.load_extension("metals")
+  end
   telescope.load_extension("neoclip")
-
-  map("n", "<C-p>", ":lua require'telescope'.extensions.project.project{}<CR>")
-  map("n", "<leader>m", ":lua require'telescope'.extensions.metals.commands{}<CR>")
-  map("n", "<leader>gs", ":Telescope git_status<CR>")
 end

@@ -63,6 +63,13 @@ Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
   workflows, then commit the resulting lockfile changes.
 - Use `:Lazy profile` to inspect startup and plugin loading times.
 
+Metals loads for Scala/sbt files. Completion and automatic pairs load on entering
+Insert mode. Telescope, the file tree, Git interfaces and database interfaces
+load through their commands or mappings; `:Note` and `:Db` remain available.
+Clipboard collection stays active from startup. DAP loads through its commands
+and mappings, and nvim-metals may also require its core when Scala is opened;
+the debug UI and virtual text wait until a debug session initializes.
+
 ### Git hooks
 
 Enable the commit-message hook with:

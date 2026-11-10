@@ -1,6 +1,11 @@
 return function()
   local navic = require("nvim-navic")
 
+  vim.api.nvim_set_hl(0, "LspCodeLens", { link = "CursorColumn" })
+  vim.api.nvim_set_hl(0, "LspReferenceText", { link = "CursorColumn" })
+  vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "CursorColumn" })
+  vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "CursorColumn" })
+
   require("clangd_extensions").setup()
 
   vim.lsp.config("lua_ls", {

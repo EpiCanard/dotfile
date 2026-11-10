@@ -1,5 +1,7 @@
 vim.opt.shell = "/bin/zsh"
 vim.opt.encoding = "utf8"
+vim.opt.shortmess:remove("F")
+vim.opt.shortmess:append("c")
 
 -- Hidden character
 vim.opt.list = true

@@ -1,18 +1,5 @@
 return function()
   local dap = require("dap")
-  local dapui = require("dapui")
-  local map = require("epicanard.api.map").map
-
-  -- Mapping
-  map("n", "<leader>dc", [[<cmd>lua require"dap".continue()<CR>]])
-  map("n", "<leader>dr", [[<cmd>lua require"dap".repl.toggle()<CR>]])
-  map("n", "<leader>ds", [[<cmd>lua require"dap.ui.variables".scopes()<CR>]])
-  map("n", "<leader>dK", [[<cmd>lua require"dap.ui.widgets".hover()<CR>]])
-  map("n", "<leader>dt", [[<cmd>lua require"dap".toggle_breakpoint()<CR>]])
-  map("n", "<leader>dso", [[<cmd>lua require"dap".step_over()<CR>]])
-  map("n", "<leader>dsi", [[<cmd>lua require"dap".step_into()<CR>]])
-  map("n", "<leader>dl", [[<cmd>lua require"dap".run_last()<CR>]])
-
   -- Setup
   dap.configurations.scala = {
     {
@@ -50,15 +37,24 @@ return function()
       },
     },
   }
-  require("nvim-dap-virtual-text").setup({})
-  dapui.setup()
+  dap.listeners.before.event_initialized["dapui_config"] = function()
+    require("nvim-dap-virtual-text")
+    require("dapui")
+  end
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
+    require("dapui").open()
   end
   dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
+    if package.loaded.dapui then
+      require("dapui").close()
+    end
   end
   dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
+    if package.loaded.dapui then
+      require("dapui").close()
+    end
+  end
+  if type(package.loaded.metals) == "table" then
+    require("metals").setup_dap()
   end
 end

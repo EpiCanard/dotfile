@@ -2,6 +2,7 @@ return {
   -- Git UI client
   {
     "NeogitOrg/neogit",
+    cmd = "Neogit",
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
     config = require("epicanard.plugins.neogit"),
   },
@@ -16,6 +17,14 @@ return {
   -- Better viez for git diff
   {
     "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewFileHistory",
+      "DiffviewRefresh",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+    },
     dependencies = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons" },
     config = require("epicanard.plugins.diffview"),
   },
