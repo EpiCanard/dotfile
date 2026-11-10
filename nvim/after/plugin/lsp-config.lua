@@ -76,9 +76,15 @@ local eslint_augroup = vim.api.nvim_create_augroup("EslintFixOnSave", { clear = 
 
 vim.lsp.config("eslint", {
   on_attach = function(client, bufnr)
-    eslint_on_attach(client, bufnr)
+    if eslint_on_attach then
+      eslint_on_attach(client, bufnr)
+    end
+
     local commands = vim.api.nvim_buf_get_commands(bufnr, {})
-    local fix_all = commands.LspEslintFixAll and "LspEslintFixAll" or "EslintFixAll"
+    local fix_all = commands.LspEslintFixAll and "LspEslintFixAll" or commands.EslintFixAll and "EslintFixAll"
+    if not fix_all then
+      return
+    end
 
     vim.api.nvim_clear_autocmds({ group = eslint_augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
