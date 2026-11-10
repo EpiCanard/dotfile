@@ -1,8 +1,12 @@
 -- Copy this file to local.lua, which is gitignored.
--- Customize editor preferences or settings for integrations you have enabled.
+-- It runs after the default options, before Lazy sets up plugins.
+-- Keep your local editor and integration settings here.
 
 -- Local editor preferences
 -- vim.opt.colorcolumn = "100"
+
+-- Metals Organize Imports configuration (overrides SCALAFIX_CONFIG)
+-- vim.g.scalafix_config = vim.fn.expand("~/.config/nvim/scalafix.conf")
 
 -- Notes directory (when the :Note command supports NOTES_PATH)
 -- Alternatively: export NOTES_PATH="$HOME/.notes/" in your shell

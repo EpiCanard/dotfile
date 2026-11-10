@@ -44,7 +44,7 @@ return function()
     extensions = {
       project = {
         base_dirs = {
-          "~/Projects",
+          vim.fs.normalize(vim.env.BASE_PROJECTS or vim.fn.expand("~/Projects")),
         },
       },
       smart_open = {

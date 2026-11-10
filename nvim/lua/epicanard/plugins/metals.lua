@@ -12,7 +12,9 @@ return function()
     autoImportBuild = "all",
     excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
     serverVersion = "1.6.9",
-    scalafixConfigPath = os.getenv("HOME") .. "/.config/nvim/scalafix.conf",
+    scalafixConfigPath = vim.fs.normalize(
+      vim.g.scalafix_config or vim.env.SCALAFIX_CONFIG or vim.fs.joinpath(vim.fn.stdpath("config"), "scalafix.conf")
+    ),
   }
 
   -- Example of how to ovewrite a handler

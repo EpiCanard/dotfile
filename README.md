@@ -70,6 +70,39 @@ Clipboard collection stays active from startup. DAP loads through its commands
 and mappings, and nvim-metals may also require its core when Scala is opened;
 the debug UI and virtual text wait until a debug session initializes.
 
+### Machine-specific settings
+
+Keep local Neovim customization in `nvim/lua/local.lua`, which is ignored by Git.
+Copy `nvim/lua/local.lua.example` to get started. This file runs after the default
+options, before Lazy initializes plugins. It is an ordinary Lua
+script, so it can set options, global variables directly:
+
+```lua
+vim.opt.colorcolumn = "100"
+vim.g.scalafix_config = vim.fn.expand("~/config/scalafix.conf")
+```
+
+The following environment variables also provide defaults:
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `BASE_PROJECTS` | Shared project root for Zsh batch functions and Telescope | `$HOME/Projects` |
+| `SCALAFIX_CONFIG` | Metals Organize Imports configuration | Neovim's XDG config directory + `/scalafix.conf` |
+
+Set `BASE_PROJECTS` before sourcing `zsh/alias.sh`; the aliases export it so
+Neovim receives the same value. For example:
+
+```zsh
+export BASE_PROJECTS="$HOME/Projects"
+```
+
+`vim.g.scalafix_config` takes precedence over `SCALAFIX_CONFIG`. Paths support `~` and
+environment variables. Keep the shared project root in the shell's `BASE_PROJECTS`
+so Zsh and Neovim inherit the same value. Plugin setup belongs in the Lazy
+declarations, since `local.lua` runs before plugins are loaded. On macOS,
+dark-notify continues to follow the system appearance after the initial theme
+is selected.
+
 ### Git hooks
 
 Enable the commit-message hook with:

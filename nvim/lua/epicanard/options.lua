@@ -1,5 +1,6 @@
 vim.opt.shell = "/bin/zsh"
 vim.opt.encoding = "utf8"
+vim.opt.clipboard:append("unnamedplus")
 vim.opt.shortmess:remove("F")
 vim.opt.shortmess:append("c")
 
@@ -52,3 +53,4 @@ vim.opt.foldlevel = 99
 vim.g.db_ui_use_nerd_fonts = 1
 vim.g.db_ui_auto_execute_table_helpers = 1
 vim.g.db_ui_winwidth = 60
+vim.g["test#scala#runner"] = "blooptest"

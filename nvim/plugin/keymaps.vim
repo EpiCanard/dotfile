@@ -1,6 +1,3 @@
-let mapleader = " "
-set shortmess-=F
-
 " Telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({previewer=false, file_ignore_patterns={"Spec"}})<cr>
 nnoremap <leader>FF <cmd>lua require('telescope.builtin').find_files({previewer=false})<cr>

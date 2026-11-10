@@ -1,12 +1,5 @@
 " Database
-let g:db_ui_use_nerd_fonts=1
 :command Db :tabnew +DBUIToggle
-
-set clipboard+=unnamedplus
-
-if has('termguicolors')
-  set termguicolors
-endif
 
 function! SynGroup()
     let l:s = synID(line('.'), col('.'), 1)
@@ -14,7 +7,5 @@ function! SynGroup()
 endfun
 
 map gm :call SynGroup()<CR>
-
-let test#scala#runner = 'blooptest'
 
 syntax on

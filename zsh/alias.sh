@@ -1,5 +1,8 @@
 # ===[ ALIAS ]===
 
+# Share the project root with editor integrations and child shells.
+export BASE_PROJECTS="${BASE_PROJECTS:-$HOME/Projects}"
+
 # -- OTHERS --
 alias sc='source ~/.zshrc'
 alias zsc='nvim ~/.zshrc && source ~/.zshrc'
