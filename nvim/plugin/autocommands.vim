@@ -11,7 +11,7 @@ function! s:expand_commit_template()
         \ }
 
   let lnum = nextnonblank(1)
-  while lnum && lnum < line('$')
+  while lnum && lnum <= line('$')
     call setline(lnum, substitute(getline(lnum), '\${\(\w\+\)}',
           \ '\=get(context, submatch(1), submatch(0))', 'g'))
     let lnum = nextnonblank(lnum + 1)
