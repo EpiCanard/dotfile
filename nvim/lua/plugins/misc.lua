@@ -3,7 +3,7 @@ return {
   "nvim-lua/plenary.nvim",
 
   -- Floating term that can be toggled
-  { "akinsho/toggleterm.nvim", main = "toggleterm" },
+  { "akinsho/toggleterm.nvim", main = "toggleterm", opts = {} },
 
   -- Snippet
   "L3MON4D3/LuaSnip",

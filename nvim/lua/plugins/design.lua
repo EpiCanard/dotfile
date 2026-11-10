@@ -12,7 +12,7 @@ return {
   "ckipp01/stylua-nvim",
 
   -- Display Hex code with colors
-  { "norcalli/nvim-colorizer.lua", main = "colorizer" },
+  { "norcalli/nvim-colorizer.lua", main = "colorizer", opts = { "*" } },
 
   -- Detect Ligh/Dark mode of macOs and change colorscheme (disabled on other OS)
   {
