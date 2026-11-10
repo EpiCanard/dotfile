@@ -1,6 +1,6 @@
 autocmd BufWritePre * :%s/\s\+$//e
 
-autocmd BufWritePre *.scala :lua vim.lsp.buf.format { async = true }
+autocmd BufWritePre *.scala lua vim.lsp.buf.format { async = false, timeout_ms = 3000, name = "metals", bufnr = tonumber(vim.fn.expand("<abuf>")) }
 autocmd BufWritePre *.lua :lua require("stylua-nvim").format_file()
 autocmd BufEnter *.java :set colorcolumn=160
 
