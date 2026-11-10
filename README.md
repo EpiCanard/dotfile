@@ -2,9 +2,17 @@
 
 ### Setup
 
-Just execute the command below. It will create symbolic link in your XDG_CONFIG_HOME
+Install `nvim` and `stylua`, then execute the command below. It creates symbolic
+links in `$XDG_CONFIG_HOME` (or `~/.config`) and can be run from any directory.
+Existing files or directories are preserved; conflicting paths cause an error.
 
 > ./setup.sh
+
+To load the Zsh aliases, add this line to `~/.zshrc`, adjusting the repository path:
+
+```zsh
+source "/path/to/dotfile/zsh/alias.sh"
+```
 
 ### Neovim
 
