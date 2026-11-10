@@ -1,7 +1,7 @@
 return {
 
   -- Easily move anywhere in the file
-  { "phaazon/hop.nvim", branch = "v2" },
+  { "smoka7/hop.nvim", version = "*" },
 
   -- Easily move between treesiter node
   "ziontee113/SelectEase",
