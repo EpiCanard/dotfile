@@ -35,7 +35,7 @@ Install these tools with your system package manager and keep them in `PATH`:
 | Telescope search and shell selectors | `ripgrep` (`rg`), `fzf` |
 | Smart Open history | SQLite shared library (`libsqlite3`) |
 | Mason package installation | `curl` or `wget`, `unzip`, `tar`, `gzip`; see [Mason requirements](https://github.com/mason-org/mason.nvim#requirements) |
-| Java LSP | A JDK compatible with the installed [JDT LS release](https://github.com/eclipse-jdtls/eclipse.jdt.ls#requirements), currently Java 21+; configure `JAVA_HOME` as needed |
+| Java LSP | A JDK compatible with the installed [JDT LS release](https://github.com/eclipse-jdtls/eclipse.jdt.ls#requirements) and Python 3 for its launcher; configure `JAVA_HOME` as needed |
 | Scala / Metals | A compatible JDK, [Coursier](https://github.com/scalameta/nvim-metals#installation) (`cs` or `coursier`), and the project's build tools such as sbt or Bloop |
 | JS / TS, HTML, SQL and Pyright language servers | Node.js and npm |
 | Robot Framework language server | Python 3 with `venv` and pip; project-specific Robot libraries remain in the project's environment |
@@ -51,8 +51,14 @@ Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
 
 ### Tips
 
-- After editing plugins.lua, use :PackerCompile to correctly setup config
-- To update prefer using :PackerSync instead of :PackerUpdate, it will do a :PackerCompile in the same time
+- Plugin declarations live in `nvim/lua/plugins/`. After editing them, restart
+  Neovim and use `:Lazy install` to install newly declared plugins; no compilation
+  step is needed.
+- Use `:Lazy restore` after cloning or pulling this repository to install the
+  revisions recorded in the versioned `nvim/lazy-lock.json`.
+- Use `:Lazy update` for an intentional plugin upgrade, verify your usual
+  workflows, then commit the resulting lockfile changes.
+- Use `:Lazy profile` to inspect startup and plugin loading times.
 
 ### Git hooks
 `git config --local core.hooksPath .githooks`
