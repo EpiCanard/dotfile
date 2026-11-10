@@ -16,10 +16,12 @@ local parsers = {
 
 treesitter.setup()
 treesitter.install(parsers)
+vim.treesitter.language.register("bash", "sh")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "bash",
+    "sh",
     "json",
     "java",
     "scala",
