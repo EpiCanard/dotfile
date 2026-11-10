@@ -18,7 +18,7 @@ return {
   {
     "cormacrelf/dark-notify",
     cond = function()
-      return vim.fn.has("macunix")
+      return vim.fn.has("macunix") == 1
     end,
     config = function()
       require("dark_notify").run({
