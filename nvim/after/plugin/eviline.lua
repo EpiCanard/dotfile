@@ -2,7 +2,8 @@ local lualine = require("lualine")
 local navic = require("nvim-navic")
 local link = require("epicanard/color_utils").link
 local hif = require("epicanard/color_utils").hif
-local tag = ""
+local git_status = require("epicanard.git_status")
+git_status.setup()
 
 local colors = {
   yellow = "#e9b143",
@@ -23,18 +24,6 @@ local conditions = {
     return vim.fn.winwidth(0) > 80
   end,
 }
-
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  callback = function()
-    local version = vim.system({ "git", "describe", "--tags" }):wait().stdout or ""
-    if #version == 0 then
-      tag = ""
-    end
-    local splitted = vim.split(version:gsub("\n", ""), "-")
-
-    tag = splitted[1] .. (#splitted > 1 and ("+" .. splitted[2]) or "")
-  end,
-})
 
 -- Config
 local config = {
@@ -200,7 +189,7 @@ ins_right({
 
 ins_right({
   function()
-    return tag
+    return git_status.get_tag()
   end,
   color = "EvilineBranch",
 })
