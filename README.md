@@ -70,6 +70,16 @@ Clipboard collection stays active from startup. DAP loads through its commands
 and mappings, and nvim-metals may also require its core when Scala is opened;
 the debug UI and virtual text wait until a debug session initializes.
 
+In Scala buffers, `<leader>t` runs the closest preceding test suite's Metals code
+lens without opening the debug UI (or the first suite when above all classes).
+The right side of the statusline shows `Running tests ...` in blue while the test session is running.
+A native popup then reports the passed, failed and skipped test counts. Failures or
+unconfirmed results open DAP UI and preserve output in the REPL; an exit code of
+zero alone is not treated as a successful test run. Other filetypes keep
+`vim-test`'s `TestNearest` mapping. Press `q` in normal mode, including from the
+source file, to close DAP UI when a layout is visible. Otherwise `q` keeps closing
+Trouble and quickfix.
+
 ### Machine-specific settings
 
 Keep local Neovim customization in `nvim/lua/local.lua`, which is ignored by Git.

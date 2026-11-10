@@ -1,6 +1,20 @@
 local nmap = require("epicanard.api.map").nmap
 local git = require("epicanard.api.git")
 
+vim.keymap.set("n", "q", function()
+  local dapui = package.loaded.dapui
+  if type(dapui) == "table" then
+    for _, layout in ipairs(require("dapui.windows").layouts) do
+      if layout:is_open() then
+        dapui.close()
+        return
+      end
+    end
+  end
+  vim.cmd("Trouble close")
+  vim.cmd.cclose()
+end, { desc = "Close DAP UI, otherwise Trouble and quickfix" })
+
 nmap("K", "<cmd>lua vim.lsp.buf.hover()<cr>", { silent = true, desc = "LSP hover" })
 nmap("gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { desc = "Workspace symbols" })
 nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename symbol" })

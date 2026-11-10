@@ -9,7 +9,7 @@ return function()
     showImplicitArguments = true,
     showImplicitConversionsAndClasses = true,
     showInferredType = true,
-    autoImportBuild = "all",
+    automaticImportBuild = "all",
     excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
     serverVersion = "1.6.9",
     scalafixConfigPath = vim.fs.normalize(
@@ -38,6 +38,11 @@ return function()
   metals_config.capabilities = capabilities
 
   metals_config.on_attach = function(client, bufnr)
+    vim.lsp.codelens.enable(true, { bufnr = bufnr, client_id = client.id })
+    vim.keymap.set("n", "<leader>t", require("epicanard.scala_tests").run, {
+      buffer = bufnr,
+      desc = "Run Scala test code lens in background",
+    })
     if package.loaded.dap then
       require("metals").setup_dap()
     end

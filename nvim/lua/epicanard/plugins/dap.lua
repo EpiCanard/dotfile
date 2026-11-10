@@ -1,5 +1,8 @@
 return function()
   local dap = require("dap")
+  local scala_tests = require("epicanard.scala_tests")
+  scala_tests.setup(dap)
+
   -- Setup
   dap.configurations.scala = {
     {
@@ -37,21 +40,16 @@ return function()
       },
     },
   }
-  dap.listeners.before.event_initialized["dapui_config"] = function()
-    require("nvim-dap-virtual-text")
-    require("dapui")
-  end
-  dap.listeners.after.event_initialized["dapui_config"] = function()
-    require("dapui").open()
-  end
-  dap.listeners.before.event_terminated["dapui_config"] = function()
-    if package.loaded.dapui then
-      require("dapui").close()
+  dap.listeners.before.event_initialized["dapui_config"] = function(session)
+    if not scala_tests.is_background(session) then
+      require("nvim-dap-virtual-text")
+      require("dapui")
     end
   end
-  dap.listeners.before.event_exited["dapui_config"] = function()
-    if package.loaded.dapui then
-      require("dapui").close()
+  -- Keep the output visible after the session ends to inspect test results.
+  dap.listeners.after.event_initialized["dapui_config"] = function(session)
+    if not scala_tests.is_background(session) then
+      require("dapui").open()
     end
   end
   if type(package.loaded.metals) == "table" then

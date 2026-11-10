@@ -4,6 +4,7 @@ return function()
   local link = require("epicanard/color_utils").link
   local hif = require("epicanard/color_utils").hif
   local git_status = require("epicanard.git_status")
+  local scala_tests = require("epicanard.scala_tests")
   git_status.setup()
 
   local colors = {
@@ -158,6 +159,11 @@ return function()
   ins_left("%=")
 
   -- Right section
+
+  ins_right({
+    scala_tests.status,
+    color = { fg = "#61afef", gui = "bold" },
+  })
 
   ins_right({
     function()

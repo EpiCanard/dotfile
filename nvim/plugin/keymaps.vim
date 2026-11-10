@@ -18,7 +18,6 @@ nnoremap df "_dd
 nnoremap vp viw"0p
 
 " Trouble
-nnoremap q <cmd>Trouble close<cr><cmd>ccl<cr>
 nnoremap gr <cmd>Glance references<cr>
 nnoremap gi <cmd>Glance implementations<cr>
 nnoremap gs <cmd>MetalsGotoSuperMethod<cr>
