@@ -4,6 +4,30 @@ local git = require("epicanard.api.git")
 nmap("<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
 nmap("<leader>c", "<cmd>Telescope colorscheme default_text=duck<cr>", { desc = "Choose colorscheme" })
 
+nmap("<leader>fg", "", {
+  desc = "Search current word",
+  callback = function()
+    require("telescope.builtin").live_grep({
+      layout_strategy = "vertical",
+      default_text = vim.fn.expand("<cword>"),
+    })
+  end,
+})
+
+vim.keymap.set("x", "<leader>fg", function()
+  local selection = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), {
+    type = vim.fn.mode(),
+    exclusive = vim.o.selection == "exclusive",
+  })
+  vim.cmd.normal({ args = { "\27" }, bang = true })
+
+  -- Telescope prompts are single-line; ripgrep can match escaped newlines.
+  require("telescope.builtin").live_grep({
+    default_text = table.concat(selection, [[\n]]),
+    additional_args = #selection > 1 and { "--multiline" } or nil,
+  })
+end, { desc = "Search visual selection" })
+
 local function open_url(url)
   local _, err = vim.ui.open(url)
   if err then
