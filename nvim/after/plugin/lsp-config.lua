@@ -103,4 +103,4 @@ vim.lsp.config("sqlls", {
   root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "lua_ls", "jdtls", "pyright", "robotframework_ls", "html", "ts_ls", "eslint", "sqlls" })
+vim.lsp.enable(require("epicanard.lsp_servers"))
