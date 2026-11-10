@@ -138,7 +138,21 @@ function bsync() {
     _dotfile_project_repositories | xargs -0 -n 1 -P 10 sh -c 'if [ "$#" -gt 0 ]; then git -C "$1" pull; fi' sh
 }
 
-alias btmm="git stash && git checkout master || git checkout main && git pull"
+function btmm() {
+    local branch
+    if git show-ref --verify --quiet refs/heads/master; then
+        branch=master
+    elif git show-ref --verify --quiet refs/heads/main; then
+        branch=main
+    else
+        print -u2 -- "btmm: no local master or main branch found"
+        return 1
+    fi
+
+    git stash push || return
+    git checkout "$branch" || return
+    git pull
+}
 
 function prupru() {
     local repo branch
