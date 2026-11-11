@@ -1,6 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
+  "atlas.nvim": { "branch": "main", "commit": "0e2b8b660e4046fb9b601410f932aa5d9a6b3e53" },
   "auto-hlsearch.nvim": { "branch": "main", "commit": "77502069b22e48ab7736fe9cf53e1fdac1923bca" },
   "auto-save.nvim": { "branch": "main", "commit": "141e5b4cb5df51e659fc039e25d227360f4dffcd" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "78c2ecd659d54972be17aa6ba2deac3c53223b80" },
