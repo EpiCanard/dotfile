@@ -35,6 +35,10 @@ return function()
       component_separators = "",
       section_separators = "",
       theme = "oneduck",
+      -- Sqmeow owns the winbar above its result grid.
+      disabled_filetypes = {
+        winbar = { "sqmeow-result" },
+      },
     },
     sections = {
       -- these are to remove the defaults

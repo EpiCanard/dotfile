@@ -13,3 +13,7 @@ nvim/lua/plugins/local/
 *.local.zsh
 .env
 .env.*
+
+# Local database runtime
+/.local/
+.sqmeow

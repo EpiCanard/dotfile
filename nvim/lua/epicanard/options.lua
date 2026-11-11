@@ -50,7 +50,4 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 vim.opt.foldlevel = 99
 
-vim.g.db_ui_use_nerd_fonts = 1
-vim.g.db_ui_auto_execute_table_helpers = 1
-vim.g.db_ui_winwidth = 60
 vim.g["test#scala#runner"] = "blooptest"

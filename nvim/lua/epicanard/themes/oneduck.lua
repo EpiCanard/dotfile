@@ -92,7 +92,7 @@ local function set_highlight(theme)
   local load = loader(theme)
   -- User interface colors {{{
   hifb("Normal", theme.fg, theme.bg)
-  hifb("NormalFloat", theme.fg, theme.light_yellow)
+  hifb("NormalFloat", theme.fg, theme.bg)
 
   hifb("Cursor", theme.bg, theme.blue)
   hib("CursorColumn", theme.cursor_line)

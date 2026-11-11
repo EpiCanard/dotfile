@@ -40,13 +40,12 @@ Install these tools with your system package manager and keep them in `PATH`:
 | JS / TS, HTML, SQL and Pyright language servers | Node.js and npm |
 | Robot Framework language server | Python 3 with `venv` and pip; project-specific Robot libraries remain in the project's environment |
 | System clipboard | A working Neovim clipboard provider, such as `wl-copy` / `wl-paste` on Wayland or `xclip` on X11 |
-| Dadbod database connections | The command-line client for the selected database, such as `psql`, `mysql` or `sqlcmd`; DBee uses its own downloaded backend |
 | Optional integrations | `glab` for GitLab commands, tmux / tmuxinator for terminal aliases, a Nerd Font for icons, `dark-notify` on macOS |
 
 Mason installs the eight servers listed in `nvim/lua/epicanard/lsp_servers.lua`;
 Neovim enables that same list explicitly. Metals is downloaded separately through
 nvim-metals and Coursier. Mason does not install the system runtimes above.
-Network access is needed for initial plugin, parser, server and DBee downloads.
+Network access is needed for initial plugin, parser, server and Sqmeow engine downloads.
 Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
 
 ### Tips
@@ -65,7 +64,7 @@ Use `:checkhealth mason` and `:checkhealth vim.lsp` to diagnose missing tools.
 
 Metals loads for Scala/sbt files. Completion and automatic pairs load on entering
 Insert mode. Telescope, the file tree, Git interfaces and database interfaces
-load through their commands or mappings; `:Note` and `:Db` remain available.
+load through their commands or mappings; `:Note` and `:Sqmeow` remain available.
 Clipboard collection stays active from startup. DAP loads through its commands
 and mappings, and nvim-metals may also require its core when Scala is opened;
 the debug UI and virtual text wait until a debug session initializes.
