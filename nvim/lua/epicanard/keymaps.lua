@@ -30,6 +30,8 @@ nmap("]c", "<cmd>lua vim.diagnostic.goto_next { wrap = false }<cr>", { desc = "N
 nmap("<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
 nmap("<leader>c", "<cmd>Telescope colorscheme default_text=duck<cr>", { desc = "Choose colorscheme" })
 
+nmap("<leader>T", "<cmd>ToggleTerm<cr>", { desc = "Toggle display of term" })
+
 nmap("<leader>fg", "", {
   desc = "Search current word",
   callback = function()
