@@ -2,6 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "saghen/blink.cmp",
       { "williamboman/mason.nvim", opts = {} },
       {
         "williamboman/mason-lspconfig.nvim",
@@ -16,14 +17,11 @@ return {
     config = require("epicanard.plugins.lsp"),
   },
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "1.*",
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
-      "onsails/lspkind-nvim",
     },
     config = require("epicanard.plugins.completion"),
   },

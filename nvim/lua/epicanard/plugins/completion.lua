@@ -1,73 +1,53 @@
 return function()
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
-  local lspkind = require("lspkind")
-
-  local has_words_before = function()
-    unpack = unpack or table.unpack
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-  end
-
-  local function next_item(fallback)
-    if cmp.visible() then
-      cmp.select_next_item()
-    elseif luasnip.expand_or_jumpable() then
-      luasnip.expand_or_jump()
-    elseif has_words_before() then
-      cmp.complete()
-    else
-      fallback()
-    end
-  end
-
-  local function prev_item(fallback)
-    if cmp.visible() then
-      cmp.select_prev_item()
-    elseif luasnip.jumpable(-1) then
-      luasnip.jump(-1)
-    else
-      fallback()
-    end
-  end
-
-  -- Mapping
-  local cmp_mappings = {
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    -- None of this made sense to me when first looking into this since there
-    -- is no vim docs, but you can't have select = true here _unless_ you are
-    -- also using the snippet stuff. So keep in mind that if you remove
-    -- snippets you need to remove this select
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ["<ESC>"] = cmp.mapping.abort(),
-    ["<Tab>"] = cmp.mapping(next_item, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(prev_item, { "i", "s" }),
-  }
-
-  -- Setup
-  cmp.setup({
-    preselect = cmp.PreselectMode.None,
+  require("blink.cmp").setup({
+    keymap = {
+      preset = "none",
+      ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
+      ["<Esc>"] = { "cancel", "fallback" },
+      ["<Tab>"] = {
+        "select_next",
+        "snippet_forward",
+        function(cmp)
+          local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+          local text = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+          if col > 0 and not text:sub(col, col):match("%s") then
+            return cmp.show()
+          end
+        end,
+        "fallback",
+      },
+      ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+    },
     completion = {
-      completeopt = "menu,menuone,noinsert,preview",
+      list = { selection = { preselect = false, auto_insert = false } },
+      menu = {
+        draw = {
+          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
+          components = { label = { width = { max = 75 } } },
+        },
+      },
+      documentation = { auto_show = true },
     },
-    formatting = {
-      fields = { "abbr", "kind", "menu" },
-      format = lspkind.cmp_format({
-        with_text = true, -- do not show text alongside icons
-        maxwidth = 75, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      }),
-    },
+    snippets = { preset = "luasnip" },
+    signature = { enabled = true },
     sources = {
-      { name = "nvim_lsp" },
-      { name = "nvim_lsp_signature_help" },
-      { name = "luasnip" },
-      { name = "gitmoji" },
+      default = { "lsp", "path", "snippets", "buffer" },
+      per_filetype = {
+        gitcommit = { "gitmoji", inherit_defaults = true },
+        NeogitCommitMessage = { "gitmoji", inherit_defaults = true },
+      },
+      providers = {
+        gitmoji = {
+          name = "Gitmoji",
+          module = "gitmoji.blink",
+          opts = {
+            filetypes = { "NeogitCommitMessage", "gitcommit" },
+            completion = { append_space = true, complete_as = "text" },
+          },
+        },
+      },
     },
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
-    },
-    mapping = cmp_mappings,
+    cmdline = { enabled = false },
   })
 end

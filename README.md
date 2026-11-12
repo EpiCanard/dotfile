@@ -141,10 +141,8 @@ uniquement sur macOS.
 | [atlas.nvim](https://github.com/emrearmagan/atlas.nvim) | Consulte les pull requests et issues GitHub et permet de faire des revues. |
 | [auto-hlsearch.nvim](https://github.com/asiryk/auto-hlsearch.nvim) | Gère automatiquement la surbrillance des résultats de recherche. |
 | [auto-save.nvim](https://github.com/okuuva/auto-save.nvim) | Sauvegarde automatiquement les fichiers, notamment en quittant le mode insertion. |
+| [blink.cmp](https://github.com/saghen/blink.cmp) | Fournit la complétion LSP, les chemins, les mots du buffer, les snippets LuaSnip et les signatures de fonctions. |
 | [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim) | Ajoute des fonctionnalités à l'intégration du serveur C/C++ clangd. |
-| [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) | Fournit les suggestions des serveurs LSP à nvim-cmp. |
-| [cmp-nvim-lsp-signature-help](https://github.com/hrsh7th/cmp-nvim-lsp-signature-help) | Affiche les signatures de fonctions dans la complétion. |
-| [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) | Propose les snippets LuaSnip dans nvim-cmp. |
 | [coerce.nvim](https://github.com/gregorias/coerce.nvim) | Convertit la casse des identifiants, comme camelCase ou snake_case. |
 | [Comment.nvim](https://github.com/numToStr/Comment.nvim) | Commente et décommente le code selon le langage. |
 | [dark-notify](https://github.com/cormacrelf/dark-notify) | Adapte le thème Neovim à l'apparence claire ou sombre de macOS. |
@@ -158,7 +156,6 @@ uniquement sur macOS.
 | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Affiche les guides d'indentation et la portée du bloc courant. |
 | [lazy.nvim](https://github.com/folke/lazy.nvim) | Installe, charge et met à jour les plugins. |
 | [lsp-status.nvim](https://github.com/wbthomason/lsp-status.nvim) | Expose l'état et la progression des serveurs LSP pour la barre de statut. |
-| [lspkind-nvim](https://github.com/onsails/lspkind-nvim) | Ajoute des icônes aux types de suggestions de complétion. |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Affiche une barre de statut avec les informations de l'éditeur. |
 | [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Développe des snippets de code avec des champs à compléter. |
 | [marks.nvim](https://github.com/chentoast/marks.nvim) | Facilite l'affichage et la gestion des marques Vim. |
@@ -172,7 +169,6 @@ uniquement sur macOS.
 | [nui.nvim](https://github.com/MunifTanjim/nui.nvim) | Fournit les composants d'interface utilisés par Sqmeow. |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Ferme automatiquement les parenthèses, crochets et guillemets. |
 | [nvim-bqf](https://github.com/kevinhwang91/nvim-bqf) | Améliore la liste quickfix avec une prévisualisation et des sélections. |
-| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Fournit le menu de complétion du code. |
 | [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) | Prévisualise les codes couleur directement dans le texte. |
 | [nvim-dap](https://github.com/mfussenegger/nvim-dap) | Intègre le débogage via le protocole DAP. |
 | [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) | Affiche les panneaux de variables, piles d'appels et points d'arrêt du débogueur. |

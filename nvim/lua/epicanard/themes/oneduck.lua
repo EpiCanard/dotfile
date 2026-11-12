@@ -215,6 +215,8 @@ local function set_highlight(theme)
 
   hif("TelescopeTestFile", theme.green)
 
+  hif("BlinkCmpKind", theme.blue)
+
   -- Git {{{
   load("git")
   -- }}}

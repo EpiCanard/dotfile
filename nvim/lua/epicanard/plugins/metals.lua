@@ -30,12 +30,7 @@ return function()
   metals_config.init_options.statusBarProvider = "on"
 
   local lsp_status = require("lsp-status")
-  local capabilities = lsp_status.capabilities
-
-  --local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-  metals_config.capabilities = capabilities
+  metals_config.capabilities = require("blink.cmp").get_lsp_capabilities(lsp_status.capabilities)
 
   metals_config.on_attach = function(client, bufnr)
     vim.lsp.codelens.enable(true, { bufnr = bufnr, client_id = client.id })
