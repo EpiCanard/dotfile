@@ -8,15 +8,14 @@ return {
     { "<leader>ai", "<cmd>Atlas issues .<cr>", desc = "Atlas issues" },
     { "<leader>ar", "<cmd>Atlas review<cr>", desc = "Atlas review pull request" },
   },
-  opts = {
-    providers = {
-      -- Authentication is handled by `gh auth login`.
-      github = {},
-    },
-    pulls = {
-      diff = {
-        open_cmd = "DiffviewOpen",
+  opts = function()
+    return vim.tbl_deep_extend("force", {
+      pulls = {
+        diff = {
+          layout = "inline",
+          open_cmd = "AtlasDiff",
+        },
       },
-    },
-  },
+    }, vim.g.atlas_opts or {})
+  end,
 }

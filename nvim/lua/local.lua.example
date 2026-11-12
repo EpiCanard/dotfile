@@ -15,3 +15,14 @@
 -- Jira base URL (used by <leader>J)
 -- Alternatively: export JIRA_URL="https://your-company.atlassian.net"
 -- vim.g.jira_url = "https://your-company.atlassian.net"
+
+-- Atlas options (deep-merged with the defaults; local values take precedence)
+-- vim.g.atlas_opts = {
+--   providers = {
+--     github = { hostname = "github.company.com" },
+--     gitlab = {
+--       base_url = "https://gitlab.company.com",
+--       token = vim.env.GITLAB_TOKEN,
+--     },
+--   },
+-- }
