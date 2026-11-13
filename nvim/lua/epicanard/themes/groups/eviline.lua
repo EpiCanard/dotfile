@@ -9,6 +9,7 @@ return function (theme)
     ["EvilineFileFormat"]       = { fg = theme.green,       bg = theme.eviline, bold = true },
     ["EvilineBranch"]           = { fg = theme.purple,      bg = theme.eviline, bold = true },
     ["EvilineMode"]             = {                         bg = theme.eviline },
+    ["EvilineTests"]            = { fg = theme.blue,        bg = theme.eviline, bold = true },
     ["EvilineDiagnosticError"]  = { fg = theme.red,         bg = theme.eviline },
     ["EvilineDiagnosticWarn"]   = { fg = theme.yellow,      bg = theme.eviline },
     ["EvilineDiagnosticInfo"]   = { fg = theme.cyan,        bg = theme.eviline },

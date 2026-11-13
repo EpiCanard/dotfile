@@ -19,7 +19,7 @@ M.themes = {
     blue = "#0184bc",
     purple = "#ca62a4",
     cyan = "#0997b3",
-    white = "#ebebeb",
+    white = "#f0f0f0",
 
     light_green = "#c4d9c4",
     light_yellow = "#e1d1b1",
@@ -27,19 +27,21 @@ M.themes = {
     light_blue = "#b1d1df",
 
     fg = "#383a42",
-    bg = "#ebebeb",
+    bg = "#f0f0f0",
 
     comment_fg = "#a0a1a7",
-    gutter_bg = "#ebebeb",
-    gutter_fg = "#d4d4d4",
+    gutter_bg = "#f0f0f0",
+    gutter_fg = "#bfc0c5",
+    indent_fg = "#d4d4d4",
     non_text = "#a0a1a7",
 
-    cursor_line = "#e1e1e1",
-    color_col = "#e1e1e1",
-    eviline = "#e1e1e1",
+    cursor_line = "#e6e6e6",
+    color_col = "#e6e6e6",
+    eviline = "#e6e6e6",
+    tab_bg = "#dedee2",
 
     selection = "#bfceff",
-    vertsplit = "#e1e1e1",
+    vertsplit = "#e6e6e6",
   },
   dark = {
     black = "#282c34",
@@ -62,11 +64,13 @@ M.themes = {
     comment_fg = "#5c6370",
     gutter_bg = "#282c34",
     gutter_fg = "#919baa",
+    indent_fg = "#919baa",
     non_text = "#5c6370",
 
     cursor_line = "#313640",
     color_col = "#313640",
     eviline = "#313640",
+    tab_bg = "#3b414d",
 
     selection = "#474e5d",
     vertsplit = "#313640",
@@ -129,7 +133,7 @@ local function set_highlight(theme)
 
   hifb("StatusLine", theme.blue, theme.cursor_line)
   hifb("StatusLineNC", theme.comment_fg, theme.cursor_line)
-  hifb("TabLine", theme.fg, theme.gutter_fg)
+  hifb("TabLine", theme.fg, theme.tab_bg)
   hifb("TabLineFill", theme.fg, theme.cursor_line)
   hifb("TabLineSel", theme.fg, theme.bg)
 
@@ -181,7 +185,7 @@ local function set_highlight(theme)
   hif("Conditional", theme.purple)
   hif("Repeat", theme.purple)
   hif("Label", theme.purple)
-  hif("Operator", theme.red)
+  hif("Operator", theme.fg)
   hif("Keyword", theme.red)
   hif("Exception", theme.purple)
 
@@ -209,13 +213,17 @@ local function set_highlight(theme)
   -- }}}
 
   -- {{{ IndentBlankLine
-  hif("IblIndent", theme.gutter_fg)
+  hif("IblIndent", theme.indent_fg)
   hif("IblScope", theme.light_blue)
   -- }}}
 
   hif("TelescopeTestFile", theme.green)
 
   hif("BlinkCmpKind", theme.blue)
+
+  -- LSP {{{
+  load("lsp")
+  -- }}}
 
   -- Git {{{
   load("git")

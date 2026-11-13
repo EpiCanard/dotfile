@@ -1,6 +1,6 @@
 -- stylua: ignore start
 return function (theme)
-  local tabline_bg = theme.gutter_fg
+  local tabline_bg = theme.tab_bg
   local tablinefill_bg = theme.cursor_line
   local tablinesel_bg = theme.bg
 

@@ -3,20 +3,10 @@ return function()
   local navic = require("nvim-navic")
   local link = require("epicanard/color_utils").link
   local hif = require("epicanard/color_utils").hif
+  local theme = require("epicanard.themes.oneduck")
   local git_status = require("epicanard.git_status")
   local scala_tests = require("epicanard.scala_tests")
   git_status.setup()
-
-  local colors = {
-    yellow = "#e9b143",
-    cyan = "#008080",
-    green = "#b0b846",
-    orange = "#f28534",
-    violet = "#d3869b",
-    magenta = "#c678dd",
-    blue = "#80aa9e",
-    red = "#f2594b",
-  }
 
   local conditions = {
     buffer_not_empty = function()
@@ -98,20 +88,21 @@ return function()
     -- mode component
     function()
       -- auto change color according to neovims mode
+      local colors = theme.get_current_theme()
       local mode_color = {
         n = colors.red,
         i = colors.green,
         v = colors.blue,
         [""] = colors.blue,
         V = colors.blue,
-        c = colors.magenta,
+        c = colors.purple,
         no = colors.red,
-        s = colors.orange,
-        S = colors.orange,
-        [""] = colors.orange,
+        s = colors.yellow,
+        S = colors.yellow,
+        [""] = colors.yellow,
         ic = colors.yellow,
-        R = colors.violet,
-        Rv = colors.violet,
+        R = colors.purple,
+        Rv = colors.purple,
         cv = colors.red,
         ce = colors.red,
         r = colors.cyan,
@@ -120,7 +111,7 @@ return function()
         ["!"] = colors.red,
         t = colors.red,
       }
-      hif("EvilineMode", mode_color[vim.fn.mode()], {}, false)
+      hif("EvilineMode", mode_color[vim.fn.mode()] or colors.red, { bg = colors.eviline })
       return "󰇥"
     end,
     color = "EvilineMode",
@@ -166,7 +157,7 @@ return function()
 
   ins_right({
     scala_tests.status,
-    color = { fg = "#61afef", gui = "bold" },
+    color = "EvilineTests",
   })
 
   ins_right({
